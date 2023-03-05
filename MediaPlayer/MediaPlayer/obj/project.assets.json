@@ -8,24 +8,19 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Shayan\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Donkey\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Shayan\\3951mediaapp\\MediaPlayer\\MediaPlayer\\MediaPlayer.csproj",
+      "projectUniqueName": "C:\\Users\\Donkey\\3951mediaapp\\MediaPlayer\\MediaPlayer\\MediaPlayer.csproj",
       "projectName": "MediaPlayer",
-      "projectPath": "C:\\Users\\Shayan\\3951mediaapp\\MediaPlayer\\MediaPlayer\\MediaPlayer.csproj",
-      "packagesPath": "C:\\Users\\Shayan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Shayan\\3951mediaapp\\MediaPlayer\\MediaPlayer\\obj\\",
+      "projectPath": "C:\\Users\\Donkey\\3951mediaapp\\MediaPlayer\\MediaPlayer\\MediaPlayer.csproj",
+      "packagesPath": "C:\\Users\\Donkey\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Donkey\\3951mediaapp\\MediaPlayer\\MediaPlayer\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Shayan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Donkey\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -70,7 +65,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

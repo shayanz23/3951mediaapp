@@ -19,3 +19,5 @@ C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\net6.0-windows\Ta
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\net6.0-windows\TagLibSharp.pdb
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\net6.0-windows\TagLibSharp.xml
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\net6.0-windows\MediaPlayer.csproj.CopyComplete
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\net6.0-windows\MediaPlayer.NewPlaylistDialog.resources
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\net6.0-windows\MediaPlayer.PlaylistMDIChild.resources

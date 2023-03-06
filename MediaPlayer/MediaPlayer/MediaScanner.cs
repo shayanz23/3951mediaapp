@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Microsoft.VisualBasic.Devices;
+using System.Collections;
 using TagLib;
 using File = TagLib.File;
 
@@ -110,7 +111,8 @@ namespace MediaPlayer
                         video.title = file.Tag.Title;
                         video.duration = file.Tag.Length;
                         video.genres = file.Tag.Genres;
-                    } else
+                    }
+                    if (video.title == null)
                     {
                         video.title = Path.GetFileName(filePath);
                     }
@@ -150,7 +152,8 @@ namespace MediaPlayer
                         picture.description = file.Tag.Description;
                         picture.title = file.Tag.Title;
                         if (file.Tag.DateTagged != null) picture.date = (DateTime)file.Tag.DateTagged;
-                    } else
+                    }
+                    if (picture.title == null)
                     {
                         picture.title = Path.GetFileName(filePath);
                     }

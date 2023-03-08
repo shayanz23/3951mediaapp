@@ -7,9 +7,9 @@ namespace MediaPlayer
 {
     public static class MediaScanner
     {
-        private static ArrayList _audios = new ArrayList();
-        private static ArrayList _videos = new ArrayList();
-        private static ArrayList _pictures = new ArrayList();
+        private static List<Audio> _audios = new List<Audio>();
+        private static List<Video> _videos = new List<Video>();
+        private static List<Picture> _pictures = new List<Picture>();
 
         private static string[] audioTypes = { ".mp3", ".wav", ".flac", ".m4a", ".ogg" };
         private static string[] videoTypes = { ".mp4", ".mkv", ".mov" };
@@ -21,19 +21,19 @@ namespace MediaPlayer
         
 
 
-        public static ArrayList Audios
+        public static List<Audio> Audios
         {
             get { return _audios; }
             set { _audios = value; }
         }
 
-        public static ArrayList Videos
+        public static List<Video> Videos
         {
             get { return _videos; }
             set { _videos = value; }
         }
 
-        public static ArrayList Pictures
+        public static List<Picture> Pictures
         {
             get { return _pictures; }
             set { _pictures = value; }

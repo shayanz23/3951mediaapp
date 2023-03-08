@@ -27,6 +27,8 @@ namespace MediaPlayer
                 if (MediaScanner.Audios[i] != null)
                 {
                     titleBuilder.Append(MediaScanner.Audios[i].title);
+                    artistBuilder.Append(MediaScanner.Audios[i].artists);
+
                 }
             }
         }

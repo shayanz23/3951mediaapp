@@ -6,6 +6,13 @@ namespace MediaPlayer
 {
     public partial class Form1 : Form
     {
+        Form childForm;
+        int formWidth = 860;
+        int formHeight = 580;
+        int startPosX = 240;
+        int startPosY = 0;
+
+
         public Form1()
         {
             InitializeComponent();
@@ -34,8 +41,27 @@ namespace MediaPlayer
                 }
             } else if (e.Node.Name == "SongLibrary")
             {
-
+                if (childForm != null)
+                {
+                    childForm.Dispose();
+                    childForm = new MusicLibraryForm();
+                    childForm.MdiParent = this;
+                    childForm.StartPosition= FormStartPosition.Manual;
+                    childForm.Location = new Point(startPosX, startPosY);
+                    childForm.Size = new Size(formWidth, formHeight);
+                    childForm.Show();
+                } else
+                {
+                    childForm = new MusicLibraryForm();
+                    childForm.MdiParent = this;
+                    childForm.StartPosition = FormStartPosition.Manual;
+                    childForm.Location = new Point(startPosX, startPosY);
+                    childForm.Size = new Size(formWidth, formHeight);
+                    childForm.Show();
+                }
+                
             }
         }
+
     }
 }

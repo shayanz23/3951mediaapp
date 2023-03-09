@@ -50,7 +50,7 @@
             // treeView1
             // 
             this.treeView1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.treeView1.Location = new System.Drawing.Point(-1, -1);
+            this.treeView1.Location = new System.Drawing.Point(1, 1);
             this.treeView1.Name = "treeView1";
             treeNode1.Name = "SongLibrary";
             treeNode1.Text = "Library";
@@ -72,7 +72,7 @@
             treeNode4,
             treeNode6,
             treeNode8});
-            this.treeView1.Size = new System.Drawing.Size(246, 574);
+            this.treeView1.Size = new System.Drawing.Size(240, 580);
             this.treeView1.TabIndex = 4;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             // 
@@ -107,7 +107,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1089, 670);
+            this.ClientSize = new System.Drawing.Size(1084, 661);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

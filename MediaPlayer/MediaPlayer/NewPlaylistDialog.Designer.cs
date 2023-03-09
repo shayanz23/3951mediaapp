@@ -31,6 +31,7 @@
             this.OKPlaylistButton = new System.Windows.Forms.Button();
             this.CancelButton2 = new System.Windows.Forms.Button();
             this.NewPlaylistTextbox = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // OKPlaylistButton
@@ -56,16 +57,26 @@
             // 
             // NewPlaylistTextbox
             // 
-            this.NewPlaylistTextbox.Location = new System.Drawing.Point(25, 68);
+            this.NewPlaylistTextbox.Location = new System.Drawing.Point(26, 93);
             this.NewPlaylistTextbox.Name = "NewPlaylistTextbox";
             this.NewPlaylistTextbox.Size = new System.Drawing.Size(246, 23);
             this.NewPlaylistTextbox.TabIndex = 2;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(26, 47);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(246, 23);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.Text = "Enter a Name: ";
             // 
             // NewPlaylistDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(409, 158);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.NewPlaylistTextbox);
             this.Controls.Add(this.CancelButton2);
             this.Controls.Add(this.OKPlaylistButton);
@@ -85,5 +96,6 @@
         private Button OKPlaylistButton;
         private Button CancelButton2;
         private TextBox NewPlaylistTextbox;
+        private TextBox textBox1;
     }
 }

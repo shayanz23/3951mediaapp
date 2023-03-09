@@ -18,6 +18,7 @@ namespace MediaPlayer
         public Form1()
         {
             InitializeComponent();
+            this.Size = new Size(1000, 620);
             for (int i = 0; i < treeView1.Nodes.Count; i++)
             {
                 if (treeView1.Nodes[i].Name == "SongsNode" || treeView1.Nodes[i].Name == "VideosNode" || treeView1.Nodes[i].Name == "PicturesNode")

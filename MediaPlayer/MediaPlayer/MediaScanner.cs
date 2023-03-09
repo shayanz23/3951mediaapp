@@ -2,6 +2,7 @@
 using System.Collections;
 using TagLib;
 using File = TagLib.File;
+using NAudio;
 
 namespace MediaPlayer
 {
@@ -62,13 +63,18 @@ namespace MediaPlayer
                     }
                     Audio audio = new Audio();
                     audio.fileLocation = filePath;
+                    using (var audioFileReader = new NAudio.Wave.AudioFileReader(filePath))
+                    {
+                        var audioFileLength = audioFileReader.TotalTime.TotalSeconds;
+                        TimeSpan timeSpan = TimeSpan.FromSeconds(audioFileLength);
+                        audio.duration = timeSpan.ToString(@"mm\:ss");
+                    }
                     if (file != null)
                     {
                         audio.title = file.Tag.Title;
                         audio.genres = file.Tag.Genres;
                         audio.album = file.Tag.Album;
                         audio.artists = file.Tag.Performers;
-                        audio.duration = file.Tag.Length;
                         audio.coverArt = getCoverArt(file);
                     }
                     if (audio.title == null) {

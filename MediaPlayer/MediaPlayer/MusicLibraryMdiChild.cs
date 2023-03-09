@@ -14,8 +14,8 @@ namespace MediaPlayer
     {
         public MusicLibraryForm()
         {
-            fillList();
             InitializeComponent();
+            fillList();
         }
 
         void format(ref StringBuilder stringBuilder)
@@ -31,7 +31,7 @@ namespace MediaPlayer
             if (stringBuilder.Length < 50)
             {
                 int lengthAdded = 50 - stringBuilder.Length;
-                for (int j = 0; j < lengthAdded; j++)
+                for (int j = 0; j < lengthAdded-1; j++)
                 {
                     stringBuilder.Append(' ');
                 }
@@ -49,14 +49,25 @@ namespace MediaPlayer
                 if (MediaScanner.Audios[i] != null)
                 {
                     titleBuilder.Append(MediaScanner.Audios[i].title);
-                    artistBuilder.Append(MediaScanner.Audios[i].artists);
-                    durationBuilder.Append(MediaScanner.Audios[i].duration);
+                    if (MediaScanner.Audios[i].artists == null)
+                    {
+                        artistBuilder.Append("Unknown");
+                    } else
+                    {
+                        artistBuilder.Append(MediaScanner.Audios[i].getArtists());
+                    }
+                    if (MediaScanner.Audios[i].duration == null)
+                    {
+                        durationBuilder.Append("Unknown");
+                    }
+                    else
+                    {
+                        durationBuilder.Append(MediaScanner.Audios[i].duration.ToString());
+                    }
 
                     format(ref titleBuilder);
                     format(ref artistBuilder);
-                    listBox1 = new ListBox();
                     listBox1.Items.Add(titleBuilder.ToString() + artistBuilder.ToString() + durationBuilder.ToString());
-                    listBox1.Show();
                 }
             }
         }

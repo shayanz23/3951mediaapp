@@ -22,5 +22,25 @@ namespace MediaPlayer
 
         public Image coverArt { get; set; }
 
+        public string getArtists()
+        {
+            StringBuilder sb = new StringBuilder();
+            if (artists.Length == 1)
+            {
+                sb.Append(artists[0]);
+            } else if (artists != null || artists.Length != 0)
+            {
+                for (int i = 0; i < artists.Length-1; i++)
+                {
+                    if (i == artists.Length - 1)
+                    {
+                        sb.Append(artists[i]);
+                    } else {
+                        sb.Append(artists[i] + ", ");
+                    }
+                }
+            }
+            return sb.ToString();
+        }
     }
 }

@@ -22,3 +22,10 @@ C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\net6.0-windows\Me
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\net6.0-windows\MediaPlayer.NewPlaylistDialog.resources
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\net6.0-windows\MediaPlayer.PlaylistMDIChild.resources
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\net6.0-windows\MediaPlayer.MusicLibraryForm.resources
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\net6.0-windows\NAudio.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\net6.0-windows\NAudio.Asio.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\net6.0-windows\NAudio.Core.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\net6.0-windows\NAudio.Midi.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\net6.0-windows\NAudio.Wasapi.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\net6.0-windows\NAudio.WinForms.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\net6.0-windows\NAudio.WinMM.dll

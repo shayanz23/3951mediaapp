@@ -1,4 +1,6 @@
-﻿namespace MediaPlayer
+﻿using System.Windows.Forms;
+
+namespace MediaPlayer
 {
     partial class Form1
     {
@@ -28,19 +30,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Library");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("New Playlist...");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Playlists", new System.Windows.Forms.TreeNode[] {
-            treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Songs", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode3});
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Library");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Videos", new System.Windows.Forms.TreeNode[] {
-            treeNode5});
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Library");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Pictures", new System.Windows.Forms.TreeNode[] {
-            treeNode7});
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Library");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("New Playlist...");
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Playlists", new System.Windows.Forms.TreeNode[] {
+            treeNode18});
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Songs", new System.Windows.Forms.TreeNode[] {
+            treeNode17,
+            treeNode19});
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Library");
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Videos", new System.Windows.Forms.TreeNode[] {
+            treeNode21});
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Library");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Pictures", new System.Windows.Forms.TreeNode[] {
+            treeNode23});
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -49,70 +51,76 @@
             // 
             // treeView1
             // 
-            this.treeView1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.treeView1.Location = new System.Drawing.Point(1, 1);
+            this.treeView1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.treeView1.Location = new System.Drawing.Point(2, 2);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "SongLibrary";
-            treeNode1.Text = "Library";
-            treeNode2.Name = "NewSongPlaylist";
-            treeNode2.Text = "New Playlist...";
-            treeNode3.Name = "SongPlaylists";
-            treeNode3.Text = "Playlists";
-            treeNode4.Name = "SongsNode";
-            treeNode4.Text = "Songs";
-            treeNode5.Name = "VideoLibrary";
-            treeNode5.Text = "Library";
-            treeNode6.Name = "VideosNode";
-            treeNode6.Text = "Videos";
-            treeNode7.Name = "PictureLibrary";
-            treeNode7.Text = "Library";
-            treeNode8.Name = "PicturesNode";
-            treeNode8.Text = "Pictures";
+            treeNode17.Name = "SongLibrary";
+            treeNode17.Text = "Library";
+            treeNode18.Name = "NewSongPlaylist";
+            treeNode18.Text = "New Playlist...";
+            treeNode19.Name = "SongPlaylists";
+            treeNode19.Text = "Playlists";
+            treeNode20.Name = "SongsNode";
+            treeNode20.Text = "Songs";
+            treeNode21.Name = "VideoLibrary";
+            treeNode21.Text = "Library";
+            treeNode22.Name = "VideosNode";
+            treeNode22.Text = "Videos";
+            treeNode23.Name = "PictureLibrary";
+            treeNode23.Text = "Library";
+            treeNode24.Name = "PicturesNode";
+            treeNode24.Text = "Pictures";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode6,
-            treeNode8});
-            this.treeView1.Size = new System.Drawing.Size(240, 580);
+            treeNode20,
+            treeNode22,
+            treeNode24});
+            this.treeView1.Size = new System.Drawing.Size(409, 964);
             this.treeView1.TabIndex = 4;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(504, 617);
+            this.button1.Location = new System.Drawing.Point(864, 1028);
+            this.button1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(129, 38);
             this.button1.TabIndex = 6;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(638, 617);
+            this.button2.Location = new System.Drawing.Point(1094, 1028);
+            this.button2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(129, 38);
             this.button2.TabIndex = 7;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(374, 617);
+            this.button3.Location = new System.Drawing.Point(641, 1028);
+            this.button3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(129, 38);
             this.button3.TabIndex = 8;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 661);
+            this.ClientSize = new System.Drawing.Size(1858, 1102);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.treeView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);

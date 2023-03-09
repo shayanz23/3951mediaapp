@@ -1,4 +1,6 @@
-﻿namespace MediaPlayer
+﻿using System.Windows.Forms;
+
+namespace MediaPlayer
 {
     partial class NewPlaylistDialog
     {

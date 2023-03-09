@@ -1,8 +1,13 @@
-﻿using Microsoft.VisualBasic.Devices;
-using System.Collections;
+﻿using System.Collections;
 using TagLib;
 using File = TagLib.File;
 using NAudio;
+using System.IO;
+using System.Collections.Generic;
+using System;
+using System.Linq;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace MediaPlayer
 {
@@ -185,7 +190,7 @@ namespace MediaPlayer
 
         public static Image getCoverArt(File file)
         {
-            IPicture? pic = file.Tag.Pictures.Length > 0 ? file.Tag.Pictures[0] : null;
+            IPicture pic = file.Tag.Pictures.Length > 0 ? file.Tag.Pictures[0] : null;
             if (pic != null)
             {
                 // Convert the picture data to an Image object

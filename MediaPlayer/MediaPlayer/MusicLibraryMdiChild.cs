@@ -16,6 +16,7 @@ namespace MediaPlayer
         {
             InitializeComponent();
             fillList();
+            listBox1.Width = (int)(this.Width/1.05);
         }
 
         void format(ref StringBuilder stringBuilder)
@@ -31,12 +32,12 @@ namespace MediaPlayer
             if (stringBuilder.Length < 50)
             {
                 int lengthAdded = 50 - stringBuilder.Length;
-                for (int j = 0; j < lengthAdded-1; j++)
+                for (int j = 0; j < lengthAdded - 1; j++)
                 {
                     stringBuilder.Append(' ');
                 }
             }
-            
+
         }
 
         void fillList()
@@ -52,7 +53,8 @@ namespace MediaPlayer
                     if (MediaScanner.Audios[i].artists == null)
                     {
                         artistBuilder.Append("Unknown");
-                    } else
+                    }
+                    else
                     {
                         artistBuilder.Append(MediaScanner.Audios[i].getArtists());
                     }

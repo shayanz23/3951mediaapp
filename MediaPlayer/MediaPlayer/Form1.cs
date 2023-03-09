@@ -1,6 +1,8 @@
-
+﻿
 
 using System.Collections;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace MediaPlayer
 {
@@ -39,27 +41,29 @@ namespace MediaPlayer
                     }
                     songPlaylistNames.Add(newPlaylistDialog.newPlaylistName);
                 }
-            } else if (e.Node.Name == "SongLibrary")
+            }
+            else if (e.Node.Name == "SongLibrary")
             {
                 if (childForm != null)
                 {
                     childForm.Dispose();
                     childForm = new MusicLibraryForm();
                     childForm.MdiParent = this;
-                    childForm.StartPosition= FormStartPosition.Manual;
-                    childForm.Location = new Point(startPosX, startPosY);
-                    childForm.Size = new Size(formWidth, formHeight);
+                    childForm.StartPosition = FormStartPosition.Manual;
+                    childForm.Location = new Point(treeView1.Size.Width, startPosY);
+                    childForm.Size = new Size((int)(this.Size.Width / 1.315), treeView1.Size.Height);
                     childForm.Show();
-                } else
+                }
+                else
                 {
                     childForm = new MusicLibraryForm();
                     childForm.MdiParent = this;
                     childForm.StartPosition = FormStartPosition.Manual;
-                    childForm.Location = new Point(startPosX, startPosY);
-                    childForm.Size = new Size(formWidth, formHeight);
+                    childForm.Location = new Point(treeView1.Size.Width, startPosY);
+                    childForm.Size = new Size((int)(this.Size.Width/1.315), treeView1.Size.Height);
                     childForm.Show();
                 }
-                
+
             }
         }
 

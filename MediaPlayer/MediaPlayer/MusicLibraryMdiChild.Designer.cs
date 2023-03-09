@@ -1,4 +1,6 @@
-﻿namespace MediaPlayer
+﻿using System.Windows.Forms;
+
+namespace MediaPlayer
 {
     partial class MusicLibraryForm
     {
@@ -34,19 +36,21 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(12, 168);
+            this.listBox1.ItemHeight = 25;
+            this.listBox1.Location = new System.Drawing.Point(21, 280);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(812, 379);
+            this.listBox1.Size = new System.Drawing.Size(1418, 629);
             this.listBox1.TabIndex = 0;
             // 
             // MusicLibraryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(836, 562);
+            this.ClientSize = new System.Drawing.Size(1466, 937);
             this.Controls.Add(this.listBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "MusicLibraryForm";
             this.Text = "MusicLibraryForm";
             this.ResumeLayout(false);

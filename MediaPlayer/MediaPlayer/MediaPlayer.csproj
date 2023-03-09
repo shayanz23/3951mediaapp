@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,25 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NAudio">
-      <HintPath>..\..\3951mediaapp\Naudio\NAudio.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio.Asio">
-      <HintPath>..\..\3951mediaapp\Naudio\NAudio.Asio.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio.Core">
-      <HintPath>..\..\3951mediaapp\Naudio\NAudio.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio.Midi">
-      <HintPath>..\..\3951mediaapp\Naudio\NAudio.Midi.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio.Wasapi">
-      <HintPath>..\..\3951mediaapp\Naudio\NAudio.Wasapi.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio.WinForms">
-      <HintPath>..\..\3951mediaapp\Naudio\NAudio.WinForms.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio.WinMM">
-      <HintPath>..\..\3951mediaapp\Naudio\NAudio.WinMM.dll</HintPath>
+      <HintPath>..\..\NAudio-Release\NAudio.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -115,6 +98,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

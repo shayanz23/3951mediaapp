@@ -24,11 +24,8 @@ C:\Users\Shayan\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.pdb
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\MediaPlayer.exe.config
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\MediaPlayer.exe
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\MediaPlayer.pdb
-C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.pdb
-C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.xml
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.AssemblyReference.cache
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.SuggestedBindingRedirects.cache
-C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.exe.config
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.Form1.resources
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.Properties.Resources.resources
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.GenerateResource.cache
@@ -37,3 +34,5 @@ C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.cspro
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.exe
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.pdb
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.MusicLibraryForm.resources
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\NAudio.dll
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\NAudio.xml

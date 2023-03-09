@@ -16,7 +16,7 @@ namespace MediaPlayer
         {
             InitializeComponent();
             fillList();
-            listBox1.Width = (int)(this.Width/1.05);
+            listBox1.Width = (Width);
         }
 
         void format(ref StringBuilder stringBuilder)

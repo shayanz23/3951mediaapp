@@ -16,9 +16,14 @@ namespace MediaPlayer
         {
             InitializeComponent();
             fillList();
-            listBox1.Width = (Width);
+            SongList.Width = Width;
         }
 
+        /// <summary>
+        /// Adds spaces or removes charecters from the end to make string a length 50. 
+        /// (does not take into account that different characters are different lengths).
+        /// </summary>
+        /// <param name="stringBuilder"></param>
         void format(ref StringBuilder stringBuilder)
         {
             if (stringBuilder.Length >= 50)
@@ -40,6 +45,9 @@ namespace MediaPlayer
 
         }
 
+        /// <summary>
+        /// Fills the song list with the list of songs found by the MediaScanner.
+        /// </summary>
         void fillList()
         {
             for (int i = 0; i < MediaScanner.Audios.Count; i++)
@@ -69,7 +77,7 @@ namespace MediaPlayer
 
                     format(ref titleBuilder);
                     format(ref artistBuilder);
-                    listBox1.Items.Add(titleBuilder.ToString() + artistBuilder.ToString() + durationBuilder.ToString());
+                    SongList.Items.Add(titleBuilder.ToString() + artistBuilder.ToString() + durationBuilder.ToString());
                 }
             }
         }

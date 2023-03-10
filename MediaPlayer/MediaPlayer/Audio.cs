@@ -20,16 +20,35 @@ namespace MediaPlayer
         /// </summary>
         public override string fileLocation { get; set; }
 
+        /// <summary>
+        /// Album property.
+        /// </summary>
         public string album { get; set; }
 
+        /// <summary>
+        /// artists array property.
+        /// </summary>
         public string[] artists { get; set; }
 
+        /// <summary>
+        /// Genres array property
+        /// </summary>
         public string[] genres { get; set; }
 
+        /// <summary>
+        /// Duration property.
+        /// </summary>
         public string duration { get; set; }
 
+        /// <summary>
+        /// Cover Art property.
+        /// </summary>
         public Image coverArt { get; set; }
 
+        /// <summary>
+        /// Returns the artists array in a properly formated string.
+        /// </summary>
+        /// <returns>properly formated string of artists</returns>
         public string getArtists()
         {
             StringBuilder sb = new StringBuilder();

@@ -77,12 +77,17 @@ namespace MediaPlayer
                     }
                     Audio audio = new Audio();
                     audio.fileLocation = filePath;
-                    using (var audioFileReader = new NAudio.Wave.AudioFileReader(filePath))
+                    try
                     {
-                        var audioFileLength = audioFileReader.TotalTime.TotalSeconds;
-                        TimeSpan timeSpan = TimeSpan.FromSeconds(audioFileLength);
-                        audio.duration = timeSpan.ToString(@"mm\:ss");
-                    }
+                        using (var audioFileReader = new NAudio.Wave.AudioFileReader(filePath))
+                        {
+                            var audioFileLength = audioFileReader.TotalTime.TotalSeconds;
+                            TimeSpan timeSpan = TimeSpan.FromSeconds(audioFileLength);
+                            audio.duration = timeSpan.ToString(@"mm\:ss");
+                        }
+                    } 
+                    catch { }
+
                     if (file != null)
                     {
                         audio.title = file.Tag.Title;
@@ -135,7 +140,7 @@ namespace MediaPlayer
                         video.description = file.Tag.Description;
                         video.title = file.Tag.Title;
                         video.duration = file.Tag.Length;
-                        video.genres = file.Tag.Genres;
+                        video.categories = file.Tag.Genres;
                     }
                     if (video.title == null)
                     {

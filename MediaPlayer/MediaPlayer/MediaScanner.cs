@@ -11,22 +11,30 @@ using System.Drawing;
 
 namespace MediaPlayer
 {
+
+    /// <summary>
+    /// The static class that scans the media directories (music, videos, pictures) for audio, video, and pictures.
+    /// </summary>
     public static class MediaScanner
     {
+
+        //Lists for each type of content
         private static List<Audio> _audios = new List<Audio>();
         private static List<Video> _videos = new List<Video>();
         private static List<Picture> _pictures = new List<Picture>();
 
+        //accepted file types
         private static string[] audioTypes = { ".mp3", ".wav", ".flac", ".m4a", ".ogg" };
         private static string[] videoTypes = { ".mp4", ".mkv", ".mov" };
         private static string[] pictureTypes = { ".jpg", ".gif", ".png" };
 
+        //library paths
         private static string audioPath = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
         private static string videoPath = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
         private static string picturePath = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
         
 
-
+        //properties for the Lists.
         public static List<Audio> Audios
         {
             get { return _audios; }
@@ -46,9 +54,10 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Scans for 
+        /// Scans for audio files in the Music folder, gets their metadata, like album art, artists, Album, and duration,
+        /// then creates a new Audio object and adds it to the static Audios List.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>success or fail bool</returns>
         public static bool scanAudio()
         {
             try
@@ -96,6 +105,11 @@ namespace MediaPlayer
             }
         }
 
+        /// <summary>
+        /// Scans for video files in the Videos folder, gets their metadata, like description, title, genres, and duration,
+        /// then creates a new Audio object and adds it to the static Audios List.
+        /// </summary>
+        /// <returns>success or fail bool</returns>
         public static bool scanVideo()
         {
             try
@@ -138,6 +152,11 @@ namespace MediaPlayer
             }
         }
 
+        /// <summary>
+        /// Scans for image files in the Pictures folder, gets their metadata, like tag date, artists, Album, and duration,
+        /// then creates a new Audio object and adds it to the static Audios List.
+        /// </summary>
+        /// <returns>success or fail bool</returns>
         public static bool scanPicture()
         {
             try
@@ -179,7 +198,10 @@ namespace MediaPlayer
             }
         }
 
-
+        /// <summary>
+        /// Runs the three scanner methods.
+        /// </summary>
+        /// <returns>returns whether all three were successful.</returns>
         public static bool scanAll()
         {
             bool audioScan = scanAudio();
@@ -188,6 +210,11 @@ namespace MediaPlayer
             return (audioScan && videoScan && pictureScan) ? true : false;
         }
 
+        /// <summary>
+        /// Helper method for the scanAudios that gets an Image object from file's album art metadata.
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns>returns the image object.</returns>
         public static Image getCoverArt(File file)
         {
             IPicture pic = file.Tag.Pictures.Length > 0 ? file.Tag.Pictures[0] : null;

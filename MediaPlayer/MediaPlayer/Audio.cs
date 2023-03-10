@@ -9,8 +9,15 @@ namespace MediaPlayer
 {
     public class Audio : Media
     {
+
+        /// <summary>
+        /// Title property.
+        /// </summary>
         public override string title { get; set; }
 
+        /// <summary>
+        /// File location property.
+        /// </summary>
         public override string fileLocation { get; set; }
 
         public string album { get; set; }

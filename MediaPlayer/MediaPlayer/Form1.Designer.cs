@@ -43,7 +43,7 @@ namespace MediaPlayer
             System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Library");
             System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Pictures", new System.Windows.Forms.TreeNode[] {
             treeNode23});
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.contentTree = new System.Windows.Forms.TreeView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -51,10 +51,10 @@ namespace MediaPlayer
             // 
             // treeView1
             // 
-            this.treeView1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.treeView1.Location = new System.Drawing.Point(2, 2);
-            this.treeView1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.treeView1.Name = "treeView1";
+            this.contentTree.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.contentTree.Location = new System.Drawing.Point(2, 2);
+            this.contentTree.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.contentTree.Name = "treeView1";
             treeNode17.Name = "SongLibrary";
             treeNode17.Text = "Library";
             treeNode18.Name = "NewSongPlaylist";
@@ -71,13 +71,13 @@ namespace MediaPlayer
             treeNode23.Text = "Library";
             treeNode24.Name = "PicturesNode";
             treeNode24.Text = "Pictures";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            this.contentTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode20,
             treeNode22,
             treeNode24});
-            this.treeView1.Size = new System.Drawing.Size(409, 964);
-            this.treeView1.TabIndex = 4;
-            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
+            this.contentTree.Size = new System.Drawing.Size(409, 964);
+            this.contentTree.TabIndex = 4;
+            this.contentTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.contentTreeNodeMouseClick);
             // 
             // button1
             // 
@@ -117,7 +117,7 @@ namespace MediaPlayer
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.treeView1);
+            this.Controls.Add(this.contentTree);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
@@ -128,7 +128,7 @@ namespace MediaPlayer
         }
 
         #endregion
-        private TreeView treeView1;
+        private TreeView contentTree;
         private Button button1;
         private Button button2;
         private Button button3;

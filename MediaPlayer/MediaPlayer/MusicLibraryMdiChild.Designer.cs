@@ -30,27 +30,26 @@ namespace MediaPlayer
         /// </summary>
         private void InitializeComponent()
         {
-            this.SongList = new System.Windows.Forms.ListBox();
+            this.SongList = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
-            // listBox1
+            // SongList
             // 
-            this.SongList.FormattingEnabled = true;
-            this.SongList.ItemHeight = 25;
-            this.SongList.Location = new System.Drawing.Point(21, 280);
-            this.SongList.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.SongList.Name = "listBox1";
-            this.SongList.Size = new System.Drawing.Size(1418, 629);
-            this.SongList.TabIndex = 0;
+            this.SongList.HideSelection = false;
+            this.SongList.Location = new System.Drawing.Point(12, 164);
+            this.SongList.Name = "SongList";
+            this.SongList.Size = new System.Drawing.Size(709, 311);
+            this.SongList.TabIndex = 1;
+            this.SongList.UseCompatibleStateImageBehavior = false;
             // 
             // MusicLibraryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1466, 937);
+            this.ClientSize = new System.Drawing.Size(733, 487);
             this.Controls.Add(this.SongList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "MusicLibraryForm";
             this.Text = "MusicLibraryForm";
             this.ResumeLayout(false);
@@ -58,7 +57,6 @@ namespace MediaPlayer
         }
 
         #endregion
-
-        private ListBox SongList;
+        private ListView SongList;
     }
 }

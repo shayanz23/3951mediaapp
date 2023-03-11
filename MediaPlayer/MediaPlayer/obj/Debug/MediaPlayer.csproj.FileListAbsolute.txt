@@ -51,3 +51,6 @@ C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.cspro
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.CopyComplete
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.exe
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.pdb
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.pdb
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.xml

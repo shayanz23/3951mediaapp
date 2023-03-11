@@ -7,17 +7,52 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MediaPlayer
 {
     public partial class MusicLibraryForm : Form
     {
+        Audio selectedAudio;
+
         public MusicLibraryForm()
         {
             InitializeComponent();
+            SongList.View = View.Details;
+            SongList.Columns.Add("Songs: ");
+            SongList.Columns[0].Width = 600;
+            SongList.ItemSelectionChanged += myListView_ItemSelectionChanged;
             fillList();
             SongList.Width = Width;
         }
+        
+        private void myListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (e.IsSelected)
+            {
+                // Get the selected item
+                ListViewItem selectedItem = e.Item;
+
+                selectedAudio = null;
+                // Perform the desired action for the selected item
+                // For example, display a message box with the item text
+                MessageBox.Show(selectedItem.Name);
+                for (int i = 0; i < MediaScanner.Audios.Count; i++)
+                {
+                    if (MediaScanner.Audios[i].title == selectedItem.Name)
+                    {
+                        selectedAudio= MediaScanner.Audios[i];
+                    }
+                }
+                if (selectedAudio != null)
+                {
+                    Form1 parent = (Form1)this.MdiParent;
+                    parent.SetSelectedAudio(selectedAudio);
+                }
+            }
+        }
+
 
         /// <summary>
         /// Adds spaces or removes charecters from the end to make string a length 50. 
@@ -74,12 +109,18 @@ namespace MediaPlayer
                     {
                         durationBuilder.Append(MediaScanner.Audios[i].duration.ToString());
                     }
-
+                    ListViewItem songItem = new ListViewItem();
+                    songItem.Name = titleBuilder.ToString();
                     format(ref titleBuilder);
                     format(ref artistBuilder);
-                    SongList.Items.Add(titleBuilder.ToString() + artistBuilder.ToString() + durationBuilder.ToString());
+                    songItem.Text = titleBuilder.ToString()
+                        + artistBuilder.ToString() + durationBuilder.ToString();
+                    
+                    SongList.Items.Add(songItem);
+
                 }
             }
         }
+
     }
 }

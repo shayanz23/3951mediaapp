@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -51,7 +52,8 @@ namespace MediaPlayer
             selectedAudio = a;
             MessageBox.Show(selectedAudio.getArtists());
             fillQueue();
-            PlayPause();
+            Thread t = new Thread(new ThreadStart(PlayPause));
+            t.Start();
 
         }
 
@@ -85,6 +87,7 @@ namespace MediaPlayer
 
             // Dispose of the WaveOutEvent to free up resources
             waveOut.Dispose();
+            Queue.Clear();
         }
 
         void fillQueue()

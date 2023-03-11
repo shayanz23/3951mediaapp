@@ -69,6 +69,12 @@ namespace MediaPlayer
                 // Add the reader to the WaveOutEvent
                 waveOut.Init(reader);
 
+                if (Queue[i].coverArt != null)
+                {
+                    albumArtBox.Image = Queue[i].coverArt;
+                    albumArtBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+
                 // Play the audio
                 waveOut.Play();
 

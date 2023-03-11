@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace MediaPlayer
     public partial class MusicLibraryForm : Form
     {
         Audio selectedAudio;
+        List<Audio> Queue = new List<Audio>();
 
         public MusicLibraryForm()
         {
@@ -36,8 +38,6 @@ namespace MediaPlayer
 
                 selectedAudio = null;
                 // Perform the desired action for the selected item
-                // For example, display a message box with the item text
-                MessageBox.Show(selectedItem.Name);
                 for (int i = 0; i < MediaScanner.Audios.Count; i++)
                 {
                     if (MediaScanner.Audios[i].title == selectedItem.Name)
@@ -48,10 +48,30 @@ namespace MediaPlayer
                 if (selectedAudio != null)
                 {
                     Form1 parent = (Form1)this.MdiParent;
-                    parent.SetSelectedAudio(selectedAudio);
+                    fillQueue();
+                    parent.fillQueue(Queue);
+
                 }
             }
         }
+
+
+        void fillQueue()
+        {
+            bool add = false;
+            for (int i = 0; i < MediaScanner.Audios.Count; i++)
+            {
+                if (MediaScanner.Audios[i] == selectedAudio)
+                {
+                    add = true;
+                }
+                if (add)
+                {
+                    Queue.Add(MediaScanner.Audios[i]);
+                }
+            }
+        }
+
 
 
         /// <summary>

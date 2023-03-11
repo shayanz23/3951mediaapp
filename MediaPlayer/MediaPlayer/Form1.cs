@@ -22,17 +22,17 @@ namespace MediaPlayer
         int formHeight = 580;
         int startPosX = 240;
         int startPosY = 0;
-        List<Audio> Queue = new List<Audio> ();
+        List<Audio> Queue = new List<Audio>();
 
         Audio selectedAudio;
-
+        Thread t;
 
         public Form1()
         {
             InitializeComponent();
-
+            this.FormClosing += new FormClosingEventHandler(Form1_FormClosing);
+            t = new Thread(new ThreadStart(PlayPause));
             Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.White;
-
             //sets the size of form1.
             this.Size = new Size(1000, 620);
 
@@ -50,10 +50,7 @@ namespace MediaPlayer
         public void SetSelectedAudio(Audio a)
         {
             selectedAudio = a;
-            MessageBox.Show(selectedAudio.getArtists());
-            fillQueue();
-            Thread t = new Thread(new ThreadStart(PlayPause));
-            t.Start();
+
 
         }
 
@@ -64,7 +61,7 @@ namespace MediaPlayer
             WaveOutEvent waveOut = new WaveOutEvent();
 
             // Loop through the files and play them in order
-            for (int i = 0;  i < Queue.Count; i++)
+            for (int i = 0; i < Queue.Count; i++)
             {
                 // Create a WaveFileReader for the file
                 var reader = new AudioFileReader(Queue[i].fileLocation);
@@ -90,21 +87,23 @@ namespace MediaPlayer
             Queue.Clear();
         }
 
-        void fillQueue()
+        public void fillQueue(List<Audio> input)
         {
-            bool add = false;
-            for (int i = 0; i < MediaScanner.Audios.Count; i++)
+            Queue = input;
+            if (t.ThreadState == ThreadState.Stopped || t.ThreadState == ThreadState.Unstarted)
             {
-                if (MediaScanner.Audios[i] == selectedAudio)
-                {
-                    add = true;
-                }
-                if (add)
-                {
-                    Queue.Add(MediaScanner.Audios[i]);
-                }
+                t.Start();
             }
+            
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Your code here
+            // This will be executed when the form is closing
+            t.Abort();
+        }
+
 
         /// <summary>
         /// Triggered when the user clicks on the Song Library in the contentTree.

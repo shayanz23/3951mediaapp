@@ -157,19 +157,19 @@ namespace MediaPlayer
                 int lengthTaken = stringBuilder.Length - 50;
                 for (int j = lengthTaken; j > 0; j--)
                 {
-                    stringBuilder.Remove(stringBuilder.Length - 1, stringBuilder.Length - 1);
+                    stringBuilder.Remove(stringBuilder.Length - 1, 1); // Fixed
                 }
             }
             if (stringBuilder.Length < 50)
             {
                 int lengthAdded = 50 - stringBuilder.Length;
-                for (int j = 0; j < lengthAdded - 1; j++)
+                for (int j = 0; j < lengthAdded; j++) // Removed -1
                 {
                     stringBuilder.Append(' ');
                 }
             }
-
         }
+
 
         /// <summary>
         /// Fills the song list with the list of songs found by the MediaScanner.

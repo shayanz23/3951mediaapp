@@ -4,16 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using WMPLib;
-using AxWMPLib;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using TagLib.Mpeg;
+
 
 namespace MediaPlayer
 {
+    /// <summary>
+    /// Used code: https://stackoverflow.com/questions/38926777/how-to-play-a-list-of-songs-using-naudio-and-c
+    /// </summary>
     public partial class MainForm : Form
     {
         /// <summary>

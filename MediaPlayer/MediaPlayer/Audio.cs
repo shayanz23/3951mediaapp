@@ -45,6 +45,17 @@ namespace MediaPlayer
         /// </summary>
         public Image coverArt { get; set; }
 
+        public Audio()
+        {
+            title = null;
+            fileLocation = null;
+            album = null;
+            artists = null;
+            genres = null;
+            duration = null;
+            coverArt = null;
+        }
+
         /// <summary>
         /// Returns the artists array in a properly formated string.
         /// </summary>

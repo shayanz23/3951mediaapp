@@ -43,7 +43,6 @@ C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\NAudio.dll
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\NAudio.xml
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.AssemblyReference.cache
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.SuggestedBindingRedirects.cache
-C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.Form1.resources
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.MusicLibraryForm.resources
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.Properties.Resources.resources
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.GenerateResource.cache
@@ -54,3 +53,11 @@ C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.pdb
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.dll
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.pdb
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.xml
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\Interop.WMPLib.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\Interop.WMPDXMLib.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\Interop.WMPLauncher.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\Interop.WMPLib.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.ResolveComReference.cache
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.MainForm.resources

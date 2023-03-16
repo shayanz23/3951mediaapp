@@ -54,6 +54,10 @@ namespace MediaPlayer
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            if (SongList.Items.Count == 0)
+            {
+                return;
+            }
             if (SongList.Items.Count >= 4 && songs[0].coverArt != null
                 && songs[1].coverArt != null && songs[2].coverArt != null
                 && songs[3].coverArt != null)

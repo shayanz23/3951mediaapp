@@ -74,7 +74,7 @@ namespace MediaPlayer
                     UpdateProgressBar(audioFileReader);
                     waveOut.Init(audioFileReader);
                 }
-                UpdateAlbumArt(Queue[song_index].coverArt);
+                UpdateAlbumArt(Queue[song_index].albumArt);
                 UpdateSongName(Queue[song_index].title);
                 UpdateArtistName(Queue[song_index].getArtists());
                 waveOut.Play();

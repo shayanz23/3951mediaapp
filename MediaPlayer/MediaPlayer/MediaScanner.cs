@@ -94,7 +94,7 @@ namespace MediaPlayer
                         audio.genres = file.Tag.Genres;
                         audio.album = file.Tag.Album;
                         audio.artists = file.Tag.Performers;
-                        audio.coverArt = getCoverArt(file);
+                        audio.albumArt = getCoverArt(file);
                     }
                     if (audio.title == null) {
                         audio.title = Path.GetFileName(filePath);

@@ -46,46 +46,30 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// fills in the decorative picture boxes for this library or playlist.
+        /// Algorithm that fills in the decorative picture boxes for this library or playlist.
+        /// It checks if the current audio has an album art and uses it, skips those that don't have one.
         /// </summary>
         public void fillPictures()
         {
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            if (SongList.Items.Count >= 4 && songs[0].coverArt != null
-                && songs[1].coverArt != null && songs[2].coverArt != null
-                && songs[3].coverArt != null)
+            int numOfCompatible = 0;
+            List<PictureBox> pictureBoxes = new List<PictureBox>
             {
-                pictureBox1.Image = songs[0].coverArt;
-                pictureBox2.Image = songs[1].coverArt;
-                pictureBox3.Image = songs[2].coverArt;
-                pictureBox4.Image = songs[3].coverArt;
-            } 
-            else if (SongList.Items.Count == 3 && songs[0].coverArt != null
-                && songs[1].coverArt != null && songs[2].coverArt != null)
+                pictureBox1,
+                pictureBox2,
+                pictureBox3,
+                pictureBox4
+            };
+            for (int i = 0; i < pictureBoxes.Count; i++)
             {
-                pictureBox1.Image = songs[0].coverArt;
-                pictureBox2.Image = songs[1].coverArt;
-                pictureBox3.Image = songs[2].coverArt;
-                pictureBox4.Image = songs[1].coverArt;
+                pictureBoxes[i].SizeMode = PictureBoxSizeMode.StretchImage;
             }
-            else if (SongList.Items.Count == 2 && songs[0].coverArt != null
-                && songs[1].coverArt != null)
+            for (int i = 0; i < songs.Count && numOfCompatible < 4; i++)
             {
-                pictureBox1.Image = songs[0].coverArt;
-                pictureBox2.Image = songs[1].coverArt;
-                pictureBox3.Image = songs[0].coverArt;
-                pictureBox4.Image = songs[1].coverArt;
-            }
-            else if (SongList.Items.Count == 1 && songs[0].coverArt != null)
-            {
-                pictureBox1.Image = songs[0].coverArt;
-                pictureBox2.Image = songs[0].coverArt;
-                pictureBox3.Image = songs[0].coverArt;
-                pictureBox4.Image = songs[0].coverArt;
+                if (songs[i].albumArt != null)
+                {
+                    pictureBoxes[numOfCompatible].Image = songs[i].albumArt;
+                    numOfCompatible++;
+                }
             }
         }
         

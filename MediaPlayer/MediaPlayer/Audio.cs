@@ -43,7 +43,7 @@ namespace MediaPlayer
         /// <summary>
         /// Cover Art property.
         /// </summary>
-        public Image coverArt { get; set; }
+        public Image albumArt { get; set; }
 
         public Audio()
         {
@@ -53,7 +53,7 @@ namespace MediaPlayer
             artists = null;
             genres = null;
             duration = null;
-            coverArt = null;
+            albumArt = null;
         }
 
         /// <summary>

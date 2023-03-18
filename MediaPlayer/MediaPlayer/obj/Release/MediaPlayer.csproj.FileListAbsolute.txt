@@ -1,6 +1,5 @@
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.csproj.AssemblyReference.cache
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.csproj.SuggestedBindingRedirects.cache
-C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.Form1.resources
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.MusicLibraryForm.resources
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.Properties.Resources.resources
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.csproj.GenerateResource.cache
@@ -16,3 +15,11 @@ C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Release\TagLibSharp.xml
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.csproj.CopyComplete
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.exe
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.pdb
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Release\Interop.WMPLib.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Release\AxInterop.WMPLib.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\Interop.WMPDXMLib.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\Interop.WMPLauncher.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\Interop.WMPLib.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\AxInterop.WMPLib.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.csproj.ResolveComReference.cache
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.MainForm.resources

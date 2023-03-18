@@ -63,6 +63,10 @@ namespace MediaPlayer
         public string getArtists()
         {
             StringBuilder sb = new StringBuilder();
+            if (artists == null)
+            {
+                return "Unknown";
+            }
             if (artists.Length == 1)
             {
                 sb.Append(artists[0]);

@@ -16,38 +16,34 @@ namespace MediaPlayer
 {
     public partial class MusicLibraryForm : Form
     {
-        /// <summary>
-        /// Currently selected audio.
-        /// </summary>
+
+        // Declare variables and collections
+        private Dictionary<string, Audio> titleToAudioLookup;
         Audio selectedAudio;
-        /// <summary>
-        /// All the songs in this library or playlist.
-        /// </summary>
         List<Audio> songs = new List<Audio>();
-        /// <summary>
-        /// songs about to be passed to parent to play.
-        /// </summary>
         List<Audio> Queue = new List<Audio>();
 
         /// <summary>
-        /// Constructor.
+        /// Constructor for the MusicLibraryForm class
         /// </summary>
         public MusicLibraryForm()
         {
             InitializeComponent();
+            getSongs();
+            titleToAudioLookup = songs.ToDictionary(audio => audio.title);
             SongList.View = View.Details;
             SongList.Columns.Add("Songs: ");
             SongList.Columns[0].Width = 600;
             SongList.ItemSelectionChanged += myListView_ItemSelectionChanged;
+            
             fillList();
             SongList.Width = Width;
-            songs = getSongs();
             fillPictures();
+            
         }
 
         /// <summary>
-        /// Algorithm that fills in the decorative picture boxes for this library or playlist.
-        /// It checks if the current audio has an album art and uses it, skips those that don't have one.
+        /// Fills the form with pictures
         /// </summary>
         public void fillPictures()
         {
@@ -72,117 +68,48 @@ namespace MediaPlayer
                 }
             }
         }
-        
-        /// <summary>
-        /// Event listener for when a song is chosen, the fillQueue is called,
-        /// putting all songs after in the Queue,
-        /// then the parent fillQueue is called to then play the songs in the Queue;
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void myListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-        {
-            if (e.IsSelected)
-            {
-                // Get the selected item
-                ListViewItem selectedItem = e.Item;
-
-                selectedAudio = null;
-                // Perform the desired action for the selected item
-                for (int i = 0; i < MediaScanner.Audios.Count; i++)
-                {
-                    if (MediaScanner.Audios[i].title == selectedItem.Name)
-                    {
-                        selectedAudio= MediaScanner.Audios[i];
-                        i = MediaScanner.Audios.Count;
-                    }
-                }
-                if (selectedAudio != null)
-                {
-                    MainForm parent = (MainForm)this.MdiParent;
-                    fillQueue();
-                    parent.FillQueue(Queue);
-
-                }
-            }
-        }
 
         /// <summary>
-        /// Fills the queue with the songs after and including the selected one.
+        /// Fills the queue with the songs
         /// </summary>
         void fillQueue()
         {
             Queue.Clear();
             bool add = false;
-            for (int i = 0; i < MediaScanner.Audios.Count; i++)
+            for (int i = 0; i < songs.Count; i++)
             {
-                if (MediaScanner.Audios[i] == selectedAudio)
+                if (songs[i] == selectedAudio)
                 {
                     add = true;
                 }
                 if (add)
                 {
-                    Queue.Add(MediaScanner.Audios[i]);
+                    Queue.Add(songs[i]);
                 }
             }
         }
 
-
-
         /// <summary>
-        /// Adds spaces or removes charecters from the end to make string a length 50. 
-        /// (does not take into account that different characters are different lengths).
-        /// </summary>
-        /// <param name="stringBuilder"></param>
-        void format(ref StringBuilder stringBuilder)
-        {
-            if (stringBuilder.Length >= 50)
-            {
-                int lengthTaken = stringBuilder.Length - 50;
-                for (int j = lengthTaken; j > 0; j--)
-                {
-                    stringBuilder.Remove(stringBuilder.Length - 1, 1); // Fixed
-                }
-            }
-            if (stringBuilder.Length < 50)
-            {
-                int lengthAdded = 50 - stringBuilder.Length;
-                for (int j = 0; j < lengthAdded; j++) // Removed -1
-                {
-                    stringBuilder.Append(' ');
-                }
-            }
-        }
-
-
-        /// <summary>
-        /// Fills the song list with the list of songs found by the MediaScanner.
+        /// Fills the ListView with the songs
         /// </summary>
         void fillList()
         {
-            for (int i = 0; i < MediaScanner.Audios.Count; i++)
+            for (int i = 0; i < songs.Count; i++)
             {
                 StringBuilder titleBuilder = new StringBuilder();
                 StringBuilder artistBuilder = new StringBuilder();
                 StringBuilder durationBuilder = new StringBuilder();
-                if (MediaScanner.Audios[i] != null)
+                if (songs[i] != null)
                 {
-                    titleBuilder.Append(MediaScanner.Audios[i].title);
-                    if (MediaScanner.Audios[i].artists == null)
-                    {
-                        artistBuilder.Append("Unknown");
-                    }
-                    else
-                    {
-                        artistBuilder.Append(MediaScanner.Audios[i].getArtists());
-                    }
-                    if (MediaScanner.Audios[i].duration == null)
+                    titleBuilder.Append(songs[i].title);
+                    artistBuilder.Append(songs[i].getArtists());
+                    if (songs[i].duration == null)
                     {
                         durationBuilder.Append("Unknown");
                     }
                     else
                     {
-                        durationBuilder.Append(MediaScanner.Audios[i].duration.ToString());
+                        durationBuilder.Append(songs[i].duration.ToString());
                     }
                     ListViewItem songItem = new ListViewItem();
                     songItem.Name = titleBuilder.ToString();
@@ -190,61 +117,55 @@ namespace MediaPlayer
                     format(ref artistBuilder);
                     songItem.Text = titleBuilder.ToString()
                         + artistBuilder.ToString() + durationBuilder.ToString();
-                    
+
                     SongList.Items.Add(songItem);
-
                 }
             }
         }
 
         /// <summary>
-        /// Gets songs in the library and returns them. Mainly for playlists though,
-        /// not too useful here.
+        /// Formats the StringBuilder instance to a specific length
         /// </summary>
-        /// <returns></returns>
-        private List<Audio> getSongs()
+        void format(ref StringBuilder stringBuilder)
         {
-            List<Audio> songsInLibrary = new List<Audio>();
-            for (int i = 0; i < SongList.Items.Count && i < MediaScanner.Audios.Count; i++)
+            if (stringBuilder.Length >= 50)
             {
-                if (SongList.Items[i].Name == MediaScanner.Audios[i].title)
+                int lengthTaken = stringBuilder.Length - 50;
+                for (int j = lengthTaken; j > 0; j--)
                 {
-                    songsInLibrary.Add(MediaScanner.Audios[i]);
+                    stringBuilder.Remove(stringBuilder.Length - 1, 1);
                 }
             }
-            return songsInLibrary;
+            if (stringBuilder.Length < 50)
+            {
+                int lengthAdded = 50 - stringBuilder.Length;
+                for (int j = 0; j < lengthAdded; j++)
+                {
+                    stringBuilder.Append(' ');
+                }
+            }
         }
 
         /// <summary>
-        /// Event listener for shuffle button click, 
-        /// shuffles songs in library and gives it to MainForm to play them.
+        /// Retrieves the songs from MediaScanner
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void shuffleButton_Click(object sender, EventArgs e)
+        private void getSongs()
         {
-            List<Audio> songCandidates = getSongs();
-            WeightedShuffle(songCandidates, (a, b) 
-                => JaroWinklerSimilarity(a.getArtists(), b.getArtists()));
-            Queue = songCandidates;
-            MainForm parent = (MainForm)this.MdiParent;
-            parent.FillQueue(Queue);
-
+            for (int i = 0; i < MediaScanner.Audios.Count; i++)
+            {
+                songs.Add(MediaScanner.Audios[i]);
+            }
         }
 
         /// <summary>
-        /// Shuffles audios based on weight.
+        /// Performs a weighted shuffle on the list
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="list"></param>
-        /// <param name="weightFunc"></param>
         public static void WeightedShuffle<T>(IList<T> list, Func<T, T, double> weightFunc)
         {
             Random random = new Random();
 
             for (int i = list.Count - 1; i > 0; i--)
             {
-                // Calculate the cumulative weight array
                 List<double> cumulativeWeights = new List<double>();
                 double totalWeight = 0;
 
@@ -255,19 +176,15 @@ namespace MediaPlayer
                     cumulativeWeights.Add(totalWeight);
                 }
 
-                // Pick a random number in the range [0, totalWeight)
                 double randomWeight = random.NextDouble() * totalWeight;
 
-                // Find the index of the first element in cumulativeWeights larger than randomWeight
                 int selectedIndex = cumulativeWeights.FindIndex(w => w > randomWeight);
 
-                // If the selectedIndex is not found, set it to the last index
                 if (selectedIndex < 0)
                 {
                     selectedIndex = i;
                 }
 
-                // Swap the selected element with the last element
                 T temp = list[i];
                 list[i] = list[selectedIndex];
                 list[selectedIndex] = temp;
@@ -275,11 +192,8 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Gives weights for two strings based on how similar they are for the WeightedShuffle.
+        /// Calculates the Jaro-Winkler similarity between two strings
         /// </summary>
-        /// <param name="s1"></param>
-        /// <param name="s2"></param>
-        /// <returns></returns>
         public static double JaroWinklerSimilarity(string s1, string s2)
         {
             int m = 0;
@@ -320,7 +234,6 @@ namespace MediaPlayer
 
             int k = 0;
             int numTranspositions = 0;
-
             for (int i = 0; i < n; i++)
             {
                 if (!s1Matches[i]) continue;
@@ -346,17 +259,47 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Sets queue to the whole library from the begining and starts playing.
+        /// Handles the event when the selected item in the ListView changes
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        private void myListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (e.IsSelected)
+            {
+                ListViewItem selectedItem = e.Item;
+                selectedAudio = null;
+                titleToAudioLookup.TryGetValue(selectedItem.Name, out selectedAudio);
+
+                if (selectedAudio != null)
+                {
+                    MainForm parent = (MainForm)this.MdiParent;
+                    fillQueue();
+                    parent.FillQueue(Queue);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Handles the click event for the shuffle button
+        /// </summary>
+        private void shuffleButton_Click(object sender, EventArgs e)
+        {
+            List<Audio> songCandidates = new List<Audio>(songs);
+            WeightedShuffle(songCandidates, (a, b)
+                => JaroWinklerSimilarity(a.getArtists(), b.getArtists()));
+            Queue = new List<Audio>(songCandidates);
+            MainForm parent = (MainForm)MdiParent;
+            parent.FillQueue(Queue);
+
+        }
+
+        /// <summary>
+        /// Handles the click event for the play button
+        /// </summary>
         private void playButton_Click(object sender, EventArgs e)
         {
-            Queue = getSongs();
+            Queue = new List<Audio>(songs);
             MainForm parent = (MainForm)this.MdiParent;
             parent.FillQueue(Queue);
         }
-
-
     }
 }

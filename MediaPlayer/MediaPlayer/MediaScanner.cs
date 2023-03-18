@@ -71,7 +71,8 @@ namespace MediaPlayer
                     try
                     {
                         file = File.Create(filePath);
-                    } catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         file = null;
                     }
@@ -86,7 +87,9 @@ namespace MediaPlayer
                             audio.duration = timeSpan.ToString(@"mm\:ss");
                         }
                     } 
-                    catch { }
+                    catch {
+                        audio.duration = "Unknown";
+                    }
 
                     if (file != null)
                     {

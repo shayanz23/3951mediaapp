@@ -20,7 +20,7 @@ namespace MediaPlayer
         Form childForm;
         int startPosY = 0;
         int song_index; // index of the song
-        AudioFileReader audioFileReader;
+        MediaFoundationReader audioFileReader;
         WaveOutEvent waveOut;
         private bool forceStopped;
         List<Audio> Queue = new List<Audio>();
@@ -66,7 +66,7 @@ namespace MediaPlayer
                 }
                 if (waveOut.PlaybackState != PlaybackState.Paused)
                 {
-                    audioFileReader = new AudioFileReader(Queue[song_index].fileLocation);
+                    audioFileReader = new MediaFoundationReader(Queue[song_index].fileLocation);
 
                     songProgressBar.Minimum = 0;
                     songProgressBar.Maximum = (int)audioFileReader.TotalTime.TotalMilliseconds;
@@ -145,7 +145,7 @@ namespace MediaPlayer
         /// Updates the progress bar, currently not working.
         /// </summary>
         /// <param name="reader"></param>
-        private void UpdateProgressBar(AudioFileReader reader)
+        private void UpdateProgressBar(MediaFoundationReader reader)
         {
             try
             {

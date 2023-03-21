@@ -29,12 +29,17 @@ namespace MediaPlayer
         public MainForm()
         {
             InitializeComponent();
+            string playingImageLocation = Environment.CurrentDirectory + "/pause.png";
+            string pausedImageLocation = Environment.CurrentDirectory + "/play.png";
+            playPauseButton1.PlayingBackgroundImage = Image.FromFile(playingImageLocation);
+            playPauseButton1.PausedBackgroundImage = Image.FromFile(pausedImageLocation);
             Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.White;
             //sets the size of form1.
-            this.Size = new Size(1000, 620);
-            albumArtBox.Size = new Size(65, 65);
+            this.Size = new Size(1000, 630);
+            albumArtBox.Size = new Size(70, 70);
             song_index = 0;
             isPaused = false;
+            playPauseButton1.playing = isPaused;
             waveOut = null;
             // Expands the three main nodes of the treeview that shows the contents.
             for (int i = 0; i < contentTree.Nodes.Count; i++)
@@ -174,6 +179,7 @@ namespace MediaPlayer
             Queue = input;
             song_index = 0;
             isPaused = false;
+            playPauseButton1.playing = true;
             player_play();
         }
 
@@ -244,11 +250,13 @@ namespace MediaPlayer
             if (isPaused && waveOut != null && waveOut.PlaybackState != PlaybackState.Stopped)
             {
                 player_play();
+                playPauseButton1.playing = isPaused;
                 isPaused = !isPaused;
             } 
             else if (!isPaused && waveOut != null && waveOut.PlaybackState != PlaybackState.Stopped)
             {
                 waveOut.Pause();
+                playPauseButton1.playing = isPaused;
                 isPaused = !isPaused;
             }
         }
@@ -262,7 +270,7 @@ namespace MediaPlayer
         /// <param name="e"></param>
         private void nextButton_Click(object sender, EventArgs e)
         {
-            if (waveOut != null)
+            if (waveOut != null && song_index != Queue.Count - 1)
             {
                 waveOut.Stop();
                 song_index++; // play the next file
@@ -287,6 +295,22 @@ namespace MediaPlayer
                 forceStopped = true;
                 isPaused = false;
                 player_play();
+            }
+        }
+
+        private void playPauseButton1_Click(object sender, EventArgs e)
+        {
+            if (isPaused && waveOut != null && waveOut.PlaybackState != PlaybackState.Stopped)
+            {
+                player_play();
+                playPauseButton1.playing = true;
+                isPaused = !isPaused;
+            }
+            else if (!isPaused && waveOut != null && waveOut.PlaybackState != PlaybackState.Stopped)
+            {
+                waveOut.Pause();
+                playPauseButton1.playing = false;
+                isPaused = !isPaused;
             }
         }
     }

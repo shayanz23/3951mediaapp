@@ -30,27 +30,27 @@ namespace MediaPlayer
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Library");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("New Playlist...");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Playlists", new System.Windows.Forms.TreeNode[] {
-            treeNode10});
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Songs", new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode11});
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Library");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Videos", new System.Windows.Forms.TreeNode[] {
-            treeNode13});
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Library");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Pictures", new System.Windows.Forms.TreeNode[] {
-            treeNode15});
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Library");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("New Playlist...");
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Playlists", new System.Windows.Forms.TreeNode[] {
+            treeNode34});
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Songs", new System.Windows.Forms.TreeNode[] {
+            treeNode33,
+            treeNode35});
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Library");
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Videos", new System.Windows.Forms.TreeNode[] {
+            treeNode37});
+            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("Library");
+            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("Pictures", new System.Windows.Forms.TreeNode[] {
+            treeNode39});
             this.contentTree = new System.Windows.Forms.TreeView();
-            this.pausePlayButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
             this.previousButton = new System.Windows.Forms.Button();
             this.albumArtBox = new System.Windows.Forms.PictureBox();
             this.songProgressBar = new System.Windows.Forms.ProgressBar();
             this.songLabel = new System.Windows.Forms.Label();
             this.artistLabel = new System.Windows.Forms.Label();
+            this.playPauseButton1 = new ControlLibraryShayan.PlayPauseButton();
             ((System.ComponentModel.ISupportInitialize)(this.albumArtBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,44 +60,33 @@ namespace MediaPlayer
             this.contentTree.Location = new System.Drawing.Point(1, 1);
             this.contentTree.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.contentTree.Name = "contentTree";
-            treeNode9.Name = "SongLibrary";
-            treeNode9.Text = "Library";
-            treeNode10.Name = "NewSongPlaylist";
-            treeNode10.Text = "New Playlist...";
-            treeNode11.Name = "SongPlaylists";
-            treeNode11.Text = "Playlists";
-            treeNode12.Name = "SongsNode";
-            treeNode12.Text = "Songs";
-            treeNode13.Name = "VideoLibrary";
-            treeNode13.Text = "Library";
-            treeNode14.Name = "VideosNode";
-            treeNode14.Text = "Videos";
-            treeNode15.Name = "PictureLibrary";
-            treeNode15.Text = "Library";
-            treeNode16.Name = "PicturesNode";
-            treeNode16.Text = "Pictures";
+            treeNode33.Name = "SongLibrary";
+            treeNode33.Text = "Library";
+            treeNode34.Name = "NewSongPlaylist";
+            treeNode34.Text = "New Playlist...";
+            treeNode35.Name = "SongPlaylists";
+            treeNode35.Text = "Playlists";
+            treeNode36.Name = "SongsNode";
+            treeNode36.Text = "Songs";
+            treeNode37.Name = "VideoLibrary";
+            treeNode37.Text = "Library";
+            treeNode38.Name = "VideosNode";
+            treeNode38.Text = "Videos";
+            treeNode39.Name = "PictureLibrary";
+            treeNode39.Text = "Library";
+            treeNode40.Name = "PicturesNode";
+            treeNode40.Text = "Pictures";
             this.contentTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode12,
-            treeNode14,
-            treeNode16});
+            treeNode36,
+            treeNode38,
+            treeNode40});
             this.contentTree.Size = new System.Drawing.Size(206, 503);
             this.contentTree.TabIndex = 4;
             this.contentTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.contentTreeNodeMouseClick);
             // 
-            // pausePlayButton
-            // 
-            this.pausePlayButton.Location = new System.Drawing.Point(459, 548);
-            this.pausePlayButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pausePlayButton.Name = "pausePlayButton";
-            this.pausePlayButton.Size = new System.Drawing.Size(66, 20);
-            this.pausePlayButton.TabIndex = 6;
-            this.pausePlayButton.Text = "PlayPause";
-            this.pausePlayButton.UseVisualStyleBackColor = true;
-            this.pausePlayButton.Click += new System.EventHandler(this.playPauseButton_Click);
-            // 
             // nextButton
             // 
-            this.nextButton.Location = new System.Drawing.Point(560, 548);
+            this.nextButton.Location = new System.Drawing.Point(553, 554);
             this.nextButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(64, 20);
@@ -108,7 +97,7 @@ namespace MediaPlayer
             // 
             // previousButton
             // 
-            this.previousButton.Location = new System.Drawing.Point(360, 548);
+            this.previousButton.Location = new System.Drawing.Point(363, 554);
             this.previousButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.previousButton.Name = "previousButton";
             this.previousButton.Size = new System.Drawing.Size(64, 20);
@@ -128,41 +117,61 @@ namespace MediaPlayer
             // 
             // songProgressBar
             // 
-            this.songProgressBar.Location = new System.Drawing.Point(302, 519);
+            this.songProgressBar.Location = new System.Drawing.Point(298, 520);
             this.songProgressBar.Name = "songProgressBar";
-            this.songProgressBar.Size = new System.Drawing.Size(383, 23);
+            this.songProgressBar.Size = new System.Drawing.Size(383, 22);
             this.songProgressBar.TabIndex = 12;
             // 
             // songLabel
             // 
             this.songLabel.AutoSize = true;
             this.songLabel.BackColor = System.Drawing.Color.White;
-            this.songLabel.Location = new System.Drawing.Point(103, 520);
+            this.songLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.songLabel.Location = new System.Drawing.Point(103, 528);
             this.songLabel.Name = "songLabel";
-            this.songLabel.Size = new System.Drawing.Size(0, 13);
+            this.songLabel.Size = new System.Drawing.Size(0, 16);
             this.songLabel.TabIndex = 14;
             // 
             // artistLabel
             // 
             this.artistLabel.AutoSize = true;
             this.artistLabel.BackColor = System.Drawing.Color.White;
-            this.artistLabel.Location = new System.Drawing.Point(103, 546);
+            this.artistLabel.Location = new System.Drawing.Point(103, 554);
             this.artistLabel.Name = "artistLabel";
             this.artistLabel.Size = new System.Drawing.Size(0, 13);
             this.artistLabel.TabIndex = 15;
+            // 
+            // playPauseButton1
+            // 
+            this.playPauseButton1.FlatAppearance.BorderSize = 0;
+            this.playPauseButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.playPauseButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.playPauseButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.playPauseButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playPauseButton1.ForeColor = System.Drawing.Color.Black;
+            this.playPauseButton1.Location = new System.Drawing.Point(472, 548);
+            this.playPauseButton1.Name = "playPauseButton1";
+            this.playPauseButton1.PausedBackgroundImage = null;
+            this.playPauseButton1.playing = false;
+            this.playPauseButton1.PlayingBackgroundImage = null;
+            this.playPauseButton1.Size = new System.Drawing.Size(38, 36);
+            this.playPauseButton1.TabIndex = 17;
+            this.playPauseButton1.Text = "No Image";
+            this.playPauseButton1.UseVisualStyleBackColor = true;
+            this.playPauseButton1.Click += new System.EventHandler(this.playPauseButton1_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(929, 573);
+            this.ClientSize = new System.Drawing.Size(984, 591);
+            this.Controls.Add(this.playPauseButton1);
             this.Controls.Add(this.artistLabel);
             this.Controls.Add(this.songLabel);
             this.Controls.Add(this.songProgressBar);
             this.Controls.Add(this.albumArtBox);
             this.Controls.Add(this.previousButton);
             this.Controls.Add(this.nextButton);
-            this.Controls.Add(this.pausePlayButton);
             this.Controls.Add(this.contentTree);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
@@ -177,12 +186,12 @@ namespace MediaPlayer
 
         #endregion
         private TreeView contentTree;
-        private Button pausePlayButton;
         private Button nextButton;
         private Button previousButton;
         private PictureBox albumArtBox;
         private ProgressBar songProgressBar;
         private Label songLabel;
         private Label artistLabel;
+        private ControlLibraryShayan.PlayPauseButton playPauseButton1;
     }
 }

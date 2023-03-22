@@ -31,13 +31,8 @@ namespace MediaPlayer
             InitializeComponent();
             getSongs();
             titleToAudioLookup = songs.ToDictionary(audio => audio.title);
-            SongList.View = View.Details;
-            SongList.Columns.Add("Songs: ");
-            SongList.Columns[0].Width = 600;
-            SongList.ItemSelectionChanged += myListView_ItemSelectionChanged;
             
             fillList();
-            SongList.Width = Width;
             fillPictures();
             
         }
@@ -96,54 +91,24 @@ namespace MediaPlayer
         {
             for (int i = 0; i < songs.Count; i++)
             {
-                StringBuilder titleBuilder = new StringBuilder();
-                StringBuilder artistBuilder = new StringBuilder();
-                StringBuilder durationBuilder = new StringBuilder();
-                if (songs[i] != null)
-                {
-                    titleBuilder.Append(songs[i].title);
-                    artistBuilder.Append(songs[i].getArtists());
-                    if (songs[i].duration == null)
-                    {
-                        durationBuilder.Append("Unknown");
-                    }
-                    else
-                    {
-                        durationBuilder.Append(songs[i].duration.ToString());
-                    }
-                    ListViewItem songItem = new ListViewItem();
-                    songItem.Name = titleBuilder.ToString();
-                    format(ref titleBuilder);
-                    format(ref artistBuilder);
-                    songItem.Text = titleBuilder.ToString()
-                        + artistBuilder.ToString() + durationBuilder.ToString();
 
-                    SongList.Items.Add(songItem);
-                }
-            }
-        }
+                string a = songs[i].title;
+                string b = "";
 
-        /// <summary>
-        /// Formats the StringBuilder instance to a specific length
-        /// </summary>
-        void format(ref StringBuilder stringBuilder)
-        {
-            if (stringBuilder.Length >= 50)
-            {
-                int lengthTaken = stringBuilder.Length - 50;
-                for (int j = lengthTaken; j > 0; j--)
-                {
-                    stringBuilder.Remove(stringBuilder.Length - 1, 1);
+                if (songs[i].artists.Length > 0) {
+                    for (int j = 0; j < songs[i].artists.Length; j++) {
+                        b += songs[i].artists[j];
+                    }
+                } else {
+                    b = "Unknown";
                 }
+
+                string c = songs[i].duration;
+
+                this.SongData.Rows.Add(i, a, b, c);
+                
             }
-            if (stringBuilder.Length < 50)
-            {
-                int lengthAdded = 50 - stringBuilder.Length;
-                for (int j = 0; j < lengthAdded; j++)
-                {
-                    stringBuilder.Append(' ');
-                }
-            }
+            SongData.ClearSelection();
         }
 
         /// <summary>
@@ -259,26 +224,6 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Handles the event when the selected item in the ListView changes
-        /// </summary>
-        private void myListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-        {
-            if (e.IsSelected)
-            {
-                ListViewItem selectedItem = e.Item;
-                selectedAudio = null;
-                titleToAudioLookup.TryGetValue(selectedItem.Name, out selectedAudio);
-
-                if (selectedAudio != null)
-                {
-                    MainForm parent = (MainForm)this.MdiParent;
-                    fillQueue();
-                    parent.FillQueue(Queue);
-                }
-            }
-        }
-
-        /// <summary>
         /// Handles the click event for the shuffle button
         /// </summary>
         private void shuffleButton_Click(object sender, EventArgs e)
@@ -300,6 +245,30 @@ namespace MediaPlayer
             Queue = new List<Audio>(songs);
             MainForm parent = (MainForm)this.MdiParent;
             parent.FillQueue(Queue);
+        }
+
+        private void SongData_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
+            SongData.ClearSelection();
+        }
+
+        /// <summary>
+        /// Handles the event when the DataGridView selection is changed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SongData_CellClick(object sender, DataGridViewCellEventArgs e) {
+
+            string selectedItem = SongData[1, e.RowIndex].Value.ToString();
+            selectedAudio = null;
+
+            titleToAudioLookup.TryGetValue(selectedItem, out selectedAudio);
+
+            if (selectedAudio != null) {
+                MainForm parent = (MainForm)this.MdiParent;
+                fillQueue();
+                parent.FillQueue(Queue);
+            }
+
         }
     }
 }

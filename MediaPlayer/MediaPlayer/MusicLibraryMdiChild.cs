@@ -31,10 +31,10 @@ namespace MediaPlayer
             InitializeComponent();
             getSongs();
             titleToAudioLookup = songs.ToDictionary(audio => audio.title);
-            
             fillList();
             fillPictures();
-            
+            songData.Size = new Size(750, 3300);
+
         }
 
         /// <summary>
@@ -50,17 +50,20 @@ namespace MediaPlayer
                 pictureBox3,
                 pictureBox4
             };
+            int index = 0;
+            int imagesListCount = songs.Count;
+
             for (int i = 0; i < pictureBoxes.Count; i++)
             {
                 pictureBoxes[i].SizeMode = PictureBoxSizeMode.StretchImage;
-            }
-            for (int i = 0; i < songs.Count && numOfCompatible < 4; i++)
-            {
-                if (songs[i].albumArt != null)
+                pictureBoxes[i].Image = null;
+                while (songs[index % imagesListCount].albumArt == null)
                 {
-                    pictureBoxes[numOfCompatible].Image = songs[i].albumArt;
-                    numOfCompatible++;
+                    index++;
                 }
+
+                pictureBoxes[i].Image = songs[index % imagesListCount].albumArt;
+                index++;
             }
         }
 
@@ -105,10 +108,10 @@ namespace MediaPlayer
 
                 string c = songs[i].duration;
 
-                this.SongData.Rows.Add(i, a, b, c);
+                this.songData.Rows.Add(i, a, b, c);
                 
             }
-            SongData.ClearSelection();
+            songData.ClearSelection();
         }
 
         /// <summary>
@@ -116,9 +119,9 @@ namespace MediaPlayer
         /// </summary>
         private void getSongs()
         {
-            for (int i = 0; i < MediaScanner.Audios.Count; i++)
+            for (int i = 0; i < SongScanner.Audios.Count; i++)
             {
-                songs.Add(MediaScanner.Audios[i]);
+                songs.Add(SongScanner.Audios[i]);
             }
         }
 
@@ -248,7 +251,7 @@ namespace MediaPlayer
         }
 
         private void SongData_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
-            SongData.ClearSelection();
+            songData.ClearSelection();
         }
 
         /// <summary>
@@ -258,7 +261,11 @@ namespace MediaPlayer
         /// <param name="e"></param>
         private void SongData_CellClick(object sender, DataGridViewCellEventArgs e) {
 
-            string selectedItem = SongData[1, e.RowIndex].Value.ToString();
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
+            string selectedItem = songData[1, e.RowIndex].Value.ToString();
             selectedAudio = null;
 
             titleToAudioLookup.TryGetValue(selectedItem, out selectedAudio);

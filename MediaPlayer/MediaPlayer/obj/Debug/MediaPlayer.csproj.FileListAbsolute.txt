@@ -26,7 +26,6 @@ C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\MediaPlayer.exe
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\MediaPlayer.pdb
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.AssemblyReference.cache
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.SuggestedBindingRedirects.cache
-C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.Form1.resources
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.Properties.Resources.resources
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.GenerateResource.cache
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.CoreCompileInputs.cache
@@ -89,3 +88,15 @@ C:\Users\Asus\Source\Repos\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaP
 C:\Users\Asus\Source\Repos\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.CopyComplete
 C:\Users\Asus\Source\Repos\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.exe
 C:\Users\Asus\Source\Repos\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.pdb
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.dll
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\ControlLibraryShayan.pdb
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.pdb
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.xml
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\Interop.WMPLib.dll
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\Interop.WMPDXMLib.dll
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\Interop.WMPLauncher.dll
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\Interop.WMPLib.dll
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.ResolveComReference.cache
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.MainForm.resources

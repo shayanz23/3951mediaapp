@@ -39,7 +39,7 @@ namespace MediaPlayer
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.SongData = new System.Windows.Forms.DataGridView();
+            this.songData = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Artist = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,15 +48,15 @@ namespace MediaPlayer
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SongData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.songData)).BeginInit();
             this.SuspendLayout();
             // 
             // playButton
             // 
-            this.playButton.Location = new System.Drawing.Point(309, 208);
-            this.playButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.playButton.Location = new System.Drawing.Point(412, 260);
+            this.playButton.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(112, 35);
+            this.playButton.Size = new System.Drawing.Size(149, 44);
             this.playButton.TabIndex = 2;
             this.playButton.Text = "Play";
             this.playButton.UseVisualStyleBackColor = true;
@@ -64,10 +64,10 @@ namespace MediaPlayer
             // 
             // shuffleButton
             // 
-            this.shuffleButton.Location = new System.Drawing.Point(472, 208);
-            this.shuffleButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.shuffleButton.Location = new System.Drawing.Point(629, 260);
+            this.shuffleButton.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.shuffleButton.Name = "shuffleButton";
-            this.shuffleButton.Size = new System.Drawing.Size(112, 35);
+            this.shuffleButton.Size = new System.Drawing.Size(149, 44);
             this.shuffleButton.TabIndex = 3;
             this.shuffleButton.Text = "Shuffle";
             this.shuffleButton.UseVisualStyleBackColor = true;
@@ -75,50 +75,50 @@ namespace MediaPlayer
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(60, 35);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(80, 44);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(93, 95);
+            this.pictureBox1.Size = new System.Drawing.Size(124, 119);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(152, 35);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox2.Location = new System.Drawing.Point(203, 44);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(93, 95);
+            this.pictureBox2.Size = new System.Drawing.Size(124, 119);
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(152, 131);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox3.Location = new System.Drawing.Point(203, 164);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(93, 95);
+            this.pictureBox3.Size = new System.Drawing.Size(124, 119);
             this.pictureBox3.TabIndex = 6;
             this.pictureBox3.TabStop = false;
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(60, 131);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox4.Location = new System.Drawing.Point(80, 164);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(93, 95);
+            this.pictureBox4.Size = new System.Drawing.Size(124, 119);
             this.pictureBox4.TabIndex = 7;
             this.pictureBox4.TabStop = false;
             // 
             // SongData
             // 
-            this.SongData.AllowUserToAddRows = false;
-            this.SongData.AllowUserToDeleteRows = false;
-            this.SongData.AllowUserToOrderColumns = true;
-            this.SongData.AllowUserToResizeColumns = false;
-            this.SongData.AllowUserToResizeRows = false;
-            this.SongData.BackgroundColor = System.Drawing.Color.White;
-            this.SongData.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SongData.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.songData.AllowUserToAddRows = false;
+            this.songData.AllowUserToDeleteRows = false;
+            this.songData.AllowUserToOrderColumns = true;
+            this.songData.AllowUserToResizeColumns = false;
+            this.songData.AllowUserToResizeRows = false;
+            this.songData.BackgroundColor = System.Drawing.Color.White;
+            this.songData.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.songData.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gray;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
@@ -126,9 +126,9 @@ namespace MediaPlayer
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gray;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SongData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.SongData.ColumnHeadersHeight = 25;
-            this.SongData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.songData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.songData.ColumnHeadersHeight = 25;
+            this.songData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.Title,
             this.Artist,
@@ -140,14 +140,15 @@ namespace MediaPlayer
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkOrange;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.SongData.DefaultCellStyle = dataGridViewCellStyle2;
-            this.SongData.EnableHeadersVisualStyles = false;
-            this.SongData.GridColor = System.Drawing.Color.Silver;
-            this.SongData.Location = new System.Drawing.Point(18, 251);
-            this.SongData.MultiSelect = false;
-            this.SongData.Name = "SongData";
-            this.SongData.ReadOnly = true;
-            this.SongData.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.songData.DefaultCellStyle = dataGridViewCellStyle2;
+            this.songData.EnableHeadersVisualStyles = false;
+            this.songData.GridColor = System.Drawing.Color.Silver;
+            this.songData.Location = new System.Drawing.Point(24, 314);
+            this.songData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.songData.MultiSelect = false;
+            this.songData.Name = "SongData";
+            this.songData.ReadOnly = true;
+            this.songData.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
@@ -155,14 +156,14 @@ namespace MediaPlayer
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SongData.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.SongData.RowHeadersVisible = false;
-            this.SongData.RowHeadersWidth = 62;
-            this.SongData.RowTemplate.Height = 33;
-            this.SongData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SongData.Size = new System.Drawing.Size(1062, 468);
-            this.SongData.TabIndex = 0;
-            this.SongData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SongData_CellClick);
+            this.songData.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.songData.RowHeadersVisible = false;
+            this.songData.RowHeadersWidth = 62;
+            this.songData.RowTemplate.Height = 33;
+            this.songData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.songData.Size = new System.Drawing.Size(1416, 585);
+            this.songData.TabIndex = 0;
+            this.songData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SongData_CellClick);
             // 
             // ID
             // 
@@ -171,7 +172,7 @@ namespace MediaPlayer
             this.ID.MinimumWidth = 8;
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
-            this.ID.Width = 62;
+            this.ID.Width = 80;
             // 
             // Title
             // 
@@ -198,14 +199,14 @@ namespace MediaPlayer
             this.Duration.MinimumWidth = 8;
             this.Duration.Name = "Duration";
             this.Duration.ReadOnly = true;
-            this.Duration.Width = 113;
+            this.Duration.Width = 147;
             // 
             // MusicLibraryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1100, 749);
-            this.Controls.Add(this.SongData);
+            this.ClientSize = new System.Drawing.Size(1467, 936);
+            this.Controls.Add(this.songData);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -213,14 +214,14 @@ namespace MediaPlayer
             this.Controls.Add(this.shuffleButton);
             this.Controls.Add(this.playButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Name = "MusicLibraryForm";
             this.Text = "MusicLibraryForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SongData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.songData)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -232,7 +233,7 @@ namespace MediaPlayer
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
-        private DataGridView SongData;
+        private DataGridView songData;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Title;
         private DataGridViewTextBoxColumn Artist;

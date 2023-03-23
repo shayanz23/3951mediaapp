@@ -36,15 +36,16 @@ namespace MediaPlayer
             Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.White;
             //sets the size of form1.
             this.Size = new Size(1000, 630);
+            contentTree.Size = new Size(200, 500);
             albumArtBox.Size = new Size(70, 70);
             song_index = 0;
             isPaused = false;
-            playPauseButton1.playing = isPaused;
+            playPauseButton1.playing = false;
             waveOut = null;
             // Expands the three main nodes of the treeview that shows the contents.
             for (int i = 0; i < contentTree.Nodes.Count; i++)
             {
-                if (contentTree.Nodes[i].Name == "SongsNode" || contentTree.Nodes[i].Name == "VideosNode" || contentTree.Nodes[i].Name == "PicturesNode")
+                if (contentTree.Nodes[i].Name == "SongsNode")
                 {
                     contentTree.Nodes[i].Expand();
                 }
@@ -194,23 +195,14 @@ namespace MediaPlayer
             if (childForm != null)
             {
                 childForm.Dispose();
+            }
                 childForm = new MusicLibraryForm();
                 childForm.MdiParent = this;
                 childForm.StartPosition = FormStartPosition.Manual;
                 childForm.Location = new Point(contentTree.Size.Width, startPosY);
-                childForm.Size = new Size((int)(this.Size.Width / 1.295), contentTree.Size.Height);
+                childForm.Size = new Size((int)(this.Size.Width / 1.285), contentTree.Size.Height);
                 childForm.Show();
-            }
-            // Create a MusicLibraryForm
-            else
-            {
-                childForm = new MusicLibraryForm();
-                childForm.MdiParent = this;
-                childForm.StartPosition = FormStartPosition.Manual;
-                childForm.Location = new Point(contentTree.Size.Width, startPosY);
-                childForm.Size = new Size((int)(this.Size.Width / 1.295), contentTree.Size.Height);
-                childForm.Show();
-            }
+            
         }
 
 
@@ -313,5 +305,6 @@ namespace MediaPlayer
                 isPaused = !isPaused;
             }
         }
+
     }
 }

@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace MediaPlayer
 {
-    public class Audio : Media
+    public class Audio
     {
 
         /// <summary>
         /// Title property.
         /// </summary>
-        public override string title { get; set; }
+        public string title { get; set; }
 
         /// <summary>
         /// File location property.
         /// </summary>
-        public override string fileLocation { get; set; }
+        public string fileLocation { get; set; }
 
         /// <summary>
         /// Album property.

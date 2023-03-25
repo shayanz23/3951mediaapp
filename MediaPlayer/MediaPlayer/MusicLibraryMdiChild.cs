@@ -33,12 +33,13 @@ namespace MediaPlayer
             titleToAudioLookup = songs.ToDictionary(audio => audio.title);
             fillList();
             fillPictures();
-            songData.Size = new Size(750, 3300);
+            songData.Size = new Size(760, 325);
 
         }
 
         /// <summary>
         /// Fills the form with pictures
+        /// By Shayan Zahedanaraki
         /// </summary>
         public void fillPictures()
         {
@@ -69,6 +70,7 @@ namespace MediaPlayer
 
         /// <summary>
         /// Fills the queue with the songs
+        /// By Shayan Zahedanaraki
         /// </summary>
         void fillQueue()
         {
@@ -89,6 +91,7 @@ namespace MediaPlayer
 
         /// <summary>
         /// Fills the ListView with the songs
+        /// By James
         /// </summary>
         void fillList()
         {
@@ -98,10 +101,8 @@ namespace MediaPlayer
                 string a = songs[i].title;
                 string b = "";
 
-                if (songs[i].artists.Length > 0) {
-                    for (int j = 0; j < songs[i].artists.Length; j++) {
-                        b += songs[i].artists[j];
-                    }
+                if (songs[i].getArtists().Length > 0) {
+                        b += songs[i].getArtists();
                 } else {
                     b = "Unknown";
                 }
@@ -116,6 +117,7 @@ namespace MediaPlayer
 
         /// <summary>
         /// Retrieves the songs from MediaScanner
+        /// By Shayan Zahedanaraki
         /// </summary>
         private void getSongs()
         {
@@ -127,6 +129,7 @@ namespace MediaPlayer
 
         /// <summary>
         /// Performs a weighted shuffle on the list
+        /// By Shayan Zahedanaraki
         /// </summary>
         public static void WeightedShuffle<T>(IList<T> list, Func<T, T, double> weightFunc)
         {
@@ -161,6 +164,7 @@ namespace MediaPlayer
 
         /// <summary>
         /// Calculates the Jaro-Winkler similarity between two strings
+        /// By Shayan Zahedanaraki
         /// </summary>
         public static double JaroWinklerSimilarity(string s1, string s2)
         {
@@ -228,6 +232,7 @@ namespace MediaPlayer
 
         /// <summary>
         /// Handles the click event for the shuffle button
+        /// By Shayan Zahedanaraki
         /// </summary>
         private void shuffleButton_Click(object sender, EventArgs e)
         {
@@ -242,6 +247,7 @@ namespace MediaPlayer
 
         /// <summary>
         /// Handles the click event for the play button
+        /// By Shayan Zahedanaraki
         /// </summary>
         private void playButton_Click(object sender, EventArgs e)
         {
@@ -256,6 +262,7 @@ namespace MediaPlayer
 
         /// <summary>
         /// Handles the event when the DataGridView selection is changed.
+        /// By Shayan Zahedanaraki
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

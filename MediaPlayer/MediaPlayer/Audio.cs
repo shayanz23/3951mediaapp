@@ -58,6 +58,7 @@ namespace MediaPlayer
 
         /// <summary>
         /// Returns the artists array in a properly formated string.
+        /// By Shayan Zahedanaraki
         /// </summary>
         /// <returns>properly formated string of artists</returns>
         public string getArtists()

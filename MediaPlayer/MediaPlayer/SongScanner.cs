@@ -38,6 +38,7 @@ namespace MediaPlayer
         /// <summary>
         /// Scans for audio files in the Music folder, gets their metadata, like album art, artists, Album, and duration,
         /// then creates a new Audio object and adds it to the static Audios List.
+        /// By Shayan Zahedanaraki
         /// </summary>
         /// <returns>success or fail bool</returns>
         public static bool scan()
@@ -86,6 +87,7 @@ namespace MediaPlayer
                     }
                     _audios.Add(audio);
                 }
+                checkDuplicates();
                 return true;
             }
             catch (Exception ex)
@@ -96,7 +98,28 @@ namespace MediaPlayer
         }
 
         /// <summary>
+        /// Checks if there are songs with the same titles, and changes the duplicate titles.
+        /// By Shayan Zahedanaraki
+        /// </summary>
+        private static void checkDuplicates()
+        {
+            int duplicateCounter = 1;
+            for (int i = 0; i < Audios.Count; i++)
+            {
+                for (int j = i + 1; j < Audios.Count; j++)
+                {
+                    if (Audios[i].title == Audios[j].title)
+                    {
+                        duplicateCounter++;
+                        Audios[j].title = Audios[j].title + " " + duplicateCounter;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Helper method for the scanAudios that gets an Image object from file's album art metadata.
+        /// By Shayan Zahedanaraki
         /// </summary>
         /// <param name="file"></param>
         /// <returns>returns the image object.</returns>

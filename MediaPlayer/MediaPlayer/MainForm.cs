@@ -118,7 +118,7 @@ namespace MediaPlayer
         {
             if (audioFileReader != null && waveOut != null)
             {
-                double ratio = e.X / songProgressBar.Width;
+                double ratio = (double)e.X / (double)songProgressBar.Width;
                 int newPosition = (int)(ratio * audioFileReader.TotalTime.TotalMilliseconds);
                 audioFileReader.Position = (long)(newPosition / audioFileReader.TotalTime.TotalMilliseconds * audioFileReader.Length);
 

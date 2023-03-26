@@ -39,6 +39,8 @@ namespace MediaPlayer
             songLabel.Width = 160;
             songLabel.Height = 20;
             scrollPosition = 0;
+            volumeTrackbar.Value = 100;
+            volumeTrackbar.Scroll += VolumeTrackbar_Scroll;
 
             // Create a new timer
             scrollPosition = 0;
@@ -77,6 +79,23 @@ namespace MediaPlayer
                 }
             }
             SongLibraryClick();
+
+        }
+
+        /// <summary>
+        /// Event listener for the scroll even of the VolumeTrackbar, 
+        /// sets the volume and displays it on a label.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void VolumeTrackbar_Scroll(object sender, EventArgs e)
+        {
+            if (waveOut != null)
+            {
+                float volume = volumeTrackbar.Value / 100f;
+                waveOut.Volume = volume;
+                volumeLabel.Text = volumeTrackbar.Value + "%";
+            }
         }
 
         /// <summary>

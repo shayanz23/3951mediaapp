@@ -30,9 +30,9 @@ namespace MediaPlayer
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("New Playlist...");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Library", new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("New Playlist...");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Library", new System.Windows.Forms.TreeNode[] {
+            treeNode3});
             this.contentTree = new System.Windows.Forms.TreeView();
             this.albumArtBox = new System.Windows.Forms.PictureBox();
             this.songProgressBar = new System.Windows.Forms.ProgressBar();
@@ -43,7 +43,11 @@ namespace MediaPlayer
             this.playPauseButton1 = new ControlLibraryShayan.PlayPauseButton();
             this.timePlayedLabel = new System.Windows.Forms.Label();
             this.timeRemainingLabel = new System.Windows.Forms.Label();
+            this.volumeTrackbar = new System.Windows.Forms.TrackBar();
+            this.volumeLabel = new System.Windows.Forms.Label();
+            this.volumeSliderLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.albumArtBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.volumeTrackbar)).BeginInit();
             this.SuspendLayout();
             // 
             // contentTree
@@ -52,12 +56,12 @@ namespace MediaPlayer
             this.contentTree.Location = new System.Drawing.Point(1, 1);
             this.contentTree.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.contentTree.Name = "contentTree";
-            treeNode1.Name = "NewSongPlaylist";
-            treeNode1.Text = "New Playlist...";
-            treeNode2.Name = "SongLibrary";
-            treeNode2.Text = "Library";
+            treeNode3.Name = "NewSongPlaylist";
+            treeNode3.Text = "New Playlist...";
+            treeNode4.Name = "SongLibrary";
+            treeNode4.Text = "Library";
             this.contentTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode4});
             this.contentTree.Size = new System.Drawing.Size(206, 503);
             this.contentTree.TabIndex = 4;
             this.contentTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.contentTreeNodeMouseClick);
@@ -163,11 +167,44 @@ namespace MediaPlayer
             this.timeRemainingLabel.TabIndex = 24;
             this.timeRemainingLabel.Text = "00:00";
             // 
+            // volumeTrackbar
+            // 
+            this.volumeTrackbar.BackColor = System.Drawing.Color.White;
+            this.volumeTrackbar.Location = new System.Drawing.Point(828, 534);
+            this.volumeTrackbar.Maximum = 100;
+            this.volumeTrackbar.Name = "volumeTrackbar";
+            this.volumeTrackbar.Size = new System.Drawing.Size(104, 45);
+            this.volumeTrackbar.TabIndex = 26;
+            this.volumeTrackbar.TickFrequency = 10;
+            // 
+            // volumeLabel
+            // 
+            this.volumeLabel.AutoSize = true;
+            this.volumeLabel.BackColor = System.Drawing.Color.White;
+            this.volumeLabel.Location = new System.Drawing.Point(938, 547);
+            this.volumeLabel.Name = "volumeLabel";
+            this.volumeLabel.Size = new System.Drawing.Size(33, 13);
+            this.volumeLabel.TabIndex = 28;
+            this.volumeLabel.Text = "100%";
+            // 
+            // volumeSliderLabel
+            // 
+            this.volumeSliderLabel.AutoSize = true;
+            this.volumeSliderLabel.BackColor = System.Drawing.Color.White;
+            this.volumeSliderLabel.Location = new System.Drawing.Point(825, 518);
+            this.volumeSliderLabel.Name = "volumeSliderLabel";
+            this.volumeSliderLabel.Size = new System.Drawing.Size(41, 13);
+            this.volumeSliderLabel.TabIndex = 29;
+            this.volumeSliderLabel.Text = "volume";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 591);
+            this.Controls.Add(this.volumeSliderLabel);
+            this.Controls.Add(this.volumeLabel);
+            this.Controls.Add(this.volumeTrackbar);
             this.Controls.Add(this.timeRemainingLabel);
             this.Controls.Add(this.timePlayedLabel);
             this.Controls.Add(this.rewindButton);
@@ -185,6 +222,7 @@ namespace MediaPlayer
             this.Name = "MainForm";
             this.Text = "Music Player";
             ((System.ComponentModel.ISupportInitialize)(this.albumArtBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.volumeTrackbar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,5 +239,8 @@ namespace MediaPlayer
         private ControlLibraryShayan.PictureButton rewindButton;
         private Label timePlayedLabel;
         private Label timeRemainingLabel;
+        private TrackBar volumeTrackbar;
+        private Label volumeLabel;
+        private Label volumeSliderLabel;
     }
 }

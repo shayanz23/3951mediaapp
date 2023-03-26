@@ -23,3 +23,5 @@ C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\Interop.WMPLib.
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\AxInterop.WMPLib.dll
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.csproj.ResolveComReference.cache
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.MainForm.resources
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Release\ControlLibraryShayan.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Release\ControlLibraryShayan.pdb

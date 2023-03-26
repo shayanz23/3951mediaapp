@@ -43,6 +43,12 @@ namespace MediaPlayer
         /// </summary>
         public void fillPictures()
         {
+
+            bool hasNonNullAlbumArt = songs.Any(song => song.albumArt != null);
+            if (!hasNonNullAlbumArt)
+            {
+                return;
+            }
             int numOfCompatible = 0;
             List<PictureBox> pictureBoxes = new List<PictureBox>
             {

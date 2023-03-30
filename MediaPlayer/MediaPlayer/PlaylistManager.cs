@@ -48,7 +48,8 @@ namespace MediaPlayer
             if (playlist == null) throw new ArgumentNullException();
             if (playlist.Name == null || playlist.Name.Trim() == "")
             {
-                throw new Exception("playlist Name cannot be empty");
+                MessageBox.Show("cannot have no name", "no name", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             foreach (Playlist playlist1 in playlists)
             {

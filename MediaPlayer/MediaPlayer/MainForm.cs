@@ -429,7 +429,7 @@ namespace MediaPlayer
             {
                 childForm.Dispose();
             }
-                childForm = new MusicLibraryForm();
+                childForm = new LibraryMdiChild();
                 childForm.MdiParent = this;
                 childForm.StartPosition = FormStartPosition.Manual;
                 childForm.Location = new Point(contentTree.Size.Width, startPosY);

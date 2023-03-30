@@ -32,7 +32,6 @@ C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.cspro
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.CopyComplete
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.exe
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.pdb
-C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.MusicLibraryForm.resources
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\NAudio.dll
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\NAudio.xml
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.AssemblyReference.cache
@@ -89,7 +88,6 @@ C:\Users\Asus\Source\Repos\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaP
 C:\Users\Asus\Source\Repos\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.exe
 C:\Users\Asus\Source\Repos\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.pdb
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.dll
-C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\ControlLibraryShayan.pdb
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.pdb
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.xml
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\Interop.WMPLib.dll
@@ -100,3 +98,6 @@ C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\Interop.WMPLib.dl
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\AxInterop.WMPLib.dll
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.ResolveComReference.cache
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.MainForm.resources
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\ControlLibraryShayan.dll
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.PlaylistMdiChild.resources
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.LibraryMdiChild.resources

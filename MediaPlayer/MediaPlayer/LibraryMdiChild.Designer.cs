@@ -2,7 +2,7 @@
 
 namespace MediaPlayer
 {
-    partial class MusicLibraryForm
+    partial class LibraryMdiChild
     {
         /// <summary>
         /// Required designer variable.

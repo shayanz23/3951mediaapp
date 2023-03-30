@@ -14,7 +14,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MediaPlayer
 {
-    public partial class MusicLibraryForm : Form
+    public partial class LibraryMdiChild : Form
     {
 
         // Declare variables and collections
@@ -26,7 +26,7 @@ namespace MediaPlayer
         /// <summary>
         /// Constructor for the MusicLibraryForm class
         /// </summary>
-        public MusicLibraryForm()
+        public LibraryMdiChild()
         {
             InitializeComponent();
             getSongs();

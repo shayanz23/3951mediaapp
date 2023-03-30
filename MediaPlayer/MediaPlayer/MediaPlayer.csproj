@@ -34,8 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ControlLibraryShayan">
-      <HintPath>..\..\..\semester4\ControlLibraryShayan\ControlLibraryShayan\bin\Debug\ControlLibraryShayan.dll</HintPath>
+    <Reference Include="ControlLibraryShayan, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Control-Library\ControlLibraryShayan.dll</HintPath>
     </Reference>
     <Reference Include="NAudio">
       <HintPath>..\..\NAudio-Release\NAudio.dll</HintPath>
@@ -58,6 +59,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Audio.cs" />
+    <Compile Include="PlaylistMdiChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlaylistMdiChild.Designer.cs">
+      <DependentUpon>PlaylistMdiChild.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,11 +74,11 @@
     <Compile Include="Playlist.cs" />
     <Compile Include="PlaylistManager.cs" />
     <Compile Include="SongScanner.cs" />
-    <Compile Include="MusicLibraryMdiChild.cs">
+    <Compile Include="LibraryMdiChild.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MusicLibraryMdiChild.Designer.cs">
-      <DependentUpon>MusicLibraryMdiChild.cs</DependentUpon>
+    <Compile Include="LibraryMdiChild.Designer.cs">
+      <DependentUpon>LibraryMdiChild.cs</DependentUpon>
     </Compile>
     <Compile Include="NewPlaylistDialog.cs">
       <SubType>Form</SubType>
@@ -79,19 +86,16 @@
     <Compile Include="NewPlaylistDialog.Designer.cs">
       <DependentUpon>NewPlaylistDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlaylistMDIChild.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PlaylistMDIChild.Designer.cs">
-      <DependentUpon>PlaylistMDIChild.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="PlaylistMdiChild.resx">
+      <DependentUpon>PlaylistMdiChild.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MusicLibraryMdiChild.resx">
-      <DependentUpon>MusicLibraryMdiChild.cs</DependentUpon>
+    <EmbeddedResource Include="LibraryMdiChild.resx">
+      <DependentUpon>LibraryMdiChild.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

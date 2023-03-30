@@ -12,9 +12,6 @@ namespace MediaPlayer
     public class Playlist
     {
         [DataMember]
-        public int Id { get; set; }
-
-        [DataMember]
         public string Name { get; set; }
 
         [DataMember]

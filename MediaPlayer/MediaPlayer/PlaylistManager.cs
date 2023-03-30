@@ -37,7 +37,6 @@ namespace MediaPlayer
             } catch
             {
                 Save();
-                Read();
             }
         }
 

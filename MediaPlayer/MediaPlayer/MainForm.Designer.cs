@@ -64,7 +64,6 @@ namespace MediaPlayer
             treeNode2});
             this.contentTree.Size = new System.Drawing.Size(206, 503);
             this.contentTree.TabIndex = 4;
-            this.contentTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.contentTreeNodeMouseClick);
             // 
             // albumArtBox
             // 

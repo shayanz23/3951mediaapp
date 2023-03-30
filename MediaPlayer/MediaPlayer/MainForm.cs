@@ -92,6 +92,10 @@ namespace MediaPlayer
             } 
             else if (e.Button == MouseButtons.Left)
             {
+                if (node == null)
+                {
+                    return;
+                }
                 if (node.Name == "NewSongPlaylist")
                 {
                     using (NewPlaylistDialog newPlaylistDialog = new NewPlaylistDialog())
@@ -592,17 +596,6 @@ namespace MediaPlayer
             }
         }
 
-
-        /// <summary>
-        /// Items in contentTree click handler.
-        /// By Shayan Zahedanaraki
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void contentTreeNodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-
-        }
 
         /// <summary>
         /// Skips to the next song and updates attributes to keep the GUI up to date.

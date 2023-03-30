@@ -47,13 +47,16 @@ namespace MediaPlayer
             if (playlist == null) throw new ArgumentNullException();
             if (playlist.Name == null || playlist.Name.Trim() == "")
             {
-                MessageBox.Show("cannot have no name", "no name", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("playlist cannot have no or empty name", "no name", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             foreach (Playlist playlist1 in playlists)
             {
                 if (playlist1.Name == playlist.Name)
                 {
+                    MessageBox.Show("playlist cannot have the same name", "no name",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }

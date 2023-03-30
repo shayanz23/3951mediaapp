@@ -11,6 +11,12 @@ namespace MediaPlayer
     [DataContract]
     public class Playlist
     {
+
+        public Playlist(string name)
+        {
+            Name = name;
+        }
+
         [DataMember]
         public string Name { get; set; }
 

@@ -39,6 +39,7 @@ namespace MediaPlayer
             VolumeInit();
             ScrollInit();
             ProgressBarInit();
+
             PlaylistManager.Read();
             Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.White;
             this.FormClosing += OnFormClosing;

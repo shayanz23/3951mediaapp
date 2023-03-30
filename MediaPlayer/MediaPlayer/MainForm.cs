@@ -581,7 +581,7 @@ namespace MediaPlayer
             // Check if the playlist already exists in the tree
             for (int j = 0; j < songLibraryNode.Nodes.Count; j++)
             {
-                if (playlist.Name == songLibraryNode.Nodes[j].Text)
+                if (playlist.Name == songLibraryNode.Nodes[j].Text || playlist.Name.Trim() == "")
                 {
                     exists = true;
                     break;

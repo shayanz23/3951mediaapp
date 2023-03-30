@@ -40,6 +40,18 @@ namespace MediaPlayer
         }
 
 
+        public static void RemovePlaylist(string name)
+        {
+            foreach (Playlist playlist in playlists)
+            {
+                if (name == playlist.Name)
+                {
+                    playlists.Remove(playlist);
+                    return;
+                }
+            }
+        }
+
 
         public static void AddPlaylist(Playlist playlist)
         {

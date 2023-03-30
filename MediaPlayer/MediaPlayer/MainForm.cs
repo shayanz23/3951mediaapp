@@ -32,6 +32,8 @@ namespace MediaPlayer
         private int scrollPosition;
         private string originalText;
         private Timer progressBarTimer;
+        private ContextMenuStrip contextMenu;
+        private TreeNode currentRightClickedNode;
 
         public MainForm()
         {
@@ -41,6 +43,7 @@ namespace MediaPlayer
             VolumeInit();
             ScrollInit();
             ProgressBarInit();
+            InitializeContextMenu();
 
             PlaylistManager.Read();
             Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.White;
@@ -61,6 +64,66 @@ namespace MediaPlayer
             LibraryOpen();
             loadTree();
         }
+
+        private void InitializeContextMenu()
+        {
+            contextMenu = new ContextMenuStrip();
+
+            ToolStripMenuItem deletePlaylistItem = new ToolStripMenuItem("Delete playlist");
+            deletePlaylistItem.Click += DeletePlaylistItem_Click;
+            contextMenu.Items.Add(deletePlaylistItem);
+
+            contentTree.MouseUp += ContentTree_MouseUp;
+        }
+
+
+        private void ContentTree_MouseUp(object sender, MouseEventArgs e)
+        {
+            TreeNode node = contentTree.GetNodeAt(e.X, e.Y);
+            if (e.Button == MouseButtons.Right)
+            {
+                currentRightClickedNode = node;
+                if (node != null && node.Text != "Queue" && node.Text.Trim() != "" 
+                    && node.Text != "Library" && node.Text != "New Playlist...")
+                {
+                    contentTree.SelectedNode = node;
+                    contextMenu.Show(contentTree, e.Location);
+                }
+            } 
+            else if (e.Button == MouseButtons.Left)
+            {
+                if (node.Name == "NewSongPlaylist")
+                {
+                    using (NewPlaylistDialog newPlaylistDialog = new NewPlaylistDialog())
+                    {
+                        if (newPlaylistDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            Playlist playlist = new Playlist(newPlaylistDialog.newPlaylistName);
+                            PlaylistManager.AddPlaylist(playlist);
+                            AddPlaylistToTree(playlist);
+                        }
+                    }
+                }
+                else if (node.Name == "SongLibrary")
+                {
+                    LibraryOpen();
+                }
+                for (int i = 0; i < PlaylistManager.Playlists.Count; i++)
+                {
+                    if (node.Text == PlaylistManager.Playlists[i].Name)
+                    {
+                        PlaylistOpen(PlaylistManager.Playlists[i]);
+                    }
+                }
+            }
+        }
+
+        private void DeletePlaylistItem_Click(object sender, EventArgs e)
+        {
+            PlaylistManager.RemovePlaylist(currentRightClickedNode.Text);
+            contentTree.Nodes.Remove(currentRightClickedNode);
+        }
+
 
         /// <summary>
         /// 
@@ -509,7 +572,6 @@ namespace MediaPlayer
             }
 
             // If the "SongLibrary" node is not found, you may need to handle it here.
-
             bool exists = false;
 
             // Check if the playlist already exists in the tree
@@ -539,29 +601,7 @@ namespace MediaPlayer
         /// <param name="e"></param>
         private void contentTreeNodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            if (e.Node.Name == "NewSongPlaylist")
-            {
-                using (NewPlaylistDialog newPlaylistDialog = new NewPlaylistDialog())
-                {
-                    if (newPlaylistDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        Playlist playlist = new Playlist(newPlaylistDialog.newPlaylistName);
-                        PlaylistManager.AddPlaylist(playlist);
-                        AddPlaylistToTree(playlist);
-                    }
-                }
-            }
-            else if (e.Node.Name == "SongLibrary")
-            {
-                LibraryOpen();
-            }
-            for (int i = 0; i < PlaylistManager.Playlists.Count; i++)
-            {
-                if (e.Node.Text == PlaylistManager.Playlists[i].Name)
-                {
-                    PlaylistOpen(PlaylistManager.Playlists[i]);
-                }
-            }
+
         }
 
         /// <summary>

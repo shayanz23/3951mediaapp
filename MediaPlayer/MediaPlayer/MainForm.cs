@@ -61,7 +61,7 @@ namespace MediaPlayer
         /// <summary>
         /// 
         /// </summary>
-        private void FormClosing()
+        private void OnFormClosing(object sender, FormClosingEventArgs e)
         {
             PlaylistManager.Save();
         }

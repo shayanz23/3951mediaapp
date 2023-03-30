@@ -453,8 +453,10 @@ namespace MediaPlayer
                 {
                     if (newPlaylistDialog.ShowDialog() == DialogResult.OK)
                     {
-                        TreeNode playlist = new TreeNode(newPlaylistDialog.newPlaylistName);
-                        e.Node.Parent.Nodes.Add(playlist);
+                        TreeNode playlistNode = new TreeNode(newPlaylistDialog.newPlaylistName);
+                        Playlist playlist = new Playlist(newPlaylistDialog.newPlaylistName);
+                        PlaylistManager.AddPlaylist(playlist);
+                        e.Node.Parent.Nodes.Add(playlistNode);
                     }
                     songPlaylistNames.Add(newPlaylistDialog.newPlaylistName);
                 }

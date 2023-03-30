@@ -62,7 +62,7 @@ namespace MediaPlayer
 
             ExpandNodes();
             LibraryOpen();
-            loadTree();
+            loadPlaylists();
         }
 
         private void InitializeContextMenu()
@@ -130,7 +130,7 @@ namespace MediaPlayer
 
 
         /// <summary>
-        /// 
+        /// saves playlists to json file on closing. 
         /// </summary>
         private void OnFormClosing(object sender, FormClosingEventArgs e)
         {
@@ -138,7 +138,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// 
+        /// sets progressbar properties.
         /// </summary>
         private void ProgressBarInit()
         {
@@ -149,7 +149,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// 
+        /// sets volume properties.
         /// </summary>
         private void VolumeInit()
         {
@@ -157,6 +157,9 @@ namespace MediaPlayer
             volumeTrackbar.Scroll += VolumeTrackbar_Scroll;
         }
 
+        /// <summary>
+        /// sets scroll properties.
+        /// </summary>
         private void ScrollInit()
         {
             // Create a new timer
@@ -168,7 +171,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// 
+        /// sets song label properties.
         /// </summary>
         private void songLabelStart()
         {
@@ -178,7 +181,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// 
+        /// expands the nodes in content tree.
         /// </summary>
         private void ExpandNodes()
         {
@@ -530,8 +533,10 @@ namespace MediaPlayer
             childForm.Show();
         }
 
-
-        private void loadTree()
+        /// <summary>
+        /// Loads the playlists already created into the content tree.
+        /// </summary>
+        private void loadPlaylists()
         {
             for (int i = 0; i < PlaylistManager.Playlists.Count; i++)
             {
@@ -558,7 +563,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// 
+        /// Adds newly createed playlist to the tree.
         /// </summary>
         /// <param name="playlist"></param>
         private void AddPlaylistToTree(Playlist playlist)

@@ -23,6 +23,9 @@ namespace MediaPlayer
             }
         }
 
+        /// <summary>
+        /// Reads the json file and sets the playlists list.
+        /// </summary>
         public static void Read()
         {
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Playlist>));
@@ -39,7 +42,10 @@ namespace MediaPlayer
             }
         }
 
-
+        /// <summary>
+        /// Removes a playlist based on the name.
+        /// </summary>
+        /// <param name="name"></param>
         public static void RemovePlaylist(string name)
         {
             foreach (Playlist playlist in playlists)
@@ -52,7 +58,11 @@ namespace MediaPlayer
             }
         }
 
-
+        /// <summary>
+        /// Adds a playlists to playlists.
+        /// </summary>
+        /// <param name="playlist"> playlist to be added.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public static void AddPlaylist(Playlist playlist)
         {
             if (playlist == null) throw new ArgumentNullException();

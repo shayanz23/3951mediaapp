@@ -35,29 +35,13 @@ namespace MediaPlayer
         {
             InitializeComponent();
             setButtonImages();
-            songLabel.AutoSize = false;
-            songLabel.Width = 160;
-            songLabel.Height = 20;
-            scrollPosition = 0;
-            volumeTrackbar.Value = 100;
-            volumeTrackbar.Scroll += VolumeTrackbar_Scroll;
-
-            // Create a new timer
-            scrollPosition = 0;
-
-            // Create a new timer
-            scrollTimer = new Timer();
-            scrollTimer.Interval = 150; // Set the timer interval (in milliseconds)
-            scrollTimer.Enabled = IsTextTooLong(songLabel.Text, songLabel);
-            scrollTimer.Tick += ScrollTimer_Tick;
-
-            progressBarTimer = new Timer();
-            progressBarTimer.Interval = 100; // Update the progress bar every 100ms
-            progressBarTimer.Tick += ProgressBarTimer_Tick;
-            songProgressBar.MouseDown += SongProgressBar_MouseDown;
-
+            songLabelStart();
+            VolumeInit();
+            ScrollInit();
+            ProgressBarInit();
+            PlaylistManager.Read();
             Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.White;
-
+            this.FormClosing += OnFormClosing;
             //sets the size of form1.
             Size = new Size(1000, 630);
             contentTree.Size = new Size(200, 500);
@@ -70,6 +54,63 @@ namespace MediaPlayer
             timePlayedLabel.BackColor = Color.White;
             timeRemainingLabel.BackColor = Color.White;
 
+            ExpandNodes();
+            SongLibraryOpen();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void FormClosing()
+        {
+            PlaylistManager.Save();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void ProgressBarInit()
+        {
+            progressBarTimer = new Timer();
+            progressBarTimer.Interval = 100; // Update the progress bar every 100ms
+            progressBarTimer.Tick += ProgressBarTimer_Tick;
+            songProgressBar.MouseDown += SongProgressBar_MouseDown;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void VolumeInit()
+        {
+            volumeTrackbar.Value = 50;
+            volumeTrackbar.Scroll += VolumeTrackbar_Scroll;
+        }
+
+        private void ScrollInit()
+        {
+            // Create a new timer
+            scrollPosition = 0;
+            scrollTimer = new Timer();
+            scrollTimer.Interval = 150; // Set the timer interval (in milliseconds)
+            scrollTimer.Enabled = IsTextTooLong(songLabel.Text, songLabel);
+            scrollTimer.Tick += ScrollTimer_Tick;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void songLabelStart()
+        {
+            songLabel.AutoSize = false;
+            songLabel.Width = 160;
+            songLabel.Height = 20;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void ExpandNodes()
+        {
             // Expands the three main nodes of the treeview that shows the contents.
             for (int i = 0; i < contentTree.Nodes.Count; i++)
             {
@@ -78,8 +119,6 @@ namespace MediaPlayer
                     contentTree.Nodes[i].Expand();
                 }
             }
-            SongLibraryClick();
-
         }
 
         /// <summary>
@@ -381,7 +420,7 @@ namespace MediaPlayer
         /// <summary>
         /// Triggered when the user clicks on the Song Library in the contentTree.
         /// </summary>
-        private void SongLibraryClick()
+        private void SongLibraryOpen()
         {
 
             //if childform already exists, get rid of it, and create new MusicLibraryForm instead.
@@ -421,7 +460,7 @@ namespace MediaPlayer
             }
             else if (e.Node.Name == "SongLibrary")
             {
-                SongLibraryClick();
+                SongLibraryOpen();
             }
         }
 

@@ -30,9 +30,9 @@ namespace MediaPlayer
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("New Playlist...");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Library", new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("New Playlist...");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Library", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
             this.contentTree = new System.Windows.Forms.TreeView();
             this.albumArtBox = new System.Windows.Forms.PictureBox();
             this.songProgressBar = new System.Windows.Forms.ProgressBar();
@@ -56,12 +56,12 @@ namespace MediaPlayer
             this.contentTree.Location = new System.Drawing.Point(1, 1);
             this.contentTree.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.contentTree.Name = "contentTree";
-            treeNode3.Name = "NewSongPlaylist";
-            treeNode3.Text = "New Playlist...";
-            treeNode4.Name = "SongLibrary";
-            treeNode4.Text = "Library";
+            treeNode1.Name = "NewSongPlaylist";
+            treeNode1.Text = "New Playlist...";
+            treeNode2.Name = "SongLibrary";
+            treeNode2.Text = "Library";
             this.contentTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
+            treeNode2});
             this.contentTree.Size = new System.Drawing.Size(206, 503);
             this.contentTree.TabIndex = 4;
             this.contentTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.contentTreeNodeMouseClick);
@@ -183,9 +183,9 @@ namespace MediaPlayer
             this.volumeLabel.BackColor = System.Drawing.Color.White;
             this.volumeLabel.Location = new System.Drawing.Point(938, 547);
             this.volumeLabel.Name = "volumeLabel";
-            this.volumeLabel.Size = new System.Drawing.Size(33, 13);
+            this.volumeLabel.Size = new System.Drawing.Size(27, 13);
             this.volumeLabel.TabIndex = 28;
-            this.volumeLabel.Text = "100%";
+            this.volumeLabel.Text = "50%";
             // 
             // volumeSliderLabel
             // 

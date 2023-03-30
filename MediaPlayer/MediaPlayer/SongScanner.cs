@@ -41,7 +41,7 @@ namespace MediaPlayer
         /// By Shayan Zahedanaraki
         /// </summary>
         /// <returns>success or fail bool</returns>
-        public static bool scan()
+        public static bool Scan()
         {
             try
             {

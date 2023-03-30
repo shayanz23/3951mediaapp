@@ -27,10 +27,17 @@ namespace MediaPlayer
         public static void Read()
         {
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Playlist>));
-            using (FileStream fileStream = new FileStream(path, FileMode.Open))
+            try
             {
-                List<Playlist> deserializedList = (List<Playlist>)serializer.ReadObject(fileStream);
-                playlists = deserializedList;
+                using (FileStream fileStream = new FileStream(path, FileMode.Open))
+                {
+                    List<Playlist> deserializedList = (List<Playlist>)serializer.ReadObject(fileStream);
+                    playlists = deserializedList;
+                }
+            } catch
+            {
+                Save();
+                Read();
             }
         }
 

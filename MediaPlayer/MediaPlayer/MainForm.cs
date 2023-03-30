@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace MediaPlayer
@@ -56,7 +58,8 @@ namespace MediaPlayer
             timeRemainingLabel.BackColor = Color.White;
 
             ExpandNodes();
-            SongLibraryOpen();
+            LibraryOpen();
+            loadTree();
         }
 
         /// <summary>
@@ -421,9 +424,8 @@ namespace MediaPlayer
         /// <summary>
         /// Triggered when the user clicks on the Song Library in the contentTree.
         /// </summary>
-        private void SongLibraryOpen()
+        private void LibraryOpen()
         {
-
             //if childform already exists, get rid of it, and create new MusicLibraryForm instead.
             if (childForm != null)
             {
@@ -438,6 +440,97 @@ namespace MediaPlayer
             
         }
 
+
+        /// <summary>
+        /// Triggered when the user clicks on the Song Library in the contentTree.
+        /// </summary>
+        private void PlaylistOpen(Playlist playlist)
+        {
+            // If childForm already exists, get rid of it, and create a new PlaylistMdiChild instead.
+            if (childForm != null)
+            {
+                childForm.Dispose();
+            }
+
+            childForm = new PlaylistMdiChild(playlist)
+            {
+                MdiParent = this,
+                StartPosition = FormStartPosition.Manual,
+                Location = new Point(contentTree.Size.Width, startPosY),
+                Size = new Size((int)(this.Size.Width / 1.285), contentTree.Size.Height)
+            };
+
+            childForm.Show();
+        }
+
+
+        private void loadTree()
+        {
+            for (int i = 0; i < PlaylistManager.Playlists.Count; i++)
+            {
+                bool exists = false;
+                for (int j = 0; j < contentTree.Nodes.Count; j++)
+                {
+                    if (PlaylistManager.Playlists[i].Name == contentTree.Nodes[j].Name)
+                    {
+                        exists = true;
+                    }
+                }
+                if (exists == false)
+                {
+                    for (int k = 0; k < contentTree.Nodes.Count; k++)
+                    {
+                        if (contentTree.Nodes[k].Name == "SongLibrary")
+                        {
+                            TreeNode treeNode = new TreeNode(PlaylistManager.Playlists[i].Name);
+                            contentTree.Nodes[k].Nodes.Add(treeNode);
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="playlist"></param>
+        private void AddPlaylistToTree(Playlist playlist)
+        {
+            TreeNode songLibraryNode = null;
+
+            // Find the "SongLibrary" node
+            for (int i = 0; i < contentTree.Nodes.Count; i++)
+            {
+                if (contentTree.Nodes[i].Name == "SongLibrary")
+                {
+                    songLibraryNode = contentTree.Nodes[i];
+                    break;
+                }
+            }
+
+            // If the "SongLibrary" node is not found, you may need to handle it here.
+
+            bool exists = false;
+
+            // Check if the playlist already exists in the tree
+            for (int j = 0; j < songLibraryNode.Nodes.Count; j++)
+            {
+                if (playlist.Name == songLibraryNode.Nodes[j].Text)
+                {
+                    exists = true;
+                    break;
+                }
+            }
+
+            // If the playlist doesn't exist in the tree, add it
+            if (!exists)
+            {
+                TreeNode treeNode = new TreeNode(playlist.Name);
+                songLibraryNode.Nodes.Add(treeNode);
+            }
+        }
+
+
         /// <summary>
         /// Items in contentTree click handler.
         /// By Shayan Zahedanaraki
@@ -446,24 +539,28 @@ namespace MediaPlayer
         /// <param name="e"></param>
         private void contentTreeNodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            ArrayList songPlaylistNames = new ArrayList();
             if (e.Node.Name == "NewSongPlaylist")
             {
                 using (NewPlaylistDialog newPlaylistDialog = new NewPlaylistDialog())
                 {
                     if (newPlaylistDialog.ShowDialog() == DialogResult.OK)
                     {
-                        TreeNode playlistNode = new TreeNode(newPlaylistDialog.newPlaylistName);
                         Playlist playlist = new Playlist(newPlaylistDialog.newPlaylistName);
                         PlaylistManager.AddPlaylist(playlist);
-                        e.Node.Parent.Nodes.Add(playlistNode);
+                        AddPlaylistToTree(playlist);
                     }
-                    songPlaylistNames.Add(newPlaylistDialog.newPlaylistName);
                 }
             }
             else if (e.Node.Name == "SongLibrary")
             {
-                SongLibraryOpen();
+                LibraryOpen();
+            }
+            for (int i = 0; i < PlaylistManager.Playlists.Count; i++)
+            {
+                if (e.Node.Text == PlaylistManager.Playlists[i].Name)
+                {
+                    PlaylistOpen(PlaylistManager.Playlists[i]);
+                }
             }
         }
 

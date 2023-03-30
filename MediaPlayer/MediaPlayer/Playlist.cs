@@ -12,15 +12,16 @@ namespace MediaPlayer
     public class Playlist
     {
 
-        public Playlist(string name)
-        {
-            Name = name;
-        }
-
         [DataMember]
         public string Name { get; set; }
 
         [DataMember]
         public List<Audio> Songs { get; set; }
+
+        public Playlist(string name)
+        {
+            Name = name;
+            Songs = new List<Audio>();
+        }
     }
 }

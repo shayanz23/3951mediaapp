@@ -1,6 +1,5 @@
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.csproj.AssemblyReference.cache
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.csproj.SuggestedBindingRedirects.cache
-C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.MusicLibraryForm.resources
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.Properties.Resources.resources
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.csproj.GenerateResource.cache
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.csproj.CoreCompileInputs.cache
@@ -24,4 +23,8 @@ C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\AxInterop.WMPLi
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.csproj.ResolveComReference.cache
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.MainForm.resources
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Release\ControlLibraryShayan.dll
-C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Release\ControlLibraryShayan.pdb
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.RemoveSongsDialog.resources
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.AddSongsDialog.resources
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.NewPlaylistDialog.resources
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.PlaylistMdiChild.resources
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.LibraryMdiChild.resources

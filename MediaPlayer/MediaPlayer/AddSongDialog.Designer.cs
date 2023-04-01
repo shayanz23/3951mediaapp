@@ -2,7 +2,7 @@
 
 namespace MediaPlayer
 {
-    partial class LibraryMdiChild
+    partial class AddSongsDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -33,82 +33,47 @@ namespace MediaPlayer
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.playButton = new System.Windows.Forms.Button();
-            this.shuffleButton = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.songData = new System.Windows.Forms.DataGridView();
+            this.OKPlaylistButton = new System.Windows.Forms.Button();
+            this.CancelButton2 = new System.Windows.Forms.Button();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.songData = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Artist = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.songData)).BeginInit();
             this.SuspendLayout();
             // 
-            // playButton
+            // OKPlaylistButton
             // 
-            this.playButton.Location = new System.Drawing.Point(207, 124);
-            this.playButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(74, 23);
-            this.playButton.TabIndex = 2;
-            this.playButton.Text = "Play";
-            this.playButton.UseVisualStyleBackColor = true;
-            this.playButton.Click += new System.EventHandler(this.playButton_Click);
+            this.OKPlaylistButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.OKPlaylistButton.Location = new System.Drawing.Point(619, 418);
+            this.OKPlaylistButton.Name = "OKPlaylistButton";
+            this.OKPlaylistButton.Size = new System.Drawing.Size(64, 20);
+            this.OKPlaylistButton.TabIndex = 0;
+            this.OKPlaylistButton.Text = "OK";
+            this.OKPlaylistButton.UseVisualStyleBackColor = true;
+            this.OKPlaylistButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
-            // shuffleButton
+            // CancelButton2
             // 
-            this.shuffleButton.Location = new System.Drawing.Point(310, 124);
-            this.shuffleButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.shuffleButton.Name = "shuffleButton";
-            this.shuffleButton.Size = new System.Drawing.Size(74, 23);
-            this.shuffleButton.TabIndex = 3;
-            this.shuffleButton.Text = "Shuffle";
-            this.shuffleButton.UseVisualStyleBackColor = true;
-            this.shuffleButton.Click += new System.EventHandler(this.shuffleButton_Click);
+            this.CancelButton2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelButton2.Location = new System.Drawing.Point(533, 418);
+            this.CancelButton2.Name = "CancelButton2";
+            this.CancelButton2.Size = new System.Drawing.Size(64, 20);
+            this.CancelButton2.TabIndex = 1;
+            this.CancelButton2.Text = "Cancel";
+            this.CancelButton2.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // nameLabel
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(40, 23);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(62, 62);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(102, 23);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(62, 62);
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Location = new System.Drawing.Point(102, 85);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(62, 62);
-            this.pictureBox3.TabIndex = 6;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Location = new System.Drawing.Point(40, 85);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(62, 62);
-            this.pictureBox4.TabIndex = 7;
-            this.pictureBox4.TabStop = false;
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel.Location = new System.Drawing.Point(12, 9);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(150, 15);
+            this.nameLabel.TabIndex = 4;
+            this.nameLabel.Text = "Select Songs from Library:";
             // 
             // songData
             // 
@@ -144,9 +109,8 @@ namespace MediaPlayer
             this.songData.DefaultCellStyle = dataGridViewCellStyle2;
             this.songData.EnableHeadersVisualStyles = false;
             this.songData.GridColor = System.Drawing.Color.Silver;
-            this.songData.Location = new System.Drawing.Point(12, 163);
+            this.songData.Location = new System.Drawing.Point(15, 37);
             this.songData.Margin = new System.Windows.Forms.Padding(2);
-            this.songData.MultiSelect = false;
             this.songData.Name = "songData";
             this.songData.ReadOnly = true;
             this.songData.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -162,20 +126,8 @@ namespace MediaPlayer
             this.songData.RowHeadersWidth = 62;
             this.songData.RowTemplate.Height = 33;
             this.songData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.songData.Size = new System.Drawing.Size(708, 304);
-            this.songData.TabIndex = 0;
-            this.songData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SongData_CellClick);
-            // 
-            // nameLabel
-            // 
-            this.nameLabel.AutoSize = true;
-            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLabel.Location = new System.Drawing.Point(201, 46);
-            this.nameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(97, 31);
-            this.nameLabel.TabIndex = 10;
-            this.nameLabel.Text = "Library";
+            this.songData.Size = new System.Drawing.Size(668, 366);
+            this.songData.TabIndex = 5;
             // 
             // ID
             // 
@@ -213,27 +165,21 @@ namespace MediaPlayer
             this.Duration.ReadOnly = true;
             this.Duration.Width = 78;
             // 
-            // LibraryMdiChild
+            // AddSongsDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 487);
-            this.Controls.Add(this.nameLabel);
+            this.ClientSize = new System.Drawing.Size(695, 450);
             this.Controls.Add(this.songData);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.shuffleButton);
-            this.Controls.Add(this.playButton);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.Name = "LibraryMdiChild";
-            this.Text = "MusicLibraryForm";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.Controls.Add(this.nameLabel);
+            this.Controls.Add(this.CancelButton2);
+            this.Controls.Add(this.OKPlaylistButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "AddSongsDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Add songs";
             ((System.ComponentModel.ISupportInitialize)(this.songData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -241,14 +187,11 @@ namespace MediaPlayer
         }
 
         #endregion
-        private Button playButton;
-        private Button shuffleButton;
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox4;
-        private DataGridView songData;
+
+        private Button OKPlaylistButton;
+        private Button CancelButton2;
         private Label nameLabel;
+        private DataGridView songData;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Title;
         private DataGridViewTextBoxColumn Artist;

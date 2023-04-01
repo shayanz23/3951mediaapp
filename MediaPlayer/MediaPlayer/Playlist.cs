@@ -22,7 +22,7 @@ namespace MediaPlayer
         /// List of songs in playlist.
         /// </summary>
         [DataMember]
-        public List<Audio> Songs { get; set; }
+        public List<Song> Songs { get; set; }
 
         /// <summary>
         /// Constructor for playlist.
@@ -31,7 +31,7 @@ namespace MediaPlayer
         public Playlist(string name)
         {
             Name = name;
-            Songs = new List<Audio>();
+            Songs = new List<Song>();
         }
     }
 }

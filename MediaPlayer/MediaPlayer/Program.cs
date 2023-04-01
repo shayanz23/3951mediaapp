@@ -16,7 +16,7 @@ namespace MediaPlayer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            SongScanner.Scan();
+            SongManager.Scan();
             Application.Run(new MainForm());
         }
     }

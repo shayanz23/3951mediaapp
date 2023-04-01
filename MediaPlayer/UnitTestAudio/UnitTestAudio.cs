@@ -13,15 +13,15 @@ namespace UnitTestMediaPlayerAudio
     public class UnitTestAudio
     {
         /// <summary>
-        /// Tests property   for audio title
+        /// Tests property   for audio Title
         /// By Daniel Chellapan
         /// </summary>
         [TestMethod]
         public void TestAudioTitleProperty()
         {
-            Audio title = new Audio();
-            title.title = "Numb";
-            Assert.AreEqual(title.title, "Numb");
+            Song title = new Song();
+            title.Title = "Numb";
+            Assert.AreEqual(title.Title, "Numb");
         }
 
         /// <summary>
@@ -48,8 +48,8 @@ namespace UnitTestMediaPlayerAudio
 
 
 
-            Audio artists = new Audio();
-            artists.getArtists();
+            Song artists = new Song();
+            artists.GetArtists();
 
             Assert.AreEqual(artistNamesArray[0], "Jay-Z");
         }

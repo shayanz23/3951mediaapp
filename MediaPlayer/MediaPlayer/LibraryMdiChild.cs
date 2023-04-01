@@ -18,10 +18,10 @@ namespace MediaPlayer
     {
 
         // Declare variables and collections
-        private Dictionary<string, Audio> titleToAudioLookup;
-        Audio selectedAudio;
-        List<Audio> songs = new List<Audio>();
-        List<Audio> Queue = new List<Audio>();
+        private Dictionary<string, Song> titleToAudioLookup;
+        Song selectedAudio;
+        List<Song> songs = new List<Song>();
+        List<Song> Queue = new List<Song>();
 
         /// <summary>
         /// Constructor for the MusicLibraryForm class
@@ -30,7 +30,7 @@ namespace MediaPlayer
         {
             InitializeComponent();
             getSongs();
-            titleToAudioLookup = songs.ToDictionary(audio => audio.title);
+            titleToAudioLookup = songs.ToDictionary(audio => audio.Title);
             fillList();
             fillPictures();
             songData.Size = new Size(760, 325);
@@ -44,7 +44,7 @@ namespace MediaPlayer
         public void fillPictures()
         {
 
-            bool hasNonNullAlbumArt = songs.Any(song => song.albumArt != null);
+            bool hasNonNullAlbumArt = songs.Any(song => SongManager.getCoverArt(song.FileLocation) != null);
             if (!hasNonNullAlbumArt)
             {
                 return;
@@ -64,12 +64,12 @@ namespace MediaPlayer
             {
                 pictureBoxes[i].SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBoxes[i].Image = null;
-                while (songs[index % imagesListCount].albumArt == null)
+                while (SongManager.getCoverArt(songs[index % imagesListCount].FileLocation) == null)
                 {
                     index++;
                 }
 
-                pictureBoxes[i].Image = songs[index % imagesListCount].albumArt;
+                pictureBoxes[i].Image = SongManager.getCoverArt(songs[index % imagesListCount].FileLocation);
                 index++;
             }
         }
@@ -103,19 +103,18 @@ namespace MediaPlayer
         {
             for (int i = 0; i < songs.Count; i++)
             {
-
-                string a = songs[i].title;
+                string a = songs[i].Title;
                 string b = "";
 
-                if (songs[i].getArtists().Length > 0) {
-                        b += songs[i].getArtists();
+                if (songs[i].GetArtists().Length > 0) {
+                        b += songs[i].GetArtists();
                 } else {
                     b = "Unknown";
                 }
 
-                string c = songs[i].duration;
+                string c = songs[i].Duration;
 
-                this.songData.Rows.Add(i, a, b, c);
+                this.songData.Rows.Add(i+1, a, b, c);
                 
             }
             songData.ClearSelection();
@@ -127,9 +126,9 @@ namespace MediaPlayer
         /// </summary>
         private void getSongs()
         {
-            for (int i = 0; i < SongScanner.Audios.Count; i++)
+            for (int i = 0; i < SongManager.Songs.Count; i++)
             {
-                songs.Add(SongScanner.Audios[i]);
+                songs.Add(SongManager.Songs[i]);
             }
         }
 
@@ -242,12 +241,15 @@ namespace MediaPlayer
         /// </summary>
         private void shuffleButton_Click(object sender, EventArgs e)
         {
-            List<Audio> songCandidates = new List<Audio>(songs);
-            WeightedShuffle(songCandidates, (a, b)
-                => JaroWinklerSimilarity(a.getArtists(), b.getArtists()));
-            Queue = new List<Audio>(songCandidates);
-            MainForm parent = (MainForm)MdiParent;
-            parent.FillQueue(Queue);
+            if (songs != null && songs.Count != 0)
+            {
+                List<Song> songCandidates = new List<Song>(songs);
+                WeightedShuffle(songCandidates, (a, b)
+                    => JaroWinklerSimilarity(a.GetArtists(), b.GetArtists()));
+                Queue = new List<Song>(songCandidates);
+                MainForm parent = (MainForm)MdiParent;
+                parent.FillQueue(Queue);
+            }
 
         }
 
@@ -257,9 +259,12 @@ namespace MediaPlayer
         /// </summary>
         private void playButton_Click(object sender, EventArgs e)
         {
-            Queue = new List<Audio>(songs);
-            MainForm parent = (MainForm)this.MdiParent;
-            parent.FillQueue(Queue);
+            if (songs != null && songs.Count != 0)
+            {
+                Queue = new List<Song>(songs);
+                MainForm parent = (MainForm)this.MdiParent;
+                parent.FillQueue(Queue);
+            }
         }
 
         private void SongData_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {

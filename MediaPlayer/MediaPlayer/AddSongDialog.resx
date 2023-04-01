@@ -117,46 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="addSongs.Tag" xml:space="preserve">
-    <value>foreach (Audio audio1 in newPlaylistDialog.Songs)
-{
-    bool isDuplicate = false;
-
-    foreach (Audio audio2 in SongPlaylist.Songs)
-    {
-        if (audio1 == audio2)
-        {
-            isDuplicate = true;
-            break;
-        }
-    }
-
-    if (!isDuplicate)
-    {
-        SongPlaylist.Songs.Add(audio1);
-    }
-}
-</value>
-  </data>
-  <data name="remSongsBtn.Tag" xml:space="preserve">
-    <value>foreach (Audio audio1 in newPlaylistDialog.Songs)
-{
-    bool isDuplicate = false;
-
-    foreach (Audio audio2 in SongPlaylist.Songs)
-    {
-        if (audio1 == audio2)
-        {
-            isDuplicate = true;
-            break;
-        }
-    }
-
-    if (!isDuplicate)
-    {
-        SongPlaylist.Songs.Add(audio1);
-    }
-}
-</value>
-  </data>
 </root>

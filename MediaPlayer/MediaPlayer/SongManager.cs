@@ -15,11 +15,11 @@ namespace MediaPlayer
     /// <summary>
     /// The static class that scans the media directories (music, videos, pictures) for audio, video, and pictures.
     /// </summary>
-    public static class SongScanner
+    public static class SongManager
     {
 
         //Lists for each type of content
-        private static List<Audio> _audios = new List<Audio>();
+        private static List<Song> _audios = new List<Song>();
 
         //accepted file types
         private static string[] audioTypes = { ".mp3", ".wav", ".flac", ".m4a", ".ogg" };
@@ -29,15 +29,15 @@ namespace MediaPlayer
         
 
         //properties for the Lists.
-        public static List<Audio> Audios
+        public static List<Song> Songs
         {
             get { return _audios; }
             set { _audios = value; }
         }
 
         /// <summary>
-        /// Scans for audio files in the Music folder, gets their metadata, like album art, artists, Album, and duration,
-        /// then creates a new Audio object and adds it to the static Audios List.
+        /// Scans for audio files in the Music folder, gets their metadata, like Album art, Artists, Album, and Duration,
+        /// then creates a new Audio object and adds it to the static Songs List.
         /// By Shayan Zahedanaraki
         /// </summary>
         /// <returns>success or fail bool</returns>
@@ -59,31 +59,30 @@ namespace MediaPlayer
                     {
                         file = null;
                     }
-                    Audio audio = new Audio();
-                    audio.fileLocation = filePath;
+                    Song audio = new Song();
+                    audio.FileLocation = filePath;
                     try
                     {
                         using (var audioFileReader = new NAudio.Wave.AudioFileReader(filePath))
                         {
                             var audioFileLength = audioFileReader.TotalTime.TotalSeconds;
                             TimeSpan timeSpan = TimeSpan.FromSeconds(audioFileLength);
-                            audio.duration = timeSpan.ToString(@"mm\:ss");
+                            audio.Duration = timeSpan.ToString(@"mm\:ss");
                         }
                     } 
                     catch {
-                        audio.duration = "Unknown";
+                        audio.Duration = "Unknown";
                     }
 
                     if (file != null)
                     {
-                        audio.title = file.Tag.Title;
-                        audio.genres = file.Tag.Genres;
-                        audio.album = file.Tag.Album;
-                        audio.artists = file.Tag.Performers;
-                        audio.albumArt = getCoverArt(file);
+                        audio.Title = file.Tag.Title;
+                        audio.Genres = file.Tag.Genres;
+                        audio.Album = file.Tag.Album;
+                        audio.Artists = file.Tag.Performers;
                     }
-                    if (audio.title == null) {
-                        audio.title = Path.GetFileName(filePath);
+                    if (audio.Title == null) {
+                        audio.Title = Path.GetFileName(filePath);
                     }
                     _audios.Add(audio);
                 }
@@ -104,34 +103,50 @@ namespace MediaPlayer
         private static void checkDuplicates()
         {
             int duplicateCounter = 1;
-            for (int i = 0; i < Audios.Count; i++)
+            for (int i = 0; i < Songs.Count; i++)
             {
-                for (int j = i + 1; j < Audios.Count; j++)
+                for (int j = i + 1; j < Songs.Count; j++)
                 {
-                    if (Audios[i].title == Audios[j].title)
+                    if (Songs[i].Title == Songs[j].Title)
                     {
                         duplicateCounter++;
-                        Audios[j].title = Audios[j].title + " " + duplicateCounter;
+                        Songs[j].Title = Songs[j].Title + " " + duplicateCounter;
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Helper method for the scanAudios that gets an Image object from file's album art metadata.
+        /// Helper method for the scanAudios that gets an Image object from file's Album art metadata.
         /// By Shayan Zahedanaraki
         /// </summary>
         /// <param name="file"></param>
         /// <returns>returns the image object.</returns>
-        public static Image getCoverArt(File file)
+        public static Image getCoverArt(string filePath)
         {
-            IPicture pic = file.Tag.Pictures.Length > 0 ? file.Tag.Pictures[0] : null;
-            if (pic != null)
+            File file = null;
+            try
             {
-                // Convert the picture data to an Image object
-                MemoryStream ms = new MemoryStream(pic.Data.Data);
-                Image image = Image.FromStream(ms);
-                return image;
+                file = File.Create(filePath);
+            }
+            catch (Exception)
+            {
+                file = null;
+            }
+            if (file != null)
+            {
+                IPicture pic = file.Tag.Pictures.Length > 0 ? file.Tag.Pictures[0] : null;
+                if (pic != null)
+                {
+                    // Convert the picture data to an Image object
+                    MemoryStream ms = new MemoryStream(pic.Data.Data);
+                    Image image = Image.FromStream(ms);
+                    return image;
+                }
+                else
+                {
+                    return null;
+                }
             }
             else
             {

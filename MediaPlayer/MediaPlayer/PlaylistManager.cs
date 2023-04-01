@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Json;
 using System.IO;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace MediaPlayer
 {
     internal static class PlaylistManager
     {
+
+        /// <summary>
+        /// List of the playlists.
+        /// </summary>
         private static List<Playlist> playlists = new List<Playlist>();
 
         /// <summary>
@@ -26,9 +31,15 @@ namespace MediaPlayer
         public static void Save()
         {
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Playlist>));
-            using (FileStream fileStream = new FileStream(path, FileMode.Create))
+            try
             {
-                serializer.WriteObject(fileStream, playlists);
+                using (FileStream fileStream = new FileStream(path, FileMode.Create))
+                {
+                    serializer.WriteObject(fileStream, playlists);
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -37,6 +48,10 @@ namespace MediaPlayer
         /// </summary>
         public static void Read()
         {
+            //Instance of class for comparing the title of songs
+            SongTitleEqualityComparer titleComparer = new SongTitleEqualityComparer();
+            //boolean for deciding whether to save json or not.
+            bool removed = false;
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Playlist>));
             try
             {
@@ -47,6 +62,37 @@ namespace MediaPlayer
                 }
             } catch
             {
+                Save();
+            }
+
+            //Checks if songs exist in the library, if not they are removed.
+            for (int i = 0; i < playlists.Count; i++)
+            {
+                int originalCount = playlists[i].Songs.Count;
+                List<Song> filteredSongs = playlists[i].Songs
+                    .Where(song => SongManager.Songs.Any(s => s.Title == song.Title)) // Compare songs by title or any unique property
+                    .ToList();
+
+                if (originalCount != filteredSongs.Count)
+                {
+                    removed = true;
+                    playlists[i].Songs = filteredSongs;
+                }
+            }
+
+            //Checks if there are duplicate songs and removes them.
+            for (int i = 0; i < playlists.Count; i++)
+            {
+                int originalCount = playlists[i].Songs.Count;
+                List<Song> distinctSongs = playlists[i].Songs.Distinct(titleComparer).ToList();
+
+                if (originalCount != distinctSongs.Count)
+                {
+                    removed = true;
+                    playlists[i].Songs = distinctSongs;
+                }
+            }
+            if (removed) { 
                 Save();
             }
         }
@@ -93,4 +139,25 @@ namespace MediaPlayer
             playlists.Add(playlist);
         }
     }
+
+    /// <summary>
+    /// Title comparator class for the songs.
+    /// </summary>
+    internal class SongTitleEqualityComparer : IEqualityComparer<Song>
+    {
+        public bool Equals(Song x, Song y)
+        {
+            if (ReferenceEquals(x, y)) return true;
+            if (ReferenceEquals(x, null)) return false;
+            if (ReferenceEquals(y, null)) return false;
+            if (x.GetType() != y.GetType()) return false;
+            return x.Title == y.Title;
+        }
+
+        public int GetHashCode(Song obj)
+        {
+            return obj.Title != null ? obj.Title.GetHashCode() : 0;
+        }
+    }
+
 }

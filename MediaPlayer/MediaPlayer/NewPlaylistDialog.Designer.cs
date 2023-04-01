@@ -39,7 +39,7 @@ namespace MediaPlayer
             // OKPlaylistButton
             // 
             this.OKPlaylistButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OKPlaylistButton.Location = new System.Drawing.Point(172, 105);
+            this.OKPlaylistButton.Location = new System.Drawing.Point(169, 80);
             this.OKPlaylistButton.Name = "OKPlaylistButton";
             this.OKPlaylistButton.Size = new System.Drawing.Size(64, 20);
             this.OKPlaylistButton.TabIndex = 0;
@@ -50,7 +50,7 @@ namespace MediaPlayer
             // CancelButton2
             // 
             this.CancelButton2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelButton2.Location = new System.Drawing.Point(102, 105);
+            this.CancelButton2.Location = new System.Drawing.Point(85, 80);
             this.CancelButton2.Name = "CancelButton2";
             this.CancelButton2.Size = new System.Drawing.Size(64, 20);
             this.CancelButton2.TabIndex = 1;
@@ -59,7 +59,7 @@ namespace MediaPlayer
             // 
             // NewPlaylistTextbox
             // 
-            this.NewPlaylistTextbox.Location = new System.Drawing.Point(22, 58);
+            this.NewPlaylistTextbox.Location = new System.Drawing.Point(22, 38);
             this.NewPlaylistTextbox.Name = "NewPlaylistTextbox";
             this.NewPlaylistTextbox.Size = new System.Drawing.Size(211, 20);
             this.NewPlaylistTextbox.TabIndex = 2;
@@ -68,7 +68,7 @@ namespace MediaPlayer
             // 
             this.nameLabel.AutoSize = true;
             this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLabel.Location = new System.Drawing.Point(19, 25);
+            this.nameLabel.Location = new System.Drawing.Point(19, 9);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(130, 15);
             this.nameLabel.TabIndex = 4;
@@ -78,7 +78,7 @@ namespace MediaPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(258, 137);
+            this.ClientSize = new System.Drawing.Size(258, 109);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.NewPlaylistTextbox);
             this.Controls.Add(this.CancelButton2);

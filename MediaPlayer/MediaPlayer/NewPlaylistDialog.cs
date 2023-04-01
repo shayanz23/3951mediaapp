@@ -12,6 +12,10 @@ namespace MediaPlayer
 {
     public partial class NewPlaylistDialog : Form
     {
+
+        /// <summary>
+        /// name property for the New playlist.
+        /// </summary>
         public string newPlaylistName { get; set; }
         public NewPlaylistDialog()
         {

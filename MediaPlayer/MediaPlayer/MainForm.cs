@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -26,7 +27,7 @@ namespace MediaPlayer
         MediaFoundationReader audioFileReader;
         WaveOutEvent waveOut;
         private bool forceStopped;
-        List<Audio> Queue = new List<Audio>();
+        List<Song> Queue = new List<Song>();
         private bool isPaused;
         private Timer scrollTimer;
         private int scrollPosition;
@@ -395,8 +396,15 @@ namespace MediaPlayer
                 }
                 if (waveOut.PlaybackState != PlaybackState.Paused)
                 {
-                    audioFileReader = new MediaFoundationReader(Queue[song_index].fileLocation);
-
+                    try
+                    {
+                        audioFileReader = new MediaFoundationReader(Queue[song_index].FileLocation);
+                    } catch (DirectoryNotFoundException ex)
+                    {
+                        playPauseButton1.playing = false;
+                        MessageBox.Show("File not found or removed during usage", "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     songProgressBar.Minimum = 0;
                     songProgressBar.Maximum = (int)audioFileReader.TotalTime.TotalMilliseconds;
                     songProgressBar.Value = 0;
@@ -404,9 +412,9 @@ namespace MediaPlayer
 
                     progressBarTimer.Start(); // Start the progress bar timer
                 }
-                UpdateAlbumArt(Queue[song_index].albumArt);
-                UpdateSongName(Queue[song_index].title);
-                UpdateArtistName(Queue[song_index].getArtists());
+                UpdateAlbumArt(SongManager.getCoverArt(Queue[song_index].FileLocation));
+                UpdateSongName(Queue[song_index].Title);
+                UpdateArtistName(Queue[song_index].GetArtists());
                 waveOut.Play();
             }
             else
@@ -441,7 +449,7 @@ namespace MediaPlayer
 
 
         /// <summary>
-        /// updates the album art picture box to match currently playing song.
+        /// updates the Album art picture box to match currently playing song.
         /// By Shayan Zahedanaraki
         /// </summary>
         /// <param name="coverArt"></param>
@@ -458,7 +466,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// updates the album art picture box to match currently playing song.
+        /// updates the Album art picture box to match currently playing song.
         /// By Shayan Zahedanaraki
         /// </summary>
         /// <param name="coverArt"></param>
@@ -474,7 +482,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// updates the album art picture box to match currently playing song.
+        /// updates the Album art picture box to match currently playing song.
         /// By Shayan Zahedanaraki
         /// </summary>
         /// <param name="coverArt"></param>
@@ -491,7 +499,7 @@ namespace MediaPlayer
         /// By Shayan Zahedanaraki
         /// </summary>
         /// <param name="input"></param>
-        public void FillQueue(List<Audio> input)
+        public void FillQueue(List<Song> input)
         {
             if (waveOut != null)
             {

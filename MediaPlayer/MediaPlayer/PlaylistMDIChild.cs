@@ -11,10 +11,10 @@ namespace MediaPlayer
     {
 
         // Declare variables and collections
-        private Dictionary<string, Audio> titleToAudioLookup;
-        Audio selectedAudio;
+        private Dictionary<string, Song> titleToAudioLookup;
+        Song selectedAudio;
         public Playlist SongPlaylist { get; set; }
-        List<Audio> Queue = new List<Audio>();
+        List<Song> Queue = new List<Song>();
 
         /// <summary>
         /// Constructor for the MusicLibraryForm class
@@ -24,7 +24,7 @@ namespace MediaPlayer
             InitializeComponent();
             SongPlaylist = playlist;
             nameLabel.Text = playlist.Name;
-            //titleToAudioLookup = Playlist.Songs.ToDictionary(audio => audio.title);
+            titleToAudioLookup = SongPlaylist.Songs.ToDictionary(audio => audio.Title);
             fillList();
             fillPictures();
             songData.Size = new Size(760, 325);
@@ -40,7 +40,7 @@ namespace MediaPlayer
             {
                 return;
             }
-            bool hasNonNullAlbumArt = SongPlaylist.Songs.Any(song => song.albumArt != null);
+            bool hasNonNullAlbumArt = SongPlaylist.Songs.Any(song => SongManager.getCoverArt(song.FileLocation) != null);
             if (!hasNonNullAlbumArt)
             {
                 return;
@@ -60,12 +60,12 @@ namespace MediaPlayer
             {
                 pictureBoxes[i].SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBoxes[i].Image = null;
-                while (SongPlaylist.Songs[index % imagesListCount].albumArt == null)
+                while (SongManager.getCoverArt(SongPlaylist.Songs[index % imagesListCount].FileLocation) == null)
                 {
                     index++;
                 }
 
-                pictureBoxes[i].Image = SongPlaylist.Songs[index % imagesListCount].albumArt;
+                pictureBoxes[i].Image = SongManager.getCoverArt(SongPlaylist.Songs[index % imagesListCount].FileLocation);
                 index++;
             }
         }
@@ -97,6 +97,7 @@ namespace MediaPlayer
         /// </summary>
         void fillList()
         {
+            songData.Rows.Clear();
             if (SongPlaylist.Songs == null)
             {
                 return;
@@ -104,18 +105,18 @@ namespace MediaPlayer
             for (int i = 0; i < SongPlaylist.Songs.Count; i++)
             {
 
-                string a = SongPlaylist.Songs[i].title;
+                string a = SongPlaylist.Songs[i].Title;
                 string b = "";
 
-                if (SongPlaylist.Songs[i].getArtists().Length > 0) {
-                        b += SongPlaylist.Songs[i].getArtists();
+                if (SongPlaylist.Songs[i].GetArtists().Length > 0) {
+                        b += SongPlaylist.Songs[i].GetArtists();
                 } else {
                     b = "Unknown";
                 }
 
-                string c = SongPlaylist.Songs[i].duration;
+                string c = SongPlaylist.Songs[i].Duration;
 
-                this.songData.Rows.Add(i, a, b, c);
+                this.songData.Rows.Add(i+1, a, b, c);
                 
             }
             songData.ClearSelection();
@@ -230,12 +231,15 @@ namespace MediaPlayer
         /// </summary>
         private void shuffleButton_Click(object sender, EventArgs e)
         {
-            List<Audio> songCandidates = new List<Audio>(SongPlaylist.Songs);
-            WeightedShuffle(songCandidates, (a, b)
-                => JaroWinklerSimilarity(a.getArtists(), b.getArtists()));
-            Queue = new List<Audio>(songCandidates);
-            MainForm parent = (MainForm)MdiParent;
-            parent.FillQueue(Queue);
+            if (SongPlaylist.Songs != null && SongPlaylist.Songs.Count != 0)
+            {
+                List<Song> songCandidates = new List<Song>(SongPlaylist.Songs);
+                WeightedShuffle(songCandidates, (a, b)
+                    => JaroWinklerSimilarity(a.GetArtists(), b.GetArtists()));
+                Queue = new List<Song>(songCandidates);
+                MainForm parent = (MainForm)MdiParent;
+                parent.FillQueue(Queue);
+            }
 
         }
 
@@ -245,9 +249,12 @@ namespace MediaPlayer
         /// </summary>
         private void playButton_Click(object sender, EventArgs e)
         {
-            Queue = new List<Audio>(SongPlaylist.Songs);
-            MainForm parent = (MainForm)this.MdiParent;
-            parent.FillQueue(Queue);
+            if (SongPlaylist.Songs != null && SongPlaylist.Songs.Count != 0)
+            {
+                Queue = new List<Song>(SongPlaylist.Songs);
+                MainForm parent = (MainForm)this.MdiParent;
+                parent.FillQueue(Queue);
+            }
         }
 
         private void SongData_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
@@ -278,5 +285,59 @@ namespace MediaPlayer
             }
 
         }
+
+        /// <summary>
+        /// Opens the AddSongsDialog, 
+        /// Checks if the songs selected are already in the playlist, and ads them if not.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void addSongs_Click(object sender, EventArgs e)
+        {
+            using (AddSongsDialog newPlaylistDialog = new AddSongsDialog())
+            {
+                if (newPlaylistDialog.ShowDialog() == DialogResult.OK)
+                {
+                    foreach (Song song1 in newPlaylistDialog.Songs)
+                    {
+                        if (!SongPlaylist.Songs.Any(song => song.Title == song1.Title))
+                        {
+                            SongPlaylist.Songs.Add(song1);
+                        }
+                    }
+
+                    titleToAudioLookup = SongPlaylist.Songs
+                        .GroupBy(audio => audio.Title)
+                        .ToDictionary(group => group.Key, group => group.First());
+                    fillList();
+                    fillPictures();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Removes songs selected if they are selected in the RemoveSongsDialog.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void remSongsBtn_Click(object sender, EventArgs e)
+        {
+            using (RemoveSongsDialog removePlaylistDialog = new RemoveSongsDialog(SongPlaylist.Songs))
+            {
+                if (removePlaylistDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Use RemoveAll with a predicate to remove songs from SongPlaylist.Songs that are present in removePlaylistDialog.SongsToRm
+                    SongPlaylist.Songs.RemoveAll(song => removePlaylistDialog.SongsToRm.Contains(song));
+
+                    titleToAudioLookup = null;
+                    titleToAudioLookup = SongPlaylist.Songs
+                        .GroupBy(audio => audio.Title)
+                        .ToDictionary(group => group.Key, group => group.First());
+                    fillList();
+                    fillPictures();
+                }
+            }
+        }
+
     }
 }

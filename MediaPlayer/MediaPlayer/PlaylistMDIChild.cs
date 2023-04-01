@@ -19,16 +19,6 @@ namespace MediaPlayer
         /// <summary>
         /// Constructor for the MusicLibraryForm class
         /// </summary>
-        public PlaylistMdiChild()
-        {
-            InitializeComponent();
-            //titleToAudioLookup = Playlist.Songs.ToDictionary(audio => audio.title);
-            fillList();
-            fillPictures();
-            songData.Size = new Size(760, 325);
-
-        }
-
         public PlaylistMdiChild(Playlist playlist)
         {
             InitializeComponent();

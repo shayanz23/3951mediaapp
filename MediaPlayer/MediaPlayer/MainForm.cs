@@ -34,6 +34,7 @@ namespace MediaPlayer
         private Timer progressBarTimer;
         private ContextMenuStrip contextMenu;
         private TreeNode currentRightClickedNode;
+        private bool firstTimePlaying;
 
         public MainForm()
         {
@@ -76,7 +77,11 @@ namespace MediaPlayer
             contentTree.MouseUp += ContentTree_MouseUp;
         }
 
-
+        /// <summary>
+        /// Mouse up event listener for the content tree.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ContentTree_MouseUp(object sender, MouseEventArgs e)
         {
             TreeNode node = contentTree.GetNodeAt(e.X, e.Y);
@@ -122,6 +127,11 @@ namespace MediaPlayer
             }
         }
 
+        /// <summary>
+        /// event listener for the clicking on the delete button in the context menu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DeletePlaylistItem_Click(object sender, EventArgs e)
         {
             PlaylistManager.RemovePlaylist(currentRightClickedNode.Text);
@@ -374,6 +384,13 @@ namespace MediaPlayer
                 if (waveOut == null || waveOut.PlaybackState != PlaybackState.Paused)
                 {
                     waveOut = new WaveOutEvent();
+
+                    // Sets the volume to 50%
+                    if (firstTimePlaying)
+                    {
+                        waveOut.Volume = 0.5F;
+                        firstTimePlaying = false;
+                    }
                     waveOut.PlaybackStopped += playbackstopped;
                 }
                 if (waveOut.PlaybackState != PlaybackState.Paused)

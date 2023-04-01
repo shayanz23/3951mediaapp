@@ -88,6 +88,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="NewPlaylistDialog.resx">
+      <DependentUpon>NewPlaylistDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlaylistMdiChild.resx">
       <DependentUpon>PlaylistMdiChild.cs</DependentUpon>
     </EmbeddedResource>

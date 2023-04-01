@@ -19,9 +19,29 @@ namespace MediaPlayer
             NewPlaylistTextbox.Select();
         }
 
+        /// <summary>
+        /// Ok button that checks if playlist name is already used or empty and doesn't continue if so.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OKPlaylistButton_Click(object sender, EventArgs e)
         {
-            newPlaylistName = NewPlaylistTextbox.Text;
+            if (NewPlaylistTextbox.Text.ToString().Trim() == "")
+            {
+                MessageBox.Show("Name must not be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = DialogResult.None;
+            } 
+            else if (PlaylistManager.Playlists.Any(item => item.Name == NewPlaylistTextbox.Text.ToString()))
+            {
+                MessageBox.Show("Name must not be already used.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = DialogResult.None;
+            } 
+            else
+            {
+                newPlaylistName = NewPlaylistTextbox.Text;
+                DialogResult = DialogResult.OK;
+            }
+            
         }
     }
 }

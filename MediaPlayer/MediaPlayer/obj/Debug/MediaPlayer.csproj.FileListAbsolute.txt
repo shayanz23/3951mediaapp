@@ -42,7 +42,6 @@ C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\Interop.WMPLib.dl
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\AxInterop.WMPLib.dll
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.ResolveComReference.cache
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.MainForm.resources
-C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.MusicLibraryForm.resources
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.Properties.Resources.resources
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.GenerateResource.cache
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.CoreCompileInputs.cache
@@ -52,7 +51,6 @@ C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\MediaPlayer.pdb
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\ControlLibraryShayan.dll
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\NAudio.dll
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.dll
-C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\ControlLibraryShayan.pdb
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\NAudio.xml
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.pdb
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.xml
@@ -101,3 +99,6 @@ C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.MainF
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\ControlLibraryShayan.dll
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.PlaylistMdiChild.resources
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.LibraryMdiChild.resources
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.PlaylistMdiChild.resources
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.LibraryMdiChild.resources
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.NewPlaylistDialog.resources

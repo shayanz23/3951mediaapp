@@ -10,10 +10,19 @@ namespace MediaPlayer
     {
         private static List<Playlist> playlists = new List<Playlist>();
 
+        /// <summary>
+        /// Path to the json file.
+        /// </summary>
         private static string path = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + "/playlists.json";
 
+        /// <summary>
+        /// List of playlists the user has created.
+        /// </summary>
         public static List<Playlist> Playlists { get { return playlists; } }
 
+        /// <summary>
+        /// Saves the playlists and their contents to a json file in the music directory.
+        /// </summary>
         public static void Save()
         {
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Playlist>));

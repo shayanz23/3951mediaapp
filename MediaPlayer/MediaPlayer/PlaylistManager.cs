@@ -48,7 +48,7 @@ namespace MediaPlayer
         /// </summary>
         public static void Read()
         {
-            //Instance of class for comparing the title of songs
+            //Instance of class for comparing the title of songsNext
             SongTitleEqualityComparer titleComparer = new SongTitleEqualityComparer();
             //boolean for deciding whether to save json or not.
             bool removed = false;
@@ -65,12 +65,12 @@ namespace MediaPlayer
                 Save();
             }
 
-            //Checks if songs exist in the library, if not they are removed.
+            //Checks if songsNext exist in the library, if not they are removed.
             for (int i = 0; i < playlists.Count; i++)
             {
                 int originalCount = playlists[i].Songs.Count;
                 List<Song> filteredSongs = playlists[i].Songs
-                    .Where(song => SongManager.Songs.Any(s => s.Title == song.Title)) // Compare songs by title or any unique property
+                    .Where(song => SongManager.Songs.Any(s => s.Title == song.Title)) // Compare songsNext by title or any unique property
                     .ToList();
 
                 if (originalCount != filteredSongs.Count)
@@ -80,7 +80,7 @@ namespace MediaPlayer
                 }
             }
 
-            //Checks if there are duplicate songs and removes them.
+            //Checks if there are duplicate songsNext and removes them.
             for (int i = 0; i < playlists.Count; i++)
             {
                 int originalCount = playlists[i].Songs.Count;
@@ -141,7 +141,7 @@ namespace MediaPlayer
     }
 
     /// <summary>
-    /// Title comparator class for the songs.
+    /// Title comparator class for the songsNext.
     /// </summary>
     internal class SongTitleEqualityComparer : IEqualityComparer<Song>
     {

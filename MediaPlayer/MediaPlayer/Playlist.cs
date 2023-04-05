@@ -19,7 +19,7 @@ namespace MediaPlayer
         public string Name { get; set; }
 
         /// <summary>
-        /// List of songs in playlist.
+        /// List of songsNext in playlist.
         /// </summary>
         [DataMember]
         public List<Song> Songs { get; set; }

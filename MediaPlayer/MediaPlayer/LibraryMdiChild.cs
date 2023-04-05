@@ -75,7 +75,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Fills the queue with the songs
+        /// Fills the queue with the songsNext
         /// By Shayan Zahedanaraki
         /// </summary>
         void fillQueue()
@@ -96,7 +96,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Fills the ListView with the songs
+        /// Fills the ListView with the songsNext
         /// By James
         /// </summary>
         void fillList()
@@ -121,7 +121,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Retrieves the songs from MediaScanner
+        /// Retrieves the songsNext from MediaScanner
         /// By Shayan Zahedanaraki
         /// </summary>
         private void getSongs()

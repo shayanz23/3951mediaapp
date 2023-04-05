@@ -39,7 +39,13 @@ namespace MediaPlayer
             {
                 MessageBox.Show("Name must not be already used.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DialogResult = DialogResult.None;
-            } 
+            }
+            else if (NewPlaylistTextbox.Text.ToString() == "New Playlist..." || NewPlaylistTextbox.Text.ToString() == "Library" 
+                || NewPlaylistTextbox.Text.ToString() == "Now Playing")
+            {
+                MessageBox.Show("Invalid Name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = DialogResult.None;
+            }
             else
             {
                 newPlaylistName = NewPlaylistTextbox.Text;

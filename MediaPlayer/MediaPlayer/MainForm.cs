@@ -14,7 +14,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 namespace MediaPlayer
 {
     /// <summary>
-    /// Used code: https://stackoverflow.com/questions/38926777/how-to-play-a-list-of-songs-using-naudio-and-c
+    /// Used code: https://stackoverflow.com/questions/38926777/how-to-play-a-list-of-songsNext-using-naudio-and-c
     /// </summary>
     public partial class MainForm : Form
     {
@@ -118,6 +118,10 @@ namespace MediaPlayer
                 {
                     LibraryOpen();
                 }
+                else if (node.Name == "NowPlayingNode")
+                {
+                    NowPlayingOpen();
+                }
                 for (int i = 0; i < PlaylistManager.Playlists.Count; i++)
                 {
                     if (node.Text == PlaylistManager.Playlists[i].Name)
@@ -126,6 +130,42 @@ namespace MediaPlayer
                     }
                 }
             }
+        }
+
+        public void NowPlayingOpen()
+        {
+            //if childform already exists, get rid of it, and create new MusicLibraryForm instead.
+            if (childForm != null)
+            {
+                childForm.Close();
+                childForm.Dispose();
+                childForm = null;
+            }
+            childForm = new NowPlayingMdiChild();
+            childForm.MdiParent = this;
+            childForm.StartPosition = FormStartPosition.Manual;
+            childForm.Location = new Point(contentTree.Size.Width, startPosY);
+            childForm.Size = new Size((int)(this.Size.Width / 1.285), contentTree.Size.Height);
+            ((NowPlayingMdiChild)childForm).getSongs();
+            childForm.Show();
+        }
+
+        /// <summary>
+        /// Gets the songsNext after the one currently playing.
+        /// </summary>
+        /// <returns></returns>
+        public List<Song> nextSongs()
+        {
+            List<Song> nextSongs = new List<Song>();
+            if (Queue == null)
+            {
+                return nextSongs;
+            }
+            for (int i = song_index+1; i < Queue.Count(); i++)
+            {
+                nextSongs.Add(Queue[i]);
+            }
+            return nextSongs;
         }
 
         /// <summary>
@@ -146,6 +186,9 @@ namespace MediaPlayer
         private void OnFormClosing(object sender, FormClosingEventArgs e)
         {
             PlaylistManager.Save();
+            childForm.Close();
+            childForm.Dispose();
+            childForm = null;
         }
 
         /// <summary>
@@ -372,7 +415,7 @@ namespace MediaPlayer
 
 
         /// <summary>
-        /// Plays the songs newly selected, unless the PlaybackState.Paused,
+        /// Plays the songsNext newly selected, unless the PlaybackState.Paused,
         /// then it just starts playing the currently playing song again.
         /// Also only creates a new instance of WaveOut if the waveOut is null
         /// or not paused.
@@ -427,7 +470,7 @@ namespace MediaPlayer
         /// <summary>
         /// event catcher for if the playback has stopped.
         /// has an if statements that checks if forceStopped has been set to true
-        /// by the FillQueue when replacing the playing song with another songs,
+        /// by the FillQueue when replacing the playing song with another songsNext,
         /// does nothing to the currently playing song if thats the case,
         /// and sets it false for next time.
         /// By Shayan Zahedanaraki
@@ -495,7 +538,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Fills the queue of songs to play and runs the player_play funtion.
+        /// Fills the queue of songsNext to play and runs the player_play funtion.
         /// By Shayan Zahedanaraki
         /// </summary>
         /// <param name="input"></param>
@@ -524,7 +567,9 @@ namespace MediaPlayer
             //if childform already exists, get rid of it, and create new MusicLibraryForm instead.
             if (childForm != null)
             {
+                childForm.Close();
                 childForm.Dispose();
+                childForm = null;
             }
                 childForm = new LibraryMdiChild();
                 childForm.MdiParent = this;
@@ -544,7 +589,9 @@ namespace MediaPlayer
             // If childForm already exists, get rid of it, and create a new PlaylistMdiChild instead.
             if (childForm != null)
             {
+                childForm.Close();
                 childForm.Dispose();
+                childForm = null;
             }
 
             childForm = new PlaylistMdiChild(playlist)
@@ -643,6 +690,10 @@ namespace MediaPlayer
                 isPaused = false;
                 playPauseButton1.playing = true;
                 player_play();
+                if (childForm is NowPlayingMdiChild)
+                {
+                    ((NowPlayingMdiChild)childForm).getSongs();
+                }
             }
         }
 
@@ -663,6 +714,10 @@ namespace MediaPlayer
                 isPaused = false;
                 playPauseButton1.playing = true;
                 player_play();
+                if (childForm is NowPlayingMdiChild)
+                {
+                    ((NowPlayingMdiChild)childForm).getSongs();
+                }
             }
         }
 

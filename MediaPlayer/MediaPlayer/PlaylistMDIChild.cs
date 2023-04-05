@@ -71,7 +71,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Fills the queue with the songs
+        /// Fills the queue with the songsNext
         /// By Shayan Zahedanaraki
         /// </summary>
         void fillQueue()
@@ -92,7 +92,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Fills the ListView with the songs
+        /// Fills the ListView with the songsNext
         /// By James
         /// </summary>
         void fillList()
@@ -288,7 +288,7 @@ namespace MediaPlayer
 
         /// <summary>
         /// Opens the AddSongsDialog, 
-        /// Checks if the songs selected are already in the playlist, and ads them if not.
+        /// Checks if the songsNext selected are already in the playlist, and ads them if not.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -316,7 +316,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Removes songs selected if they are selected in the RemoveSongsDialog.
+        /// Removes songsNext selected if they are selected in the RemoveSongsDialog.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -326,7 +326,7 @@ namespace MediaPlayer
             {
                 if (removePlaylistDialog.ShowDialog() == DialogResult.OK)
                 {
-                    // Use RemoveAll with a predicate to remove songs from SongPlaylist.Songs that are present in removePlaylistDialog.SongsToRm
+                    // Use RemoveAll with a predicate to remove songsNext from SongPlaylist.Songs that are present in removePlaylistDialog.SongsToRm
                     SongPlaylist.Songs.RemoveAll(song => removePlaylistDialog.SongsToRm.Contains(song));
 
                     titleToAudioLookup = null;

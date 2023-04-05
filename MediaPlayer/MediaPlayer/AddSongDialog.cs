@@ -11,7 +11,7 @@ namespace MediaPlayer
         private List<Song> songs = new List<Song>();
 
         /// <summary>
-        /// Songs property for getting the songs selected by the user.
+        /// Songs property for getting the songsNext selected by the user.
         /// </summary>
         public List<Song> Songs { get { return songs; } }
 
@@ -24,7 +24,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Ok button that adds the songs selected by the user to the songs list for the parent to then
+        /// Ok button that adds the songsNext selected by the user to the songsNext list for the parent to then
         /// add to the playlist.
         /// </summary>
         /// <param name="sender"></param>
@@ -45,7 +45,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Fills the ListView with the songs
+        /// Fills the ListView with the songsNext
         /// By James
         /// </summary>
         void fillList()

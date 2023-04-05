@@ -21,7 +21,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Ok button that adds songs in the playlist to list of songs the user can remove.
+        /// Ok button that adds songsNext in the playlist to list of songsNext the user can remove.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -41,7 +41,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Fills the ListView with the songs
+        /// Fills the ListView with the songsNext
         /// By James Lum
         /// </summary>
         void fillList()

@@ -38,6 +38,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Control-Library\ControlLibraryShayan.dll</HintPath>
     </Reference>
+    <Reference Include="CSAudioVisualization, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\visualizer\CSAudioVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="CSCore, Version=1.2.1.2, Culture=neutral, PublicKeyToken=5a08f2b6f4415dea, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\visualizer\CSCore.dll</HintPath>
+    </Reference>
     <Reference Include="NAudio">
       <HintPath>..\..\NAudio-Release\NAudio.dll</HintPath>
     </Reference>
@@ -58,6 +66,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NowPlayingMdiChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NowPlayingMdiChild.Designer.cs">
+      <DependentUpon>NowPlayingMdiChild.cs</DependentUpon>
+    </Compile>
     <Compile Include="RemoveSongsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +114,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="NowPlayingMdiChild.resx">
+      <DependentUpon>NowPlayingMdiChild.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RemoveSongsDialog.resx">
       <DependentUpon>RemoveSongsDialog.cs</DependentUpon>
     </EmbeddedResource>

@@ -104,3 +104,8 @@ C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.Libra
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.NewPlaylistDialog.resources
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.RemoveSongsDialog.resources
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.AddSongsDialog.resources
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.NowPlayingMdiChild.resources
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\CSCore.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\CSAudioVisualization.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\CSAudioVisualization.pdb
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\CSCore.xml

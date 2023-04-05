@@ -33,6 +33,7 @@ namespace MediaPlayer
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("New Playlist...");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Library", new System.Windows.Forms.TreeNode[] {
             treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Now Playing");
             this.contentTree = new System.Windows.Forms.TreeView();
             this.albumArtBox = new System.Windows.Forms.PictureBox();
             this.songProgressBar = new System.Windows.Forms.ProgressBar();
@@ -60,8 +61,11 @@ namespace MediaPlayer
             treeNode1.Text = "New Playlist...";
             treeNode2.Name = "SongLibrary";
             treeNode2.Text = "Library";
+            treeNode3.Name = "NowPlayingNode";
+            treeNode3.Text = "Now Playing";
             this.contentTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode2,
+            treeNode3});
             this.contentTree.Size = new System.Drawing.Size(206, 503);
             this.contentTree.TabIndex = 4;
             // 

@@ -97,7 +97,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Checks if there are songs with the same titles, and changes the duplicate titles.
+        /// Checks if there are songsNext with the same titles, and changes the duplicate titles.
         /// By Shayan Zahedanaraki
         /// </summary>
         private static void checkDuplicates()

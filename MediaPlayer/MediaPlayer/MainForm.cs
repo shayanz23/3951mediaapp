@@ -1,14 +1,9 @@
-﻿using ControlLibraryShayan;
-using NAudio.Wave;
+﻿using NAudio.Wave;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace MediaPlayer
@@ -37,7 +32,7 @@ namespace MediaPlayer
         private TreeNode currentRightClickedNode;
         private bool firstTimePlaying;
 
-        internal List<Song> Queue { get { return queue; } set { queue = value; } }
+        public List<Song> Queue { get { return queue; } set { queue = value; } }
 
         public MainForm()
         {

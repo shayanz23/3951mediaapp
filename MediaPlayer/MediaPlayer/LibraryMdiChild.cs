@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using TagLib.Riff;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MediaPlayer
 {
@@ -20,9 +11,9 @@ namespace MediaPlayer
 
         // Declare variables and collections
         private Dictionary<string, Song> titleToAudioLookup;
-        Song selectedAudio;
-        List<Song> songs = new List<Song>();
-        List<Song> Queue = new List<Song>();
+        private Song selectedAudio;
+        private List<Song> songs = new List<Song>();
+        private List<Song> Queue = new List<Song>();
 
         /// <summary>
         /// Constructor for the MusicLibraryForm class
@@ -161,10 +152,6 @@ namespace MediaPlayer
                 MainForm parent = (MainForm)this.MdiParent;
                 parent.FillQueue(Queue);
             }
-        }
-
-        private void SongData_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
-            songData.ClearSelection();
         }
 
         /// <summary>

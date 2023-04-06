@@ -48,10 +48,7 @@ namespace MediaPlayer
         /// </summary>
         public static void Read()
         {
-            //Instance of class for comparing the title of songsNext
-            SongTitleEqualityComparer titleComparer = new SongTitleEqualityComparer();
-            //boolean for deciding whether to save json or not.
-            bool removed = false;
+            
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Playlist>));
             try
             {
@@ -65,11 +62,54 @@ namespace MediaPlayer
                 Save();
             }
 
-            //Checks if songsNext exist in the library, if not they are removed.
-            for (int i = 0; i < playlists.Count; i++)
+            // Checks if the songs are in the library, removes them if they aren't there. 
+            RemoveINotInLibrary(ref playlists);
+
+            // Checks if there are duplicate songs and removes them.
+            RemoveDuplicates(ref playlists);
+        }
+
+        /// <summary>
+        /// Checks if there are duplicate songs.
+        /// </summary>
+        public static void RemoveDuplicates(ref List<Playlist> inputPlaylist)
+        {
+            //Instance of class for comparing the title of songsNext
+            SongTitleEqualityComparer titleComparer = new SongTitleEqualityComparer();
+            //boolean for deciding whether to save json or not.
+            bool removed = false;
+            //Checks if there are duplicate songsNext and removes them.
+            for (int i = 0; i < inputPlaylist.Count; i++)
             {
-                int originalCount = playlists[i].Songs.Count;
-                List<Song> filteredSongs = playlists[i].Songs
+                int originalCount = inputPlaylist[i].Songs.Count;
+                List<Song> distinctSongs = inputPlaylist[i].Songs.Distinct(titleComparer).ToList();
+
+                if (originalCount != distinctSongs.Count)
+                {
+                    removed = true;
+                    inputPlaylist[i].Songs = distinctSongs;
+                }
+            }
+            if (removed)
+            {
+                Save();
+            }
+        }
+
+        /// <summary>
+        /// Checks if there are duplicate songs.
+        /// </summary>
+        public static void RemoveINotInLibrary(ref List<Playlist> inputPlaylist)
+        {
+            //Instance of class for comparing the title of songsNext
+            SongTitleEqualityComparer titleComparer = new SongTitleEqualityComparer();
+            //boolean for deciding whether to save json or not.
+            bool removed = false;
+            //Checks if songsNext exist in the library, if not they are removed.
+            for (int i = 0; i < inputPlaylist.Count; i++)
+            {
+                int originalCount = inputPlaylist[i].Songs.Count;
+                List<Song> filteredSongs = inputPlaylist[i].Songs
                     .Where(song => SongManager.Songs.Any(s => s.Title == song.Title)) // Compare songsNext by title or any unique property
                     .ToList();
 
@@ -79,20 +119,8 @@ namespace MediaPlayer
                     playlists[i].Songs = filteredSongs;
                 }
             }
-
-            //Checks if there are duplicate songsNext and removes them.
-            for (int i = 0; i < playlists.Count; i++)
+            if (removed)
             {
-                int originalCount = playlists[i].Songs.Count;
-                List<Song> distinctSongs = playlists[i].Songs.Distinct(titleComparer).ToList();
-
-                if (originalCount != distinctSongs.Count)
-                {
-                    removed = true;
-                    playlists[i].Songs = distinctSongs;
-                }
-            }
-            if (removed) { 
                 Save();
             }
         }

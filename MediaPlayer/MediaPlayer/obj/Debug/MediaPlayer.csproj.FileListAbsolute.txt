@@ -144,3 +144,11 @@ C:\Users\dmc\source\repos\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPl
 C:\Users\dmc\source\repos\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.CopyComplete
 C:\Users\dmc\source\repos\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.exe
 C:\Users\dmc\source\repos\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.pdb
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\CSAudioVisualization.dll
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\CSCore.dll
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\CSAudioVisualization.pdb
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\CSCore.xml
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.NowPlayingMdiChild.resources
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.RemoveSongsDialog.resources
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.AddSongsDialog.resources
+C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.NewPlaylistDialog.resources

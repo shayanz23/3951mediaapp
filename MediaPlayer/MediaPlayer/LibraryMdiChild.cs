@@ -12,7 +12,6 @@ namespace MediaPlayer
         // Declare variables and collections
         private Dictionary<string, Song> titleToAudioLookup;
         private Song selectedAudio;
-        private List<Song> songs = new List<Song>();
         private List<Song> Queue = new List<Song>();
 
         /// <summary>
@@ -21,8 +20,7 @@ namespace MediaPlayer
         public LibraryMdiChild()
         {
             InitializeComponent();
-            getSongs();
-            titleToAudioLookup = songs.ToDictionary(audio => audio.Title);
+            titleToAudioLookup = SongManager.Songs.ToDictionary(audio => audio.Title);
             fillList();
             fillPictures();
             songData.Size = new Size(760, 325);
@@ -36,7 +34,7 @@ namespace MediaPlayer
         public void fillPictures()
         {
 
-            bool hasNonNullAlbumArt = songs.Any(song => SongManager.getCoverArt(song.FileLocation) != null);
+            bool hasNonNullAlbumArt = SongManager.Songs.Any(song => SongManager.getCoverArt(song.FileLocation) != null);
             if (!hasNonNullAlbumArt)
             {
                 return;
@@ -49,18 +47,18 @@ namespace MediaPlayer
                 pictureBox4
             };
             int index = 0;
-            int imagesListCount = songs.Count;
+            int imagesListCount = SongManager.Songs.Count;
 
             for (int i = 0; i < pictureBoxes.Count; i++)
             {
                 pictureBoxes[i].SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBoxes[i].Image = null;
-                while (SongManager.getCoverArt(songs[index % imagesListCount].FileLocation) == null)
+                while (SongManager.getCoverArt(SongManager.Songs[index % imagesListCount].FileLocation) == null)
                 {
                     index++;
                 }
 
-                pictureBoxes[i].Image = SongManager.getCoverArt(songs[index % imagesListCount].FileLocation);
+                pictureBoxes[i].Image = SongManager.getCoverArt(SongManager.Songs[index % imagesListCount].FileLocation);
                 index++;
             }
         }
@@ -73,15 +71,15 @@ namespace MediaPlayer
         {
             Queue.Clear();
             bool add = false;
-            for (int i = 0; i < songs.Count; i++)
+            for (int i = 0; i < SongManager.Songs.Count; i++)
             {
-                if (songs[i] == selectedAudio)
+                if (SongManager.Songs[i] == selectedAudio)
                 {
                     add = true;
                 }
                 if (add)
                 {
-                    Queue.Add(songs[i]);
+                    Queue.Add(SongManager.Songs[i]);
                 }
             }
         }
@@ -92,18 +90,18 @@ namespace MediaPlayer
         /// </summary>
         void fillList()
         {
-            for (int i = 0; i < songs.Count; i++)
+            for (int i = 0; i < SongManager.Songs.Count; i++)
             {
-                string a = songs[i].Title;
+                string a = SongManager.Songs[i].Title;
                 string b = "";
 
-                if (songs[i].GetArtists().Length > 0) {
-                        b += songs[i].GetArtists();
+                if (SongManager.Songs[i].GetArtists().Length > 0) {
+                        b += SongManager.Songs[i].GetArtists();
                 } else {
                     b = "Unknown";
                 }
 
-                string c = songs[i].Duration;
+                string c = SongManager.Songs[i].Duration;
 
                 this.songData.Rows.Add(i+1, a, b, c);
                 
@@ -112,26 +110,14 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Retrieves the songsNext from MediaScanner
-        /// By Shayan Zahedanaraki
-        /// </summary>
-        private void getSongs()
-        {
-            for (int i = 0; i < SongManager.Songs.Count; i++)
-            {
-                songs.Add(SongManager.Songs[i]);
-            }
-        }
-
-        /// <summary>
         /// Handles the click event for the shuffle button
         /// By Shayan Zahedanaraki
         /// </summary>
         private void shuffleButton_Click(object sender, EventArgs e)
         {
-            if (songs != null && songs.Count != 0)
+            if (SongManager.Songs != null && SongManager.Songs.Count != 0)
             {
-                List<Song> songCandidates = new List<Song>(songs);
+                List<Song> songCandidates = new List<Song>(SongManager.Songs);
                 JaroWinklerDistance.WeightedShuffle(songCandidates);
                 Queue = new List<Song>(songCandidates);
                 MainForm parent = (MainForm)MdiParent;
@@ -146,9 +132,9 @@ namespace MediaPlayer
         /// </summary>
         private void playButton_Click(object sender, EventArgs e)
         {
-            if (songs != null && songs.Count != 0)
+            if (SongManager.Songs != null && SongManager.Songs.Count != 0)
             {
-                Queue = new List<Song>(songs);
+                Queue = new List<Song>(SongManager.Songs);
                 MainForm parent = (MainForm)this.MdiParent;
                 parent.FillQueue(Queue);
             }

@@ -1,13 +1,10 @@
 ﻿using MediaPlayer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace UnitTestSong
-{ //adding more stuff
+{ 
     /// <summary>
     /// Tests to see if the playlist Constructor is not null
     /// By Daniel Chellapan
@@ -23,18 +20,98 @@ namespace UnitTestSong
             /// By Daniel Chellapan
             /// </summary>
             [TestClass]
-            public class UnitTestAudio
+            public class UnitTestSong
             {
+                /// <summary>
+                /// Tests property get value 
+                /// By Daniel Chellapan
+                /// </summary>
+                [TestMethod]
+                public void TitleProperty_ShouldSetAndGetCorrectValue()
+                {
+                    // Arrange
+                    Song song = new Song();
+                    string expectedTitle = "Example Song";
+
+                    // Act
+                    song.Title = expectedTitle;
+                    string actualTitle = song.Title;
+
+                    // Assert
+                    Assert.AreEqual(expectedTitle, actualTitle);
+                }
+
+
+                /// <summary>
+                /// Tests property set value
+                /// By Daniel Chellapan
+                /// </summary>
+                [TestMethod]
+                public void FileLocationProperty_ShouldSetAndGetCorrectValue()
+                {
+                    // Arrange
+                    Song song = new Song();
+                    string expectedFileLocation = @"C:\MediaPlayer\ThisSong.mp3";
+
+                    // Act
+                    song.FileLocation = expectedFileLocation;
+                    string actualFileLocation = song.FileLocation;
+
+                    // Assert
+                    Assert.AreEqual(expectedFileLocation, actualFileLocation);
+                }
+
+                /// <summary>
+                /// Tests property set value
+                /// By Daniel Chellapan
+                /// </summary>
+                [TestMethod]
+                public void AlbumProperty_ShouldSetAndGetCorrectValue()
+                {
+                    // Arrange
+                    Song song = new Song();
+                    string expectedAlbum = "Example Album";
+
+                    // Act
+                    song.Album = expectedAlbum;
+                    string actualAlbum = song.Album;
+
+                    // Assert
+                    Assert.AreEqual(expectedAlbum, actualAlbum);
+                }
+
                 /// <summary>
                 /// Tests property   for audio title
                 /// By Daniel Chellapan
                 /// </summary>
                 [TestMethod]
-                public void TestSongTitleProperty()
+                public void GenresProperty_ShouldSetAndGetCorrectValue()
                 {
-                    Song title = new Song();
-                    title.Title = "Numb";
-                    Assert.AreEqual(title.Title, "Numb");
+                    // Arrange
+                    Song song = new Song();
+                    string[] expectedGenres = new string[] { "Genre 1", "Genre 2" };
+
+                    // Act
+                    song.Genres = expectedGenres;
+                    string[] actualGenres = song.Genres;
+
+                    // Assert
+                    CollectionAssert.AreEqual(expectedGenres, actualGenres);
+                }
+
+                [TestMethod]
+                public void DurationProperty_ShouldSetAndGetCorrectValue()
+                {
+                    // Arrange
+                    Song song = new Song();
+                    string expectedDuration = "3:45";
+
+                    // Act
+                    song.Duration = expectedDuration;
+                    string actualDuration = song.Duration;
+
+                    // Assert
+                    Assert.AreEqual(expectedDuration, actualDuration);
                 }
 
                 /// <summary>
@@ -44,19 +121,19 @@ namespace UnitTestSong
                 [TestMethod]
                 public void TestGetArtists()
                 {
-                    StringBuilder stringBuilder = new StringBuilder();
+                    StringBuilder StringBuilder = new StringBuilder();
                     string[] artistNamesArray = { "Jay-Z", "Jim", "Joe" };
                     for (int i = 0; i < artistNamesArray.Length; i++)
                     {
                         if (i == artistNamesArray.Length - 1)
                         {
-                            stringBuilder.Append(artistNamesArray[i]);
+                            StringBuilder.Append(artistNamesArray[i]);
                         }
                         else
                         {
-                            stringBuilder.Append(artistNamesArray[i] + ", ");
+                            StringBuilder.Append(artistNamesArray[i] + ", ");
                         }
-                        stringBuilder.ToString();
+                        StringBuilder.ToString();
                     }
 
 

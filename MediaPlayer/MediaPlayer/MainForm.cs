@@ -65,7 +65,7 @@ namespace MediaPlayer
             timeRemainingLabel.BackColor = Color.White;
 
             ExpandNodes();
-            LibraryOpen();
+            OpenLibrary();
             loadPlaylists();
         }
 
@@ -118,7 +118,7 @@ namespace MediaPlayer
                 }
                 else if (node.Name == "SongLibrary")
                 {
-                    LibraryOpen();
+                    OpenLibrary();
                 }
                 else if (node.Name == "NowPlayingNode")
                 {
@@ -134,6 +134,9 @@ namespace MediaPlayer
             }
         }
 
+        /// <summary>
+        /// Opens the Now Playing mdi.
+        /// </summary>
         public void NowPlayingOpen()
         {
             //if childform already exists, get rid of it, and create new MusicLibraryForm instead.
@@ -178,6 +181,13 @@ namespace MediaPlayer
         private void DeletePlaylistItem_Click(object sender, EventArgs e)
         {
             PlaylistManager.RemovePlaylist(currentRightClickedNode.Text);
+            if (childForm is PlaylistMdiChild)
+            {
+                if (((PlaylistMdiChild)childForm).SongPlaylist.Name == currentRightClickedNode.Text)
+                {
+                    OpenLibrary();
+                }
+            }
             contentTree.Nodes.Remove(currentRightClickedNode);
         }
 
@@ -578,7 +588,7 @@ namespace MediaPlayer
         /// <summary>
         /// Triggered when the user clicks on the Song Library in the contentTree.
         /// </summary>
-        private void LibraryOpen()
+        private void OpenLibrary()
         {
             //if childform already exists, get rid of it, and create new MusicLibraryForm instead.
             if (childForm != null)

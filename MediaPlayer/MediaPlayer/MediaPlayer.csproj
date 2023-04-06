@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JaroWinklerDistance.cs" />
     <Compile Include="NowPlayingMdiChild.cs">
       <SubType>Form</SubType>
     </Compile>

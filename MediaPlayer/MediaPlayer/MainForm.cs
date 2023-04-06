@@ -454,7 +454,8 @@ namespace MediaPlayer
                     try
                     {
                         audioFileReader = new MediaFoundationReader(queue[song_index].FileLocation);
-                    } catch (DirectoryNotFoundException ex)
+                    } 
+                    catch
                     {
                         playPauseButton1.playing = false;
                         MessageBox.Show("File not found or removed during usage", "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);

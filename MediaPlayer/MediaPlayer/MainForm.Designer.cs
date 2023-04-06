@@ -34,6 +34,7 @@ namespace MediaPlayer
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Library", new System.Windows.Forms.TreeNode[] {
             treeNode1});
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Now Playing");
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.contentTree = new System.Windows.Forms.TreeView();
             this.albumArtBox = new System.Windows.Forms.PictureBox();
             this.songProgressBar = new System.Windows.Forms.ProgressBar();
@@ -219,6 +220,7 @@ namespace MediaPlayer
             this.Controls.Add(this.albumArtBox);
             this.Controls.Add(this.contentTree);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MaximizeBox = false;

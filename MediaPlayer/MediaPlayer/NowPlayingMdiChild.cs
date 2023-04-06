@@ -12,6 +12,7 @@ namespace MediaPlayer
 
         // Declare variables and collections
         private Dictionary<string, Song> titleToAudioLookup;
+        MainForm parent;
         Song selectedAudio;
         List<Song> songsNext = new List<Song>();
         List<Song> Queue = new List<Song>();
@@ -27,8 +28,8 @@ namespace MediaPlayer
             audioVisualization1.Size = new Size(325, 325);
             audioVisualization1.BarCount = 120;
             audioVisualization1.BackColor = Color.Transparent;
-            audioVisualization1.ColorBase = Color.Cyan;
-            audioVisualization1.ColorMax = Color.Magenta;
+            audioVisualization1.ColorBase = Color.Blue;
+            audioVisualization1.ColorMax = Color.MistyRose;
             audioVisualization1.VoidRadius = 50;
             audioVisualization1.BarIntensity = 1;
             audioVisualization1.BeatIntensity = 2;
@@ -72,22 +73,17 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Fills the queue with the songsNext
+        /// Sets the number of the song playing to the one selected.
         /// By Shayan Zahedanaraki
         /// </summary>
-        void fillQueue()
+        void pickNum()
         {
-            Queue.Clear();
-            bool add = false;
-            for (int i = 0; i < songsNext.Count; i++)
+            for (int i = 0; i < parent.Queue.Count(); i++)
             {
-                if (songsNext[i] == selectedAudio)
+                if (parent.Queue[i].Title == selectedAudio.Title)
                 {
-                    add = true;
-                }
-                if (add)
-                {
-                    Queue.Add(songsNext[i]);
+                    parent.NewSong(i);
+                    break;
                 }
             }
         }
@@ -124,7 +120,7 @@ namespace MediaPlayer
         /// </summary>
         public void getSongs()
         {
-            MainForm parent = (MainForm)this.MdiParent;
+            parent = (MainForm)this.MdiParent;
             songsNext = parent.nextSongs();
             fillList();
             fillPictures();
@@ -150,8 +146,7 @@ namespace MediaPlayer
 
             if (selectedAudio != null) {
                 MainForm parent = (MainForm)this.MdiParent;
-                fillQueue();
-                parent.FillQueue(Queue);
+                pickNum();
                 getSongs();
             }
 

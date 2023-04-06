@@ -21,13 +21,13 @@ namespace MediaPlayer
         /// <summary>
         /// Child form that is not yet instantiated
         /// </summary>
-        Form childForm;
-        int startPosY = 0;
-        int song_index; // index of the song
-        MediaFoundationReader audioFileReader;
-        WaveOutEvent waveOut;
+        private Form childForm;
+        private int startPosY = 0;
+        private int song_index; // index of the song
+        private MediaFoundationReader audioFileReader;
+        private WaveOutEvent waveOut;
         private bool forceStopped;
-        List<Song> Queue = new List<Song>();
+        private List<Song> queue = new List<Song>();
         private bool isPaused;
         private Timer scrollTimer;
         private int scrollPosition;
@@ -36,6 +36,8 @@ namespace MediaPlayer
         private ContextMenuStrip contextMenu;
         private TreeNode currentRightClickedNode;
         private bool firstTimePlaying;
+
+        internal List<Song> Queue { get { return queue; } set { queue = value; } }
 
         public MainForm()
         {
@@ -157,13 +159,13 @@ namespace MediaPlayer
         public List<Song> nextSongs()
         {
             List<Song> nextSongs = new List<Song>();
-            if (Queue == null)
+            if (queue == null)
             {
                 return nextSongs;
             }
-            for (int i = song_index+1; i < Queue.Count(); i++)
+            for (int i = song_index+1; i < queue.Count(); i++)
             {
-                nextSongs.Add(Queue[i]);
+                nextSongs.Add(queue[i]);
             }
             return nextSongs;
         }
@@ -423,7 +425,7 @@ namespace MediaPlayer
         /// </summary>
         private void player_play()
         {
-            if (song_index < Queue.Count)
+            if (song_index < queue.Count)
             {
                 if (waveOut == null || waveOut.PlaybackState != PlaybackState.Paused)
                 {
@@ -441,7 +443,7 @@ namespace MediaPlayer
                 {
                     try
                     {
-                        audioFileReader = new MediaFoundationReader(Queue[song_index].FileLocation);
+                        audioFileReader = new MediaFoundationReader(queue[song_index].FileLocation);
                     } catch (DirectoryNotFoundException ex)
                     {
                         playPauseButton1.playing = false;
@@ -455,9 +457,9 @@ namespace MediaPlayer
 
                     progressBarTimer.Start(); // Start the progress bar timer
                 }
-                UpdateAlbumArt(SongManager.getCoverArt(Queue[song_index].FileLocation));
-                UpdateSongName(Queue[song_index].Title);
-                UpdateArtistName(Queue[song_index].GetArtists());
+                UpdateAlbumArt(SongManager.getCoverArt(queue[song_index].FileLocation));
+                UpdateSongName(queue[song_index].Title);
+                UpdateArtistName(queue[song_index].GetArtists());
                 waveOut.Play();
             }
             else
@@ -551,13 +553,27 @@ namespace MediaPlayer
                 waveOut.Dispose();
                 waveOut = null;
             }
-            Queue = input;
+            queue = input;
             song_index = 0;
             isPaused = false;
             playPauseButton1.playing = true;
             player_play();
         }
 
+        /// <summary>
+        /// Picks a new song based on the index of a song in the queue.
+        /// By Shayan Zahedanaraki
+        /// </summary>
+        /// <param name="input"></param>
+        public void NewSong(int input)
+        {
+            waveOut.Stop();
+            song_index = input;
+            forceStopped = true;
+            isPaused = false;
+            playPauseButton1.playing = true;
+            player_play();
+        }
 
         /// <summary>
         /// Triggered when the user clicks on the Song Library in the contentTree.
@@ -576,8 +592,7 @@ namespace MediaPlayer
                 childForm.StartPosition = FormStartPosition.Manual;
                 childForm.Location = new Point(contentTree.Size.Width, startPosY);
                 childForm.Size = new Size((int)(this.Size.Width / 1.285), contentTree.Size.Height);
-                childForm.Show();
-            
+                childForm.Show(); 
         }
 
 
@@ -682,7 +697,7 @@ namespace MediaPlayer
         /// <param name="e"></param>
         private void forwardButton_Click(object sender, EventArgs e)
         {
-            if (waveOut != null && song_index != Queue.Count - 1)
+            if (waveOut != null && song_index != queue.Count - 1)
             {
                 waveOut.Stop();
                 song_index++; // play the next file
@@ -705,7 +720,6 @@ namespace MediaPlayer
         /// <param name="e"></param>
         private void rewindButton_Click(object sender, EventArgs e)
         {
-            
             if (song_index > 0)
             {
                 waveOut.Stop();

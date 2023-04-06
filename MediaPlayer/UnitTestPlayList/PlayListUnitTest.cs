@@ -8,6 +8,11 @@ using System.Threading.Tasks;
 
 namespace UnitTestPlayList
 {//add more stuff again
+
+    /// <summary>
+    /// Tests to see if the playlist Constructor is not null
+    /// By Daniel Chellapan
+    /// </summary>
     [TestClass]
     public class PlayListUnitTest
     {

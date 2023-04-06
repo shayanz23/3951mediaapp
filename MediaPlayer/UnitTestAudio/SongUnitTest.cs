@@ -6,50 +6,68 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UnitTestAudio
+namespace UnitTestSong
 {
+    /// <summary>
+    /// Tests to see if the playlist Constructor is not null
+    /// By Daniel Chellapan
+    /// </summary>
+    [TestClass]
     public class SongUnitTest
     {
         [TestClass]
-        public class PlayListUnitTest
+        public class PlaySongUnitTest
         {
             /// <summary>
-            /// Tests to see if the playlist Constructor is not null
+            /// Test class to test the functionality in Audio.cs
             /// By Daniel Chellapan
             /// </summary>
-            [TestMethod]
-            public void TestConstructorNotNull()
+            [TestClass]
+            public class UnitTestAudio
             {
-                string name = "My Playlist";
-                Playlist playlist = new Playlist(name);
-                Assert.IsNotNull(playlist.Songs);
+                /// <summary>
+                /// Tests property   for audio title
+                /// By Daniel Chellapan
+                /// </summary>
+                [TestMethod]
+                public void TestSongTitleProperty()
+                {
+                    Song title = new Song();
+                    title.Title = "Numb";
+                    Assert.AreEqual(title.Title, "Numb");
+                }
 
-            }
+                /// <summary>
+                /// Tests getArtist function logic 
+                /// By Daniel Chellapan
+                /// </summary>
+                [TestMethod]
+                public void TestGetArtists()
+                {
+                    StringBuilder stringBuilder = new StringBuilder();
+                    string[] artistNamesArray = { "Jay-Z", "Jim", "Joe" };
+                    for (int i = 0; i < artistNamesArray.Length; i++)
+                    {
+                        if (i == artistNamesArray.Length - 1)
+                        {
+                            stringBuilder.Append(artistNamesArray[i]);
+                        }
+                        else
+                        {
+                            stringBuilder.Append(artistNamesArray[i] + ", ");
+                        }
+                        stringBuilder.ToString();
+                    }
 
-            /// <summary>
-            /// Tests to see if the playlist 
-            /// By Daniel Chellapan
-            /// </summary>
-            [TestMethod]
-            public void TestConstructorCodeLengthMakesSense()
-            {
-                string name = "My Playlist";
-                Playlist playlist = new Playlist(name);
-                Assert.AreEqual(0, playlist.Songs.Count);
-            }
 
 
-            /// <summary>
-            /// Tests getArtist function logic 
-            /// By Daniel Chellapan
-            /// </summary>
-            [TestMethod]
-            public void TestConstructorNameMakesSense()
-            {
-                string name = "My Playlist";
-                Playlist playlist = new Playlist(name);
+                    Song artists = new Song();
+                    artists.GetArtists();
 
-                Assert.AreEqual(name, playlist.Name);
+                    Assert.AreEqual(artistNamesArray[0], "Jay-Z");
+                }
+
+
             }
         }
     }

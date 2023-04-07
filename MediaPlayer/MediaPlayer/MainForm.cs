@@ -24,7 +24,6 @@ namespace MediaPlayer
         private bool forceStopped;
         private List<Song> queue = new List<Song>();
         private bool isPaused;
-        private Timer scrollTimer;
         private int scrollPosition;
         private string originalText;
         private Timer progressBarTimer;
@@ -40,7 +39,6 @@ namespace MediaPlayer
             setButtonImages();
             songLabelStart();
             VolumeInit();
-            ScrollInit();
             ProgressBarInit();
             InitializeContextMenu();
 
@@ -216,19 +214,6 @@ namespace MediaPlayer
         {
             volumeTrackbar.Value = 50;
             volumeTrackbar.Scroll += VolumeTrackbar_Scroll;
-        }
-
-        /// <summary>
-        /// sets scroll properties.
-        /// </summary>
-        private void ScrollInit()
-        {
-            // Create a new timer
-            scrollPosition = 0;
-            scrollTimer = new Timer();
-            scrollTimer.Interval = 150; // Set the timer interval (in milliseconds)
-            scrollTimer.Enabled = IsTextTooLong(songLabel.Text, songLabel);
-            scrollTimer.Tick += ScrollTimer_Tick;
         }
 
         /// <summary>
@@ -525,10 +510,7 @@ namespace MediaPlayer
         {
             if (name != null)
             {
-                name = name + "     ";
-                originalText = name;
                 songLabel.Text = name;
-                scrollTimer.Enabled = IsTextTooLong(name, songLabel);
             }
         }
 

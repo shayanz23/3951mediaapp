@@ -28,3 +28,8 @@ C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.Add
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.NewPlaylistDialog.resources
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.PlaylistMdiChild.resources
 C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.LibraryMdiChild.resources
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Release\CSAudioVisualization.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Release\CSCore.dll
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Release\CSAudioVisualization.pdb
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\bin\Release\CSCore.xml
+C:\Users\Donkey\3951mediaapp\MediaPlayer\MediaPlayer\obj\Release\MediaPlayer.NowPlayingMdiChild.resources

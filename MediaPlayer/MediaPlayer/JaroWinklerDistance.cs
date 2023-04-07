@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MediaPlayer
 {
     /// <summary>
-    /// From: https://stackoverflow.com/questions/19123506/jaro-winkler-distance-algorithm-in-c-sharp
+    /// Source: https://stackoverflow.com/questions/19123506/jaro-winkler-distance-algorithm-in-c-sharp
     /// </summary>
     public static class JaroWinklerDistance
     {

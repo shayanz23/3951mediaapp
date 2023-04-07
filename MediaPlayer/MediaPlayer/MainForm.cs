@@ -9,7 +9,8 @@ using System.Windows.Forms;
 namespace MediaPlayer
 {
     /// <summary>
-    /// Used code: https://stackoverflow.com/questions/38926777/how-to-play-a-list-of-songsNext-using-naudio-and-c
+    /// By Shayan Zahedanaraki, Daniel 
+    /// Used code [1]: https://stackoverflow.com/questions/38926777/how-to-play-a-list-of-songsNext-using-naudio-and-c
     /// </summary>
     public partial class MainForm : Form
     {
@@ -22,16 +23,14 @@ namespace MediaPlayer
         private MediaFoundationReader audioFileReader;
         private WaveOutEvent waveOut;
         private bool forceStopped;
-        private List<Song> queue = new List<Song>();
         private bool isPaused;
-        private int scrollPosition;
-        private string originalText;
         private Timer progressBarTimer;
         private ContextMenuStrip contextMenu;
         private TreeNode currentRightClickedNode;
         private bool firstTimePlaying;
 
-        public List<Song> Queue { get { return queue; } set { queue = value; } }
+        //Queue getter and setter.
+        public List<Song> Queue { get; set; }
 
         public MainForm()
         {
@@ -41,7 +40,7 @@ namespace MediaPlayer
             VolumeInit();
             ProgressBarInit();
             InitializeContextMenu();
-
+            Queue = new List<Song>();
             PlaylistManager.Read();
             Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.White;
             this.FormClosing += OnFormClosing;
@@ -69,7 +68,6 @@ namespace MediaPlayer
             ToolStripMenuItem deletePlaylistItem = new ToolStripMenuItem("Delete playlist");
             deletePlaylistItem.Click += DeletePlaylistItem_Click;
             contextMenu.Items.Add(deletePlaylistItem);
-
             contentTree.MouseUp += ContentTree_MouseUp;
         }
 
@@ -81,33 +79,19 @@ namespace MediaPlayer
         private void ContentTree_MouseUp(object sender, MouseEventArgs e)
         {
             TreeNode node = contentTree.GetNodeAt(e.X, e.Y);
+            if (node == null)
+            {
+                return;
+            }
             if (e.Button == MouseButtons.Right)
             {
-                currentRightClickedNode = node;
-                if (node != null && node.Text != "Queue" && node.Text.Trim() != "" 
-                    && node.Text != "Library" && node.Text != "New Playlist...")
-                {
-                    contentTree.SelectedNode = node;
-                    contextMenu.Show(contentTree, e.Location);
-                }
-            } 
+                OpenContextMenu(node, e);
+            }
             else if (e.Button == MouseButtons.Left)
             {
-                if (node == null)
-                {
-                    return;
-                }
                 if (node.Name == "NewSongPlaylist")
                 {
-                    using (NewPlaylistDialog newPlaylistDialog = new NewPlaylistDialog())
-                    {
-                        if (newPlaylistDialog.ShowDialog() == DialogResult.OK)
-                        {
-                            Playlist playlist = new Playlist(newPlaylistDialog.newPlaylistName);
-                            PlaylistManager.AddPlaylist(playlist);
-                            AddPlaylistToTree(playlist);
-                        }
-                    }
+                    OpenNewPlaylistDialog();
                 }
                 else if (node.Name == "SongLibrary")
                 {
@@ -117,12 +101,54 @@ namespace MediaPlayer
                 {
                     NowPlayingOpen();
                 }
-                for (int i = 0; i < PlaylistManager.Playlists.Count; i++)
+                OpenNodePlaylist(node);
+            }
+        }
+
+        /// <summary>
+        /// Opens the context menu for a Treenode selected.
+        /// </summary>
+        /// <param name="node"></param>
+        public void OpenContextMenu(TreeNode node, MouseEventArgs e)
+        {
+            currentRightClickedNode = node;
+            if (node != null && node.Text != "Queue" && node.Text.Trim() != ""
+                && node.Text != "Library" && node.Text != "New Playlist...")
+            {
+                contentTree.SelectedNode = node;
+                contextMenu.Show(contentTree, e.Location);
+            }
+        }
+
+        /// <summary>
+        /// Opens the new playlist dialog.
+        /// Shayan Zahedanraki
+        /// </summary>
+        public void OpenNewPlaylistDialog()
+        {
+            using (NewPlaylistDialog newPlaylistDialog = new NewPlaylistDialog())
+            {
+                if (newPlaylistDialog.ShowDialog() == DialogResult.OK)
                 {
-                    if (node.Text == PlaylistManager.Playlists[i].Name)
-                    {
-                        PlaylistOpen(PlaylistManager.Playlists[i]);
-                    }
+                    Playlist playlist = new Playlist(newPlaylistDialog.newPlaylistName);
+                    PlaylistManager.AddPlaylist(playlist);
+                    AddPlaylistToTree(playlist);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Open playlist for the currently selected node.
+        /// Shayan Zahedanaraki
+        /// </summary>
+        /// <param name="node"></param>
+        public void OpenNodePlaylist(TreeNode node)
+        {
+            for (int i = 0; i < PlaylistManager.Playlists.Count; i++)
+            {
+                if (node.Text == PlaylistManager.Playlists[i].Name)
+                {
+                    PlaylistOpen(PlaylistManager.Playlists[i]);
                 }
             }
         }
@@ -155,13 +181,13 @@ namespace MediaPlayer
         public List<Song> nextSongs()
         {
             List<Song> nextSongs = new List<Song>();
-            if (queue == null)
+            if (Queue == null)
             {
                 return nextSongs;
             }
-            for (int i = song_index+1; i < queue.Count(); i++)
+            for (int i = song_index + 1; i < Queue.Count(); i++)
             {
-                nextSongs.Add(queue[i]);
+                nextSongs.Add(Queue[i]);
             }
             return nextSongs;
         }
@@ -306,68 +332,6 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Event listener for the Tick event of ScrollTimer,
-        /// adds spaces to the text and runs GetScrollingText for the scrolling effect.
-        /// By Shayan Zahedanaraki
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ScrollTimer_Tick(object sender, EventArgs e)
-        {
-            scrollPosition++;
-
-            if (scrollPosition > originalText.Length * 7) // 7 is an approximate character width in pixels
-            {
-                scrollPosition = 0;
-            }
-
-            songLabel.Text = "  " + GetScrollingText(originalText, scrollPosition);
-        }
-
-        /// <summary>
-        /// Takes a string and returns it from the startPosition,
-        /// also brings the parts behind the startPosition to the end.
-        /// By Shayan Zahedanaraki
-        /// </summary>
-        /// <param name="originalText"></param>
-        /// <param name="startPosition"></param>
-        /// <returns></returns>
-        private string GetScrollingText(string originalText, int startPosition)
-        {
-            if (string.IsNullOrEmpty(originalText))
-            {
-                return string.Empty;
-            }
-
-            int displayLength = (songLabel.Width / 7) + 1; // 7 is an approximate character width in pixels
-            string displayText = new string(' ', displayLength);
-
-            for (int i = 0; i < displayLength; i++)
-            {
-                int charPosition = (startPosition + i) % originalText.Length;
-                displayText = displayText.Remove(i, 1).Insert(i, originalText[charPosition].ToString());
-            }
-
-            return displayText;
-        }
-
-        /// <summary>
-        /// Checks if the text is too long to fit in the label.
-        /// Shayan Zahedanaraki
-        /// </summary>
-        /// <param name="text"></param>
-        /// <param name="label"></param>
-        /// <returns></returns>
-        private bool IsTextTooLong(string text, Label label)
-        {
-            using (Graphics g = CreateGraphics())
-            {
-                SizeF textSize = g.MeasureString(text, label.Font);
-                return textSize.Width > label.Width;
-            }
-        }
-
-        /// <summary>
         /// Sets the button Images for the forward, play/pause and rewind buttons.
         /// By Shayan Zahedanaraki
         /// </summary>
@@ -411,11 +375,11 @@ namespace MediaPlayer
         /// then it just starts playing the currently playing song again.
         /// Also only creates a new instance of WaveOut if the waveOut is null
         /// or not paused.
-        /// By Shayan Zahedanaraki
+        /// By Shayan Zahedanaraki from stackoverflow [1]
         /// </summary>
         private void player_play()
         {
-            if (song_index < queue.Count)
+            if (song_index < Queue.Count)
             {
                 if (waveOut == null || waveOut.PlaybackState != PlaybackState.Paused)
                 {
@@ -433,8 +397,8 @@ namespace MediaPlayer
                 {
                     try
                     {
-                        audioFileReader = new MediaFoundationReader(queue[song_index].FileLocation);
-                    } 
+                        audioFileReader = new MediaFoundationReader(Queue[song_index].FileLocation);
+                    }
                     catch
                     {
                         playPauseButton1.playing = false;
@@ -448,9 +412,9 @@ namespace MediaPlayer
 
                     progressBarTimer.Start(); // Start the progress bar timer
                 }
-                UpdateAlbumArt(SongManager.getCoverArt(queue[song_index].FileLocation));
-                UpdateSongName(queue[song_index].Title);
-                UpdateArtistName(queue[song_index].GetArtists());
+                UpdateAlbumArt(SongManager.getCoverArt(Queue[song_index].FileLocation));
+                UpdateSongName(Queue[song_index].Title);
+                UpdateArtistName(Queue[song_index].GetArtists());
                 waveOut.Play();
             }
             else
@@ -495,7 +459,8 @@ namespace MediaPlayer
             {
                 albumArtBox.Image = coverArt;
                 albumArtBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            } else
+            }
+            else
             {
                 albumArtBox.Image = null;
             }
@@ -528,7 +493,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Fills the queue of songsNext to play and runs the player_play funtion.
+        /// Fills the Queue of songsNext to play and runs the player_play funtion.
         /// By Shayan Zahedanaraki
         /// </summary>
         /// <param name="input"></param>
@@ -541,7 +506,7 @@ namespace MediaPlayer
                 waveOut.Dispose();
                 waveOut = null;
             }
-            queue = input;
+            Queue = input;
             song_index = 0;
             isPaused = false;
             playPauseButton1.playing = true;
@@ -549,7 +514,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Picks a new song based on the index of a song in the queue.
+        /// Picks a new song based on the index of a song in the Queue.
         /// By Shayan Zahedanaraki
         /// </summary>
         /// <param name="input"></param>
@@ -575,12 +540,12 @@ namespace MediaPlayer
                 childForm.Dispose();
                 childForm = null;
             }
-                childForm = new LibraryMdiChild();
-                childForm.MdiParent = this;
-                childForm.StartPosition = FormStartPosition.Manual;
-                childForm.Location = new Point(contentTree.Size.Width, startPosY);
-                childForm.Size = new Size((int)(this.Size.Width / 1.285), contentTree.Size.Height);
-                childForm.Show(); 
+            childForm = new LibraryMdiChild();
+            childForm.MdiParent = this;
+            childForm.StartPosition = FormStartPosition.Manual;
+            childForm.Location = new Point(contentTree.Size.Width, startPosY);
+            childForm.Size = new Size((int)(this.Size.Width / 1.285), contentTree.Size.Height);
+            childForm.Show();
         }
 
 
@@ -685,7 +650,7 @@ namespace MediaPlayer
         /// <param name="e"></param>
         private void forwardButton_Click(object sender, EventArgs e)
         {
-            if (waveOut != null && song_index != queue.Count - 1)
+            if (waveOut != null && song_index != Queue.Count - 1)
             {
                 waveOut.Stop();
                 song_index++; // play the next file
@@ -701,7 +666,7 @@ namespace MediaPlayer
         }
 
         /// <summary>
-        /// Event listener, Goes to the last audio in the queue.
+        /// Event listener, Goes to the last audio in the Queue.
         /// By Shayan Zahedanaraki
         /// </summary>
         /// <param name="sender"></param>

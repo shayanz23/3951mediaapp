@@ -152,3 +152,38 @@ C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.NowPl
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.RemoveSongsDialog.resources
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.AddSongsDialog.resources
 C:\Users\Shayan\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.NewPlaylistDialog.resources
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\MediaPlayer.exe.config
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\MediaPlayer.exe
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\MediaPlayer.pdb
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\ControlLibraryShayan.dll
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\CSAudioVisualization.dll
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\CSCore.dll
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\NAudio.dll
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.dll
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\CSAudioVisualization.pdb
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\CSCore.xml
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\NAudio.xml
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.pdb
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\TagLibSharp.xml
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\Interop.WMPLib.dll
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.AssemblyReference.cache
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.SuggestedBindingRedirects.cache
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\Interop.WMPDXMLib.dll
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\Interop.WMPLauncher.dll
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\Interop.WMPLib.dll
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.ResolveComReference.cache
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.NowPlayingMdiChild.resources
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.RemoveSongsDialog.resources
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.AddSongsDialog.resources
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.NewPlaylistDialog.resources
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.PlaylistMdiChild.resources
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.MainForm.resources
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.LibraryMdiChild.resources
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.Properties.Resources.resources
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.GenerateResource.cache
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.CoreCompileInputs.cache
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.csproj.CopyComplete
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.exe
+C:\Users\Donkey\3951 Final Submission\3951mediaapp\MediaPlayer\MediaPlayer\obj\Debug\MediaPlayer.pdb
